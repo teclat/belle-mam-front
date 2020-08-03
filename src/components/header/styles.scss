@@ -1,0 +1,25 @@
+#header {
+    position: absolute;
+    color: white;
+
+    .header-logo {
+        width: 200px;
+    }
+
+    li {
+        margin-left: 30px;
+        font-weight: 600;
+
+        &:hover {
+            cursor: pointer;
+            padding-bottom: 4px;
+            border-bottom: 2px solid white;
+        }
+    }
+
+    .menu-btn:hover {
+        cursor: pointer;
+        border: none;
+        padding-bottom: 0px;
+    }
+}

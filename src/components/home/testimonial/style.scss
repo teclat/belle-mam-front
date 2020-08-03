@@ -1,0 +1,36 @@
+#testimonial {
+    background: #9c9efb;
+    color: white;
+    padding: 120px 0;
+
+    h2 {
+        color: white;
+        font-size: 2.5em;
+        font-weight: 600;
+    }
+
+    .testimonial-box {
+        margin-top: 50px;
+        width: 580px;
+        font-weight: 700;
+        font-size: 1.1em;
+        line-height: 1.3em;
+
+        .quotation {
+            font-size: 5em;
+            font-weight: 700;
+            line-height: 0.2em;
+        }
+
+        .testimonial-img,
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 120px;
+        }
+
+        img {
+            border: 6px solid white;
+        }
+    }
+}
