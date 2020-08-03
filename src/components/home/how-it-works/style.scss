@@ -1,0 +1,86 @@
+#how-it-works {
+    color: #a6a8fb;
+    padding-top: 30px;
+
+    h2 {
+        color: #a6a8fb;
+        font-weight: 700;
+
+        span {
+            font-weight: 900;
+        }
+    }
+
+    ul {
+        background: url('../../../assets/images/how-it-works-line.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 600px;
+
+        li p {
+            margin-left: 20px;
+            max-width: 350px;
+            font-weight: 700;
+            font-size: 1.2em;
+            line-height: 1.5em;
+        }
+    }
+
+
+    .align-self-end {
+        margin-top: -150px;
+    }
+
+    img {
+        width: 150px;
+        height: 150px;
+        margin-right: 20px;
+    }
+}
+
+
+@media(max-width: 1200px) {
+    #how-it-works ul {
+        background: white;
+    }
+}
+
+@media(min-width: 1200px) {
+    #how-it-works ul {
+        padding-left: 10%;
+        padding-right: 8%;
+    }
+}
+
+@media(min-width: 1400px) {
+    #how-it-works ul {
+        padding-left: 15%;
+        padding-right: 10%;
+        height: 700px;
+    }
+}
+
+
+@media(min-width: 1500px) {
+    #how-it-works ul {
+        padding-left: 15%;
+        padding-right: 15%;
+        height: 700px;
+    }
+}
+
+@media(min-width: 1750px) {
+    #how-it-works ul {
+        padding-left: 15%;
+        padding-right: 15%;
+        height: 750px;
+    }
+}
+
+@media(min-width: 1900px) {
+    #how-it-works ul {
+        padding-left: 15%;
+        padding-right: 20%;
+        height: 800px;
+    }
+}

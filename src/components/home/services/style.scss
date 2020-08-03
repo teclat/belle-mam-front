@@ -1,0 +1,47 @@
+#services {
+    height: 18vh;
+    position: relative;
+    background: #a6a8fb;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+        position: absolute;
+        width: 100%;
+        z-index: 99;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100px;
+
+            p {
+                margin-top: 5px;
+                font-weight: 700;
+            }
+
+            img {
+                margin-top: 10px;
+                cursor: pointer;
+                width: 65px;
+                height: 65px;
+                transition: all ease 0.2s;
+            }
+        }
+    }
+
+    .clickable-service.clicked {
+        margin-top: 5px;
+        width: 80px;
+        height: 80px;
+        transition: all ease 0.2s;
+    }
+
+    .service-back img {
+        width: 100%;
+        z-index: 1;
+    }
+}

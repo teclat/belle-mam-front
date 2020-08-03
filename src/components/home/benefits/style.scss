@@ -1,0 +1,47 @@
+#benefits {
+    padding: 40px 0;
+    background: #e9eaff;
+    color: #7c7ee5;
+
+    h2 {
+        font-weight: 600;
+        color: #7c7ee5;
+
+        span {
+            font-weight: 900;
+        }
+    }
+
+    ul {
+        margin-top: 40px;
+    }
+
+    .benefit-box {
+        &.left {
+            max-width: 390px;
+            display: flex;
+        }
+
+        &.right {
+            max-width: 420px;
+            display: flex;
+        }
+
+        .title {
+            font-weight: 800;
+            font-size: 1.5em;
+        }
+
+        .text {
+            font-weight: 900;
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+    }
+}
