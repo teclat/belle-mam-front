@@ -1,0 +1,74 @@
+#register {
+    background: url('../../assets/images/register-back-pattern.png');
+    min-height: 100vh;
+    padding-top: 20px;
+
+    >img {
+        width: 200px;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        min-width: 1000px;
+        margin-bottom: 100px;
+        border-radius: 20px;
+        border: none;
+
+        .ant-card-body {
+            padding: 0px;
+        }
+
+        .register-img {
+            background: url("../../assets/images/register-img.png");
+            background-size: cover;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .register-form {
+            padding: 20px 40px;
+
+            .title-box {
+                margin-bottom: 20px;
+
+                h2 {
+                    color: #7C7FE9;
+                    font-weight: 700;
+                }
+            }
+
+            label {
+                color: #7C7FE9;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            .ant-row {
+                margin: 20px 0;
+            }
+
+            .ant-radio-group {
+                text-align: center;
+
+                .ant-radio {
+                    margin-left: 20px;
+                    color: #7C7FE9;
+                }
+            }
+
+            .ant-input {
+                margin-left: 20px;
+                border: none;
+                background: #F1F1F1;
+                border-radius: 20px;
+                line-height: 2em;
+            }
+
+            .btn {
+                display: table;
+                margin: 0 auto;
+            }
+        }
+    }
+
+}
