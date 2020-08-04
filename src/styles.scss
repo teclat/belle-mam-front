@@ -1,5 +1,18 @@
 @import "./reset";
 
+/* ------------- CUSTOM */
+
+.invite-title-box {
+    h2 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
 
 /* ------------- BUTTONS */
 
@@ -94,6 +107,10 @@
 
 .flex-column {
     flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
 }
 
 .p-3 {
