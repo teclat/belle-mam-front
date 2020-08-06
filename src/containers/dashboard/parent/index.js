@@ -10,7 +10,12 @@ import {
     UserOutlined,
     HighlightOutlined
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
+import ConfigParent from '../../../components/parent-dashboard/config';
+import CustomParent from '../../../components/parent-dashboard/custom';
+import GalleryParent from '../../../components/parent-dashboard/gallery';
+import GiftListParent from '../../../components/parent-dashboard/gift-list';
+import PersonalParent from '../../../components/parent-dashboard/personal';
 export default class ParentDashboard extends Component {
 
     render() {
@@ -22,38 +27,38 @@ export default class ParentDashboard extends Component {
                     <div className="d-flex flex-column justify-content-center align-items-center">
                         <div>
                             <p className="menu-title">MEU EVENTO &lt;3</p>
-                            <Link to={'/parent-home'}>
-                                <div className={"link " + (this.props.location.pathname == "/parent-home" ? "active" : "")}>
+                            <Link to={'/parents/home'}>
+                                <div className={"link " + (this.props.location.pathname == "/parents/home" ? "active" : "")}>
                                     <HomeOutlined className="mr-3" />
                                 Início
                                 </div>
                             </Link>
-                            <Link to={'/parent-config'}>
-                                <div className={"link " + (this.props.location.pathname == "/parent-config" ? "active" : "")}>
+                            <Link to={'/parents/config'}>
+                                <div className={"link " + (this.props.location.pathname == "/parents/config" ? "active" : "")}>
                                     <SettingFilled className="mr-3" />
                                     Configurações
                                 </div>
                             </Link>
-                            <Link to={'/parent-gallery'}>
-                                <div className={"link " + (this.props.location.pathname == "/parent-gallery" ? "active" : "")}>
+                            <Link to={'/parents/gallery'}>
+                                <div className={"link " + (this.props.location.pathname == "/parents/gallery" ? "active" : "")}>
                                     <PictureOutlined className="mr-3" />
                                     Galeria
                                 </div>
                             </Link>
-                            <Link to={'/parent-gifts'}>
-                                <div className={"link " + (this.props.location.pathname == "/parent-gifts" ? "active" : "")}>
+                            <Link to={'/parents/gifts'}>
+                                <div className={"link " + (this.props.location.pathname == "/parents/gifts" ? "active" : "")}>
                                     <GiftFilled className="mr-3" />
                                     Lista de Presentes
                                 </div>
                             </Link>
-                            <Link to={'/parent-personal'}>
-                                <div className={"link " + (this.props.location.pathname == "/parent-personal" ? "active" : "")}>
+                            <Link to={'/parents/personal'}>
+                                <div className={"link " + (this.props.location.pathname == "/parents/personal" ? "active" : "")}>
                                     <UserOutlined className="mr-3" />
                                     Dados Pessoais
                                 </div>
                             </Link>
-                            <Link to={'/parent-custom'}>
-                                <div className={"link " + (this.props.location.pathname == "/parent-custom" ? "active" : "")}>
+                            <Link to={'/parents/custom'}>
+                                <div className={"link " + (this.props.location.pathname == "/parents/custom" ? "active" : "")}>
                                     <HighlightOutlined className="mr-3" />
                                     Personalizar
                                 </div>
@@ -66,7 +71,16 @@ export default class ParentDashboard extends Component {
                     </div>
                 </Col>
                 <Col span={19}>
-                    {this.props.children}
+                    <Switch>
+                        <div>
+                            <Route path={`${this.props.match.path}/home`} component={HomeParent} />
+                            <Route path={`${this.props.match.path}/config`} component={ConfigParent} />
+                            <Route path={`${this.props.match.path}/gallery`} component={GalleryParent} />
+                            <Route path={`${this.props.match.path}/gifts`} component={GiftListParent} />
+                            <Route path={`${this.props.match.path}/custom`} component={CustomParent} />
+                            <Route path={`${this.props.match.path}/personal`} component={PersonalParent} />
+                        </div>
+                    </Switch>
                 </Col>
             </Row>
         );
