@@ -15,6 +15,41 @@
     }
 }
 
+.form {
+
+    label {
+        color: #7C7FE9;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .ant-row {
+        margin: 20px 0;
+    }
+
+    .ant-radio-group {
+        text-align: center;
+
+        .ant-radio {
+            margin-left: 20px;
+            color: #7C7FE9;
+        }
+    }
+
+    .ant-input {
+        margin-left: 20px;
+        border: none;
+        background: #F1F1F1;
+        border-radius: 20px;
+        line-height: 2em;
+    }
+
+    .btn {
+        display: table;
+        margin: 0 auto;
+    }
+}
+
 /* ------------- BUTTONS */
 
 .btn-outline {
@@ -52,6 +87,12 @@
     -webkit-box-shadow: -5px 6px 61px 0px rgba(160, 146, 249, 0.5);
     -moz-box-shadow: -5px 6px 61px 0px rgba(160, 146, 249, 0.5);
     box-shadow: -5px 6px 61px 0px rgba(160, 146, 249, 0.5);
+
+    &.small {
+        font-size: 0.8em;
+        max-width: 150px;
+        padding: 5px 20px !important;
+    }
 }
 
 .btn-primary:hover {
@@ -120,6 +161,14 @@
 
 .p-5 {
     padding: 3rem !important;
+}
+
+.m-3 {
+    margin: 1rem !important;
+}
+
+.m-5 {
+    margin: 3rem !important;
 }
 
 .mr-3 {

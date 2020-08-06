@@ -4,8 +4,9 @@ import "./styles.scss";
 export default class Header extends Component {
     render() {
         return (
-            <header id="header" class="container-fluid d-flex justify-content-between align-items-center">
-                <img class="header-logo" src={require("../../assets/images/logo-white.png")} />
+            <header id="header" class="container-fluid d-flex justify-content-between align-items-center"
+                style={this.props.purple ? { color: "#7C7FE9" } : { color: "white" }}>
+                <img class="header-logo" src={require("../../assets/images/" + (this.props.purple ? "cha-bebe-logo.png" : "logo-white.png"))} />
                 <ul class="d-flex align-items-center">
                     <li>
                         <p>PORQUE A BELLE MAN</p>
@@ -20,7 +21,7 @@ export default class Header extends Component {
                         <p>NOSSAS LISTAS</p>
                     </li>
                     <li class="menu-btn">
-                        <button class="btn btn-outline">ENTRAR</button>
+                        <button class={"btn btn-outline " + (this.props.purple ? "purple" : "")}>ENTRAR</button>
                     </li>
                     <li class="menu-btn">
                         <button class="btn btn-primary d-flex align-items-center">
