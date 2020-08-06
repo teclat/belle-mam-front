@@ -7,14 +7,10 @@ import Register from './containers/register';
 import Login from './containers/login';
 import FirstStep from './containers/first-steps';
 import ParentDashboard from './containers/dashboard/parent';
-import HomeParent from './components/parent-dashboard/home';
-import ConfigParent from './components/parent-dashboard/config';
-import PersonalParent from './components/parent-dashboard/personal';
-import GiftListParent from './components/parent-dashboard/gift-list';
-import GalleryParent from './components/parent-dashboard/gallery';
-import CustomParent from './components/parent-dashboard/custom';
 import WhyBelleMam from './containers/why-belle-mam';
 import Partners from './containers/partners';
+import GuestDashboard from './containers/dashboard/guest';
+import AdminDashboard from './containers/dashboard/admin';
 
 export default () => {
     return (
@@ -27,16 +23,9 @@ export default () => {
                 <Route path="/invite" component={Invite} />
                 <Route path="/why" component={WhyBelleMam} />
                 <Route path="/partners" component={Partners} />
-                <ParentDashboard>
-                    <Switch>
-                        <Route path="/parent-home" component={HomeParent} />
-                        <Route path="/parent-config" component={ConfigParent} />
-                        <Route path="/parent-gallery" component={GalleryParent} />
-                        <Route path="/parent-gifts" component={GiftListParent} />
-                        <Route path="/parent-custom" component={CustomParent} />
-                        <Route path="/parent-personal" component={PersonalParent} />
-                    </Switch>
-                </ParentDashboard>
+                <Route path="/parents" component={ParentDashboard} />
+                <Route path="/guest" component={GuestDashboard} />
+                <Route path="/admin" component={AdminDashboard} />
                 <Route path="*" component={NotFound}></Route>
             </Switch>
         </BrowserRouter>
