@@ -1,0 +1,45 @@
+#first-step {
+    height: 100vh;
+
+    .leftColumn {
+        background: url("../../assets/images/first-step-back.png");
+
+        >img {
+            position: fixed;
+            margin-top: 30px;
+            width: 200px;
+        }
+
+        >div {
+            flex: 1;
+            height: 100%;
+            position: fixed;
+
+            div {
+                margin-top: 100px;
+                z-index: 1;
+            }
+
+            img {
+                height: 80%;
+                bottom: 0;
+                position: fixed;
+                z-index: 0;
+            }
+        }
+
+        .step {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #a6a8fb;
+
+            &.active {
+                background-color: #57DAC1;
+                color: white;
+            }
+        }
+    }
+}

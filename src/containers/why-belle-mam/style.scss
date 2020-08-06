@@ -1,0 +1,122 @@
+#why {
+
+    section {
+        position: relative;
+        height: 100vh;
+
+        h2 {
+            font-size: 6em;
+
+            span {
+                font-weight: 800;
+            }
+        }
+
+        p {
+            line-height: 1.2em;
+            width: 400px;
+            font-weight: 500;
+            font-size: 1.1em;
+            margin-top: 40px;
+        }
+
+        img {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    .why-1,
+    .why-3 {
+        img {
+            right: 0;
+        }
+    }
+
+    .why-2,
+    .why-4 {
+        img {
+            left: 0;
+        }
+    }
+
+    .why-1 {
+        color: white;
+        background: url("../../assets/images/why-1-back.png");
+        background-size: cover;
+
+        >div {
+            margin-left: 10%;
+        }
+
+        img {
+            max-height: 80%;
+            max-width: 70%;
+        }
+
+        h2 {
+            color: white;
+        }
+    }
+
+    .why-2 {
+        background: url("../../assets/images/why-2-back.png");
+        background-size: cover;
+        flex-direction: row-reverse;
+        color: #A7AAFE;
+
+        >div {
+            margin-right: 10%;
+        }
+
+        img {
+            max-height: 95%;
+            max-width: 70%;
+        }
+
+        h2 {
+            color: #A7AAFE;
+        }
+
+    }
+
+    .why-3 {
+        color: #009172;
+        background: url("../../assets/images/why-3-back.png");
+        background-size: cover;
+
+        >div {
+            margin-left: 10%;
+        }
+
+        img {
+            max-height: 80%;
+            max-width: 70%;
+        }
+
+        h2 {
+            font-size: 4em;
+            color: #009172;
+        }
+    }
+
+    .why-4 {
+        background: url("../../assets/images/why-4-back.png");
+        background-size: cover;
+        flex-direction: row-reverse;
+        color: #009172;
+
+        >div {
+            margin-right: 10%;
+        }
+
+        img {
+            max-height: 95%;
+            max-width: 70%;
+        }
+
+        h2 {
+            color: #009172;
+        }
+    }
+}

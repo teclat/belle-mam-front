@@ -35,6 +35,14 @@ export default class Register extends Component {
                                 </Row>
                                 <Row>
                                     <Col span={4}>
+                                        <label>Senha</label>
+                                    </Col>
+                                    <Col span={20}>
+                                        <Input type="password" placeholder={"*******"} />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col span={4}>
                                         <label>Telefone</label>
                                     </Col>
                                     <Col span={20}>

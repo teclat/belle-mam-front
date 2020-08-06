@@ -1,0 +1,45 @@
+#partners {
+    background-color: #E9EBFF;
+
+    .partners-box {
+        margin-bottom: 140px;
+        padding-top: 140px;
+
+        .title {
+            margin-bottom: 50px;
+
+            h2 {
+                font-size: 2.5em;
+                color: #7C7FE9;
+
+                span {
+                    font-weight: 800;
+                }
+            }
+
+            img {
+                margin-top: 20px;
+                width: 50px;
+            }
+        }
+
+        .box {
+            position: relative;
+            background: url("../../assets/images/partner-back.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding: 125px 0px 200px 0px;
+
+            .ant-row {
+                img {
+                    max-height: 90px;
+                    margin: 20px 60px;
+                }
+            }
+
+            .back {
+                position: absolute;
+            }
+        }
+    }
+}
