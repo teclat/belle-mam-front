@@ -50,6 +50,13 @@
     }
 }
 
+.ant-modal {
+    .ant-btn-primary {
+        border-color: #9a9ce9;
+        background: #9a9ce9;
+    }
+}
+
 /* ------------- BUTTONS */
 
 .btn-outline {
@@ -95,7 +102,8 @@
     }
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active {
     color: white;
     background: #4cdbb1;
 }
@@ -108,7 +116,8 @@
     box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:active {
     color: white;
     background: #a092f9;
 }

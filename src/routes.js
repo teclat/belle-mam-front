@@ -17,6 +17,7 @@ export default () => {
         <BrowserRouter basename="/">
             <Switch>
                 <Route path="/" exact={true} component={Home} />
+                <Route path="/home" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/first-steps" component={FirstStep} />

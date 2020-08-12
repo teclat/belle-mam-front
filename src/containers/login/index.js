@@ -1,8 +1,52 @@
 import React, { Component } from 'react';
 import "./style.scss";
 import { Card, Row, Col, Form, Input, Radio, Button } from 'antd';
+import axios from "axios";
+import { Constants } from '../../constants';
+import { Link } from 'react-router-dom';
 
 export default class Login extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: ""
+        }
+    }
+
+    login = () => {
+        console.log(this.state);
+
+        if (this.state.email === "" || this.state.password === "") {
+            alert("Existem campos vazios. Preencha e tente novamente.");
+            return;
+        }
+
+        axios.post(Constants.ApiUrl + 'users/login', {
+            email: this.state.email,
+            password: this.state.password
+        })
+            .then((response) => {
+                let user = response.data;
+                localStorage.setItem("user", JSON.stringify(user));
+
+                if (user.role === "parent") {
+                    this.props.history.push('/parents/home');
+                } else if (user.role === "admin") {
+                    this.props.history.push('/admin/products');
+                } else if (user.role === "guest") {
+                    this.props.history.push('/guest/personal');
+                } else {
+                    alert("Erro de efetuar login.");
+                }
+            })
+            .catch((error) => {
+                alert("Erro de efetuar login.");
+                console.log(error);
+            })
+    }
+
     render() {
         return (
             <div id="login" className="d-flex flex-column align-items-center justify-content-center">
@@ -22,7 +66,9 @@ export default class Login extends Component {
                                         <label>Email</label>
                                     </Col>
                                     <Col span={20}>
-                                        <Input placeholder={"anafreitas1@gmail.com"} />
+                                        <Input
+                                            onChange={(e) => { this.setState({ email: e.target.value }) }}
+                                            placeholder={"anafreitas1@gmail.com"} />
                                     </Col>
                                 </Row>
                                 <Row>
@@ -30,13 +76,23 @@ export default class Login extends Component {
                                         <label>Senha</label>
                                     </Col>
                                     <Col span={20}>
-                                        <Input placeholder={"*********"} />
+                                        <Input
+                                            type="password"
+                                            onChange={(e) => { this.setState({ password: e.target.value }) }}
+                                            placeholder={"*********"} />
                                     </Col>
                                 </Row>
 
                                 <div
+                                    onClick={() => { this.login() }}
                                     className="btn btn-secondary">
                                     ENTRAR
+                                </div>
+
+                                <div className="link text-center mt-5">
+                                    <Link to="/register">
+                                        Ainda não é Cadastrado? Cadastre-se
+                                    </Link>
                                 </div>
                             </div>
                         </Col>

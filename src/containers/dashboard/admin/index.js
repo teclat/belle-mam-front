@@ -12,6 +12,7 @@ import {
 import { Link, Switch, Route } from 'react-router-dom';
 import NewProduct from '../../../components/admin-dashboard/new-product';
 import Products from '../../../components/admin-dashboard/products';
+import CustomHome from '../../../components/admin-dashboard/custom-home';
 export default class AdminDashboard extends Component {
     render() {
         return (
@@ -32,6 +33,12 @@ export default class AdminDashboard extends Component {
                                     Novo Produto
                                 </div>
                             </Link>
+                            <Link to={'/admin/custom'}>
+                                <div className={"link " + (this.props.location.pathname == "/admin/custom" ? "active" : "")}>
+                                    <HighlightOutlined className="mr-3" />
+                                    Personalizar Home
+                                </div>
+                            </Link>
 
                             <button class="btn btn-secondary d-flex align-items-center">
                                 LOJA BELLE MAN <img src={require("../../../assets/images/enter.png")} />
@@ -44,6 +51,7 @@ export default class AdminDashboard extends Component {
                         <div>
                             <Route path={`${this.props.match.path}/products`} component={Products} />
                             <Route path={`${this.props.match.path}/new-product`} component={NewProduct} />
+                            <Route path={`${this.props.match.path}/custom`} component={CustomHome} />
                         </div>
                     </Switch>
                 </Col>

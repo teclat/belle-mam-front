@@ -1,5 +1,17 @@
 #config {
 
+    .ant-picker {
+        width: 100%;
+        margin-left: 20px;
+        background: #f1f1f1;
+        border: none;
+        border-radius: 20px;
+
+        input {
+            line-height: 2em;
+        }
+    }
+
     .title-box {
         margin-top: 20px;
 

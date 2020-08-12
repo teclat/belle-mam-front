@@ -29,7 +29,6 @@ export default class Partners extends Component {
                             <img src={require("../../assets/images/partners/portbaby.png")} />
                             <img src={require("../../assets/images/partners/babytub.png")} />
                         </Row>
-                        {/* <img className="back" src={require("../../assets/images/partner-back.png")} /> */}
                     </div>
                 </div>
                 <Footer />

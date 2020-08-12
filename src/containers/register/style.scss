@@ -10,6 +10,7 @@
 
     .card {
         min-width: 1000px;
+        transition: all ease 0.5s;
         margin-bottom: 100px;
         border-radius: 20px;
         border: none;
@@ -27,6 +28,29 @@
 
         .register-form {
             padding: 20px 40px;
+
+            .roles {
+                h5 {
+                    font-size: 1.5em;
+                    color: #7C7FE9;
+                }
+
+                .btn {
+                    margin: 40px 0;
+                }
+            }
+
+            .ant-select {
+                width: 100%;
+                margin-left: 20px;
+
+                .ant-select-selector {
+                    background: #f1f1f1;
+                    line-height: 2.5em;
+                    border-radius: 20px;
+                    border: none;
+                }
+            }
 
             .title-box {
                 margin-bottom: 20px;

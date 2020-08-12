@@ -1,7 +1,66 @@
 import React, { Component } from 'react';
 import "./style.scss";
-
+import { Input, Button, Modal } from 'antd';
+import { Constants } from '../../../constants';
+import axios from "axios";
 export default class InviteBox extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: false,
+            note: '',
+            showSendNote: false
+        }
+    }
+
+    showSendNote = () => {
+        this.setState({
+            showSendNote: true,
+        });
+    }
+
+    send = async e => {
+        if (this.state.note == "") {
+            Modal.warning({
+                content: 'Recado está vazio.',
+            });
+            return;
+        }
+
+        let user = JSON.parse(await localStorage.getItem("user"));
+        this.setState({ loading: true });
+
+        axios.post(Constants.ApiUrl + 'notes/create', {
+            user_id: user.id, event_id: this.props.event.id, text: this.state.note
+        }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                console.log(response.data)
+                this.setState({ loading: false, note: '', showSendNote: false });
+                Modal.success({
+                    content: 'Recado enviado!',
+                });
+            })
+            .catch((error) => {
+                this.setState({ loading: false, note: '', showSendNote: false });
+                Modal.error({
+                    content: 'Erro de enviar recado.',
+                });
+                console.log(error);
+            })
+    };
+
+    handleCancel = e => {
+        console.log(e);
+        this.setState({
+            showSendNote: false,
+        });
+    };
+
     render() {
         return (
             <section id="invite" class={this.props.color == "green" ? "invite-green" : "invite-purple"}>
@@ -55,7 +114,9 @@ export default class InviteBox extends Component {
                     </button>
                         </div>
                         <div class="d-flex flex-row">
-                            <button class={"btn " + (this.props.color == "green" ? 'btn-secondary' : 'btn-primary')} style={{ marginTop: 20, padding: 15 }}>
+                            <button
+                                onClick={() => this.showSendNote()}
+                                class={"btn " + (this.props.color == "green" ? 'btn-secondary' : 'btn-primary')} style={{ marginTop: 20, padding: 15 }}>
                                 DEIXE SEU RECADO!
                             </button>
                         </div>
@@ -82,6 +143,27 @@ export default class InviteBox extends Component {
                         </div>
                     </div>
                 </div>
+                <Modal
+                    id="note-modal"
+                    title="Enviar Recado"
+                    visible={this.state.showSendNote}
+                    onOk={this.send}
+                    okText={'Enviar'}
+                    onCancel={this.handleCancel}
+                    footer={[
+                        <Button key="back" onClick={this.handleCancel}>
+                            Cancelar
+                        </Button>,
+                        <Button key="submit" type="primary" loading={this.state.loading} onClick={this.send}>
+                            Enviar
+                        </Button>,
+                    ]}
+                >
+                    <Input.TextArea
+                        value={this.state.note}
+                        onChange={(e) => this.setState({ note: e.target.value })}
+                    />
+                </Modal>
             </section>
         );
     }

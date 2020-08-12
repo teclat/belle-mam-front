@@ -1,8 +1,38 @@
 import React, { Component } from 'react';
-import { Row, Col, Radio, Input } from 'antd';
+import { Row, Col, Radio, Input, DatePicker, TimePicker } from 'antd';
+import locale from 'antd/es/date-picker/locale/pt_BR';
+
 import "./style.scss";
 
 export default class Config extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: null,
+            hour: null,
+            address: "",
+            dontKnowName: false,
+            babyName: "",
+            babyBirth: null
+        }
+    }
+
+    componentDidMount = async () => {
+        let user = JSON.parse(await localStorage.getItem('user'));
+        console.log(user);
+    }
+
+    next = () => {
+        if (this.state.date == null || this.state.hour == null || this.state.address == null
+            || (this.state.babyName == "" && this.state.dontKnowName == false) || this.state.babyBirth == null) {
+            alert("Existem campos vazios. Preencha e tente novamente.");
+            return;
+        } else {
+            this.props.setConfig(this.state)
+        }
+    }
+
     render() {
         return (
             <div id="config">
@@ -19,7 +49,9 @@ export default class Config extends Component {
                             <label>Data do Evento</label>
                         </Col>
                         <Col span={18}>
-                            <Input placeholder={"--/--/--"} />
+                            <DatePicker
+                                onChange={(date, dateString) => { this.setState({ date: dateString }) }}
+                                format="DD/MM/YYYY" locale={locale} placeholder={"--/--/--"} />
                         </Col>
                     </Row>
                     <Row align="middle">
@@ -27,7 +59,9 @@ export default class Config extends Component {
                             <label>Horário do Evento</label>
                         </Col>
                         <Col span={18}>
-                            <Input placeholder={"hh:mm"} />
+                            <TimePicker
+                                onChange={(date, dateString) => { this.setState({ hour: dateString }) }}
+                                locale={locale} placeholder={"hh:mm"} />
                         </Col>
                     </Row>
                     <Row align="middle">
@@ -35,7 +69,9 @@ export default class Config extends Component {
                             <label>Local do Evento</label>
                         </Col>
                         <Col span={18}>
-                            <Input placeholder={"Fortaleza"} />
+                            <Input
+                                onChange={(e) => { this.setState({ address: e.target.value }) }}
+                                placeholder={"Fortaleza"} />
                         </Col>
                     </Row>
                     <Row align="middle">
@@ -43,8 +79,8 @@ export default class Config extends Component {
                             <label>Já sabe o nome do seu bebê?</label>
                         </Col>
                         <Col style={{ textAlign: "center" }} span={18}>
-                            <Radio.Group>
-                                <Radio value="no">Não sei ainda</Radio>
+                            <Radio.Group onChange={(e) => { this.setState({ dontKnowName: e.target.value }) }}>
+                                <Radio value={true}>Não sei ainda</Radio>
                             </Radio.Group>
                         </Col>
                     </Row>
@@ -53,7 +89,8 @@ export default class Config extends Component {
                             <label>Nome do Bebê</label>
                         </Col>
                         <Col span={18}>
-                            <Input placeholder={""} />
+                            <Input
+                                onChange={(e) => { this.setState({ babyName: e.target.value }) }} placeholder={""} />
                         </Col>
                     </Row>
                     <Row align="middle">
@@ -61,11 +98,13 @@ export default class Config extends Component {
                             <label>Data de Nascimento do Bebê</label>
                         </Col>
                         <Col span={18}>
-                            <Input placeholder={"--/--/--"} />
+                            <DatePicker
+                                onChange={(date, dateString) => { this.setState({ babyBirth: dateString }) }}
+                                format="DD/MM/YYYY" locale={locale} placeholder={"--/--/--"} />
                         </Col>
                     </Row>
 
-                    <button onClick={() => this.props.next()} className="btn btn-secondary">
+                    <button onClick={() => this.next()} className="btn btn-secondary">
                         AVANÇAR
                     </button>
                 </div>

@@ -4,6 +4,7 @@ import { Col, Row } from 'antd';
 import {
     ShareAltOutlined, WhatsAppOutlined
 } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 export default class HomeParent extends Component {
     render() {
@@ -40,7 +41,9 @@ export default class HomeParent extends Component {
                         <Row className="box last-note mr-3 mb-3">
                             <Row className="mb-3">
                                 <h5>Último recado</h5>
-                                <button className="btn btn-primary small">VER TODOS</button>
+                                <Link to={'/parents/notes'}>
+                                    <button className="btn btn-primary small">VER TODOS</button>
+                                </Link>
                             </Row>
                             <Row>
                                 <Col span={6} class="note-img mr-5">
@@ -76,10 +79,10 @@ export default class HomeParent extends Component {
                         <ShareAltOutlined className="mr-3" />
                         COMPARTILHAR EVENTO
                         </button>
-                    <button className="btn btn-secondary">
+                    <a target={'_blank'} href="https://api.whatsapp.com/send?phone='5585981768451'&text=%20Oi, tudo bem. Pode me ajudar?%20" className="btn btn-secondary">
                         SAC
                         <WhatsAppOutlined className="ml-3" />
-                    </button>
+                    </a>
                 </Row>
             </Col>
         )

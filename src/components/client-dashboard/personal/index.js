@@ -1,8 +1,78 @@
 import React, { Component } from 'react'
 import "./style.scss";
-import { Card, Row, Col, Form, Input, Radio, Button } from 'antd';
-
+import { Card, Row, Col, Form, Input, Radio, Button, Modal } from 'antd';
+import { Constants } from '../../../constants';
+import axios from "axios";
 export default class PersonalClient extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: {},
+            name: '',
+            phone: '',
+            city: '',
+            state: '',
+            role: '',
+            loading: false
+        }
+        this.get();
+    }
+
+    get = async () => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        axios.get(Constants.ApiUrl + 'users/' + user.id, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                let user = response.data;
+                this.setState({
+                    user: user, name: user.name, phone: user.phone, role: user.role,
+                    city: user.city, state: user.state, relationship: user.relationship
+                })
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    update = async () => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        if (this.state.name === "" || this.state.phone === "" || this.state.city === ""
+            || this.state.state === "") {
+            Modal.error({ content: "Existem campos vazios. Preencha e tente novamente." });
+            return;
+        }
+
+        this.setState({ loading: true });
+
+        axios.post(Constants.ApiUrl + 'users/update', {
+            name: this.state.name,
+            email: this.state.user.email,
+            city: this.state.city,
+            state: this.state.state,
+            phone: this.state.phone,
+        }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                this.setState({ loading: false });
+                Modal.success({ content: "Salvo com sucesso!" });
+            })
+            .catch((error) => {
+                this.setState({ loading: false });
+                Modal.error({ content: "Erro de executar cadastro." });
+                console.log(error);
+            })
+    }
+
     render() {
         return (
             <div id="personal-client">
@@ -15,15 +85,8 @@ export default class PersonalClient extends Component {
                             <label>Nome</label>
                         </Col>
                         <Col span={20}>
-                            <Input placeholder={"Ana Freitas"} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col span={4}>
-                            <label>Email</label>
-                        </Col>
-                        <Col span={20}>
-                            <Input placeholder={"anafreitas1@gmail.com"} />
+                            <Input value={this.state.name}
+                                onChange={(e) => this.setState({ name: e.target.value })} placeholder={"Ana Freitas"} />
                         </Col>
                     </Row>
                     <Row>
@@ -31,7 +94,8 @@ export default class PersonalClient extends Component {
                             <label>Telefone</label>
                         </Col>
                         <Col span={20}>
-                            <Input placeholder={"(85) 99999 9999"} />
+                            <Input value={this.state.phone}
+                                onChange={(e) => this.setState({ phone: e.target.value })} placeholder={"(85) 99999 9999"} />
                         </Col>
                     </Row>
                     <Row>
@@ -39,7 +103,8 @@ export default class PersonalClient extends Component {
                             <label>Cidade</label>
                         </Col>
                         <Col span={20}>
-                            <Input placeholder={"Fortaleza"} />
+                            <Input value={this.state.city}
+                                onChange={(e) => this.setState({ city: e.target.value })} placeholder={"Fortaleza"} />
                         </Col>
                     </Row>
                     <Row>
@@ -47,11 +112,12 @@ export default class PersonalClient extends Component {
                             <label>Estado</label>
                         </Col>
                         <Col span={20}>
-                            <Input placeholder={"Ceará"} />
+                            <Input value={this.state.state}
+                                onChange={(e) => this.setState({ state: e.target.value })} placeholder={"Ceará"} />
                         </Col>
                     </Row>
 
-                    <button onClick={() => this.props.next()} className="btn btn-secondary">
+                    <button onClick={() => this.update()} className="btn btn-secondary">
                         SALVAR
                     </button>
                 </div>

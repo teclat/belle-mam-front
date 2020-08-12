@@ -1,0 +1,26 @@
+#notes {
+    .title-box {
+        margin-top: 20px;
+
+        h4 {
+            color: #7C7FE9;
+            margin: 30px 0;
+            font-size: 1.5em;
+            font-weight: 800;
+        }
+    }
+
+    .note {
+        border: 2px solid #7C7FE9;
+        border-radius: 20px;
+        padding: 20px;
+        width: 600px;
+        margin: 10px;
+
+        .note-img {
+            margin-right: 20px;
+            width: 100px;
+            border-radius: 50px;
+        }
+    }
+}

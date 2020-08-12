@@ -1,4 +1,4 @@
-#personal-parent {
+#new-product {
     margin-bottom: 100px;
 
     .title-box {
@@ -20,17 +20,6 @@
         }
     }
 
-    .green-ball,
-    .purple-ball {
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
-    }
-
-    .green-ball {
-        background-color: #57dac1;
-    }
-
     .ant-upload {
         border-radius: 20px;
 
@@ -41,12 +30,8 @@
         }
     }
 
-    .purple-ball {
-        background-color: #7C7FE9;
-    }
-
     .form {
-        padding: 0 40px;
+        padding: 0 200px;
     }
 
     .btn-secondary {

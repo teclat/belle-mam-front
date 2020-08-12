@@ -10,13 +10,44 @@ import {
     UserOutlined,
     HighlightOutlined
 } from '@ant-design/icons';
+import { Constants } from '../../../constants';
+import axios from "axios";
 import { Link, Switch, Route } from 'react-router-dom';
 import ConfigParent from '../../../components/parent-dashboard/config';
 import CustomParent from '../../../components/parent-dashboard/custom';
 import GalleryParent from '../../../components/parent-dashboard/gallery';
 import GiftListParent from '../../../components/parent-dashboard/gift-list';
 import PersonalParent from '../../../components/parent-dashboard/personal';
+import NotesParent from '../../../components/parent-dashboard/notes';
 export default class ParentDashboard extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            event: {}
+        }
+        this.get();
+    }
+
+    get = async () => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        axios.get(Constants.ApiUrl + 'events/' + user.id, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                console.log(response.data)
+                let event = response.data[0];
+                this.setState({
+                    event: event
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     render() {
         console.log(this.props);
@@ -71,16 +102,20 @@ export default class ParentDashboard extends Component {
                     </div>
                 </Col>
                 <Col span={19}>
-                    <Switch>
-                        <div>
-                            <Route path={`${this.props.match.path}/home`} component={HomeParent} />
-                            <Route path={`${this.props.match.path}/config`} component={ConfigParent} />
-                            <Route path={`${this.props.match.path}/gallery`} component={GalleryParent} />
-                            <Route path={`${this.props.match.path}/gifts`} component={GiftListParent} />
-                            <Route path={`${this.props.match.path}/custom`} component={CustomParent} />
-                            <Route path={`${this.props.match.path}/personal`} component={PersonalParent} />
-                        </div>
-                    </Switch>
+                    {
+                        this.state.event ?
+                            <Switch>
+                                <div>
+                                    <Route path={`${this.props.match.path}/home`} component={HomeParent} />
+                                    <Route path={`${this.props.match.path}/config`} component={() => <ConfigParent event={this.state.event} />} />
+                                    <Route path={`${this.props.match.path}/gallery`} component={() => <GalleryParent event={this.state.event} />} />
+                                    <Route path={`${this.props.match.path}/gifts`} component={() => <GiftListParent event={this.state.event} />} />
+                                    <Route path={`${this.props.match.path}/custom`} component={() => <CustomParent event={this.state.event} />} />
+                                    <Route path={`${this.props.match.path}/personal`} component={() => <PersonalParent event={this.state.event} />} />
+                                    <Route path={`${this.props.match.path}/notes`} component={() => <NotesParent event={this.state.event} />} />
+                                </div>
+                            </Switch> : null
+                    }
                 </Col>
             </Row>
         );

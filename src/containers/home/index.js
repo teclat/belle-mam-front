@@ -8,12 +8,17 @@ import Testimonial from '../../components/home/testimonial'
 import Services from '../../components/home/services'
 
 export default class Home extends Component {
+
+    state = {
+        service: 2
+    }
+
     render() {
         return (
             <div>
                 <Header />
-                <Hero />
-                <Services />
+                <Hero service={this.state.service} />
+                <Services setService={(e) => this.setState({ service: e })} />
                 <Benefits />
                 <HowItWorks />
                 <Testimonial />

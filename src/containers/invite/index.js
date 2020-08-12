@@ -17,7 +17,7 @@ export default class Invite extends Component {
         return (
             <div>
                 <Header />
-                <InviteBox color={this.state.color} />
+                <InviteBox event={{ id: 1 }} color={this.state.color} />
                 <GiftList color={this.state.color} />
                 <Gallery color={this.state.color} />
                 <Notes color={this.state.color} />

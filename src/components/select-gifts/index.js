@@ -25,7 +25,7 @@ export default class SelectGifts extends Component {
                     <div className="btn btn-outline">
                         VER MAIS
                     </div>
-                    <div className="btn btn-secondary">
+                    <div onClick={() => { this.props.save() }} className="btn btn-secondary">
                         FINALIZAR
                     </div>
                 </div>

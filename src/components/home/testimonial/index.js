@@ -1,7 +1,34 @@
 import React, { Component } from 'react';
 import "./style.scss";
-
+import { Constants } from '../../../constants';
+import axios from "axios";
 export default class Testimonial extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            testimonial: {}
+        }
+        this.get();
+    }
+
+    get = async e => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        axios.get(Constants.ApiUrl + 'custom/testimonial', {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                console.log(response.data)
+                this.setState({ testimonial: response.data });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
+
     render() {
         return (
             <section id="testimonial" class="container-fluid d-flex flex-column align-items-center">
@@ -9,14 +36,12 @@ export default class Testimonial extends Component {
                 <div>
                     <div class="testimonial-box d-flex align-items-center">
                         <div class="testimonial-img mr-5">
-                            <img src={require("../../../assets/images/couple-testimonial.jpg")} />
+                            <img src={this.state.testimonial.image_url} />
                         </div>
                         <div>
                             <p class="quotation">&ldquo;</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                        et dolore magna aliqua. Ut enim ad.”</p>
-                            <p class="mt-3">- Cláudio e Joana</p>
+                            <p>{this.state.testimonial.text}”</p>
+                            <p class="mt-3">- {this.state.testimonial.obs}</p>
                         </div>
                     </div>
                 </div>

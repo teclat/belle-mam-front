@@ -3,6 +3,20 @@
     width: 100%;
     position: absolute;
 
+
+    a,
+    p {
+        color: white;
+    }
+
+    &.purple {
+
+        a,
+        p {
+            color: #7C7FE9;
+        }
+    }
+
     .header-logo {
         width: 200px;
     }
