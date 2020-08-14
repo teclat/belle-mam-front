@@ -6,22 +6,40 @@ import InviteBox from '../../components/invite/invite-box';
 import GiftList from '../../components/invite/gift-list';
 import Gallery from '../../components/invite/gallery';
 import Notes from '../../components/invite/notes';
+import { Constants } from '../../constants';
+import axios from "axios";
 
 export default class Invite extends Component {
 
-    state = {
-        color: "green"
+    constructor(props) {
+        super(props);
+        this.state = {
+            color: "green",
+            event: {}
+        }
+        this.get();
+    }
+
+    get = async () => {
+        axios.get(Constants.ApiUrl + 'events/event/' + this.props.match.params.url)
+            .then((response) => {
+                console.log(response.data)
+                this.setState({ event: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     render() {
         return (
             <div>
                 <Header />
-                <InviteBox event={{ id: 1 }} color={this.state.color} />
-                <GiftList color={this.state.color} />
-                <Gallery color={this.state.color} />
-                <Notes color={this.state.color} />
-                <Footer color={this.state.color} />
+                <InviteBox event={this.state.event} />
+                <GiftList event={this.state.event} />
+                <Gallery event={this.state.event} />
+                <Notes event={this.state.event} />
+                <Footer />
             </div>
         )
     }

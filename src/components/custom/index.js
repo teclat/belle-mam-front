@@ -14,12 +14,41 @@ export default class Customization extends Component {
             inviteText: "",
             phone: "",
             url: "",
-            validUrl: false
+            validUrl: false,
+            baby_image: null,
+            fileBaby: [],
+            mom_name: "",
+            mom_image: null,
+            fileMom: [],
+            dad_name: "",
+            dad_image: null,
+            fileDad: [],
+            background_image: null,
+            fileBack: []
         }
+    }
+
+    dummyRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+            onSuccess("ok");
+        }, 0);
+    }
+
+    getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
     }
 
     next = () => {
         if (this.state.theme == null || this.state.inviteText == "" || this.state.url == ""
+            || this.state.baby_image == "" || this.state.background_image == ""
+            || this.state.mom_name == "" || this.state.dad_name == ""
             || this.state.historyText == "" || this.state.phone == "") {
             Modal.error("Existem campos vazios. Preencha e tente novamente.");
             return;
@@ -80,7 +109,10 @@ export default class Customization extends Component {
                             <Row align="middle">
                                 <Col span={20}>
                                     <Input
-                                        onChange={(e) => { this.setState({ url: e.target.value }); this.verifyUrl(e.target.value); }}
+                                        onChange={(e) => {
+                                            this.setState({ url: e.target.value });
+                                            this.verifyUrl(e.target.value);
+                                        }}
                                         placeholder={"mariaalice"} />
                                 </Col>
                                 <Col justify="center" offset={2} span={2}>
@@ -102,9 +134,17 @@ export default class Customization extends Component {
                             <label>Foto do Bebê</label>
                         </Col>
                         <Col span={18}>
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ baby_image: filedata, fileBaby: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileBaby && this.state.fileBaby[0] && this.state.fileBaby[0].name ? this.state.fileBaby[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                         </Col>
@@ -114,14 +154,32 @@ export default class Customization extends Component {
                             <label>Foto da Mamãe</label>
                         </Col>
                         <Col span={18} className="d-flex">
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ mom_image: filedata, fileMom: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileMom && this.state.fileMom[0] && this.state.fileMom[0].name ? this.state.fileMom[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                             <Radio.Group>
                                 <Radio value="no">Prefiro não enviar</Radio>
                             </Radio.Group>
+                        </Col>
+                    </Row>
+                    <Row align="middle">
+                        <Col span={6}>
+                            <label>Nome da Mamãe</label>
+                        </Col>
+                        <Col span={18}>
+                            <Input
+                                onChange={(e) => { this.setState({ mom_name: e.target.value }) }}
+                                placeholder={""} />
                         </Col>
                     </Row>
                     <Row align="middle">
@@ -129,9 +187,17 @@ export default class Customization extends Component {
                             <label>Foto do Papai</label>
                         </Col>
                         <Col span={18} className="d-flex">
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ dad_image: filedata, fileDad: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileDad && this.state.fileDad[0] && this.state.fileDad[0].name ? this.state.fileDad[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                             <Radio.Group>
@@ -141,12 +207,30 @@ export default class Customization extends Component {
                     </Row>
                     <Row align="middle">
                         <Col span={6}>
+                            <label>Nome do Papai</label>
+                        </Col>
+                        <Col span={18}>
+                            <Input
+                                onChange={(e) => { this.setState({ dad_name: e.target.value }) }}
+                                placeholder={""} />
+                        </Col>
+                    </Row>
+                    <Row align="middle">
+                        <Col span={6}>
                             <label>Foto do Fundo</label>
                         </Col>
                         <Col span={18}>
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ background_image: filedata, fileBack: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileBack && this.state.fileBack[0] && this.state.fileBack[0].name ? this.state.fileBack[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                         </Col>

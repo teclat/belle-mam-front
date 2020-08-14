@@ -8,6 +8,21 @@
         margin-bottom: 30px;
     }
 
+    .btn {
+        line-height: 1em;
+        height: 40px;
+    }
+
+    .ant-upload {
+        border-radius: 20px;
+
+        button {
+            background: #f1f1f1;
+            border-radius: 20px;
+            padding: 0px 30px;
+        }
+    }
+
     .card {
         min-width: 1000px;
         transition: all ease 0.5s;

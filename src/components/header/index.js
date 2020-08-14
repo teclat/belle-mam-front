@@ -41,7 +41,7 @@ export default class Header extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/home#how-it-works">
+                        <Link to="home#how-it-works">
                             <p>COMO FUNCIONA</p>
                         </Link>
                     </li>
@@ -56,7 +56,7 @@ export default class Header extends Component {
                     <li class="menu-btn">
                         {this.state.user ?
                             <Link to={() => this.getPath()}>
-                                <button class={"btn btn-outline " + (this.props.purple ? "purple" : "")}>IR PARA DASHBOARD</button>
+                                <button class={"btn btn-outline " + (this.props.purple ? "purple" : "")}>DASHBOARD</button>
                             </Link>
                             :
                             <Link to="/login">

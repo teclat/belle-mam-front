@@ -10,9 +10,11 @@ export default class CustomHome extends Component {
         super(props);
         this.state = {
             image: '',
+            imagePreview: '',
             text: '',
             obs: '',
-            loading: false
+            loading: false,
+            fileList: []
         }
     }
 
@@ -34,13 +36,21 @@ export default class CustomHome extends Component {
     }
 
     beforeUpload = async (file) => {
-        console.log("file", file);
-
         let filedata = '';
         this.getBase64(file, (result) => {
             filedata = result;
-            this.setState({ image: filedata })
+            this.setState({ image: filedata, fileList: [file] })
         });
+    }
+
+    get = () => {
+        axios.get(Constants.ApiUrl + 'custom/testimonial')
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     send = async e => {
@@ -81,7 +91,7 @@ export default class CustomHome extends Component {
         return (
             <div id="new-product">
                 <div className="d-flex flex-column justify-content-center align-items-center title-box">
-                    <h4>Personalizar Testemunho</h4>
+                    <h4>Atualizar Testemunho</h4>
                 </div>
                 <div className="form justify-content-center">
                     <Row>
@@ -108,9 +118,10 @@ export default class CustomHome extends Component {
                         </Col>
                         <Col span={18}>
                             <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
                                 beforeUpload={this.beforeUpload}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileList && this.state.fileList[0] && this.state.fileList[0].name ? this.state.fileList[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                         </Col>

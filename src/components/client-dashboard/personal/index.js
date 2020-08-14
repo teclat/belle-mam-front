@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./style.scss";
-import { Card, Row, Col, Form, Input, Radio, Button, Modal } from 'antd';
+import { Card, Row, Col, Form, Input, Upload, Button, Modal } from 'antd';
 import { Constants } from '../../../constants';
 import axios from "axios";
 export default class PersonalClient extends Component {
@@ -14,9 +14,38 @@ export default class PersonalClient extends Component {
             city: '',
             state: '',
             role: '',
-            loading: false
+            loading: false,
+            image: null,
+            fileList: []
         }
         this.get();
+    }
+
+    dummyRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+            onSuccess("ok");
+        }, 0);
+    }
+
+    getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
+    beforeUpload = async (file) => {
+        console.log("file", file);
+
+        let filedata = '';
+        this.getBase64(file, (result) => {
+            filedata = result;
+            this.setState({ image: filedata, fileList: [file] })
+        });
     }
 
     get = async () => {
@@ -57,6 +86,7 @@ export default class PersonalClient extends Component {
             city: this.state.city,
             state: this.state.state,
             phone: this.state.phone,
+            image: this.state.image
         }, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
@@ -64,6 +94,7 @@ export default class PersonalClient extends Component {
         })
             .then((response) => {
                 this.setState({ loading: false });
+                this.get()
                 Modal.success({ content: "Salvo com sucesso!" });
             })
             .catch((error) => {
@@ -79,7 +110,24 @@ export default class PersonalClient extends Component {
                 <div className="d-flex flex-column justify-content-center align-items-center title-box">
                     <h4>Dados Pessoais</h4>
                 </div>
-                <div className="form justify-content-center">
+                <div className="d-flex flex-column form justify-content-center">
+                    <img style={{ alignSelf: "center" }}
+                        className={'mb-3'}
+                        src={this.state.user.image_url} />
+                    <Row align="middle">
+                        <Col span={5}>
+                            <label>Mudar Foto</label>
+                        </Col>
+                        <Col span={19}>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={this.beforeUpload}>
+                                <Button>
+                                    {this.state.fileList && this.state.fileList[0] && this.state.fileList[0].name ? this.state.fileList[0].name : 'Escolher...'}
+                                </Button>
+                            </Upload>
+                        </Col>
+                    </Row>
                     <Row align="middle">
                         <Col span={4}>
                             <label>Nome</label>
@@ -117,9 +165,11 @@ export default class PersonalClient extends Component {
                         </Col>
                     </Row>
 
-                    <button onClick={() => this.update()} className="btn btn-secondary">
+                    <Button
+                        loading={this.state.loading}
+                        onClick={() => this.update()} className="btn btn-secondary">
                         SALVAR
-                    </button>
+                    </Button>
                 </div>
             </div>
         )

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import "./style.scss";
 import { Upload, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { Constants } from '../../../constants';
+import axios from "axios";
 
 export default class GalleryParent extends Component {
 
@@ -11,38 +13,9 @@ export default class GalleryParent extends Component {
             previewVisible: false,
             previewImage: '',
             previewTitle: '',
-            fileList: [
-                {
-                    uid: '-1',
-                    name: 'image.png',
-                    status: 'done',
-                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                },
-                {
-                    uid: '-2',
-                    name: 'image.png',
-                    status: 'done',
-                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                },
-                {
-                    uid: '-3',
-                    name: 'image.png',
-                    status: 'done',
-                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                },
-                {
-                    uid: '-4',
-                    name: 'image.png',
-                    status: 'done',
-                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                },
-                {
-                    uid: '-5',
-                    name: 'image.png',
-                    status: 'error',
-                },
-            ],
+            fileList: [],
         }
+        this.getImages();
     }
 
     handleCancel = () => this.setState({ previewVisible: false });
@@ -55,20 +28,106 @@ export default class GalleryParent extends Component {
         this.setState({
             previewImage: file.url || file.preview,
             previewVisible: true,
-            previewTitle: file.name || file.url.substring(file.url.lastIndexOf('/') + 1),
+            previewTitle: "",
         });
     };
 
     handleChange = ({ fileList }) => this.setState({ fileList });
 
-    getBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-        });
+    getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
     }
+
+    remove = async (file) => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        axios.post(Constants.ApiUrl + 'gallery/remove', {
+            event_id: this.props.event.id,
+            id: file.uid
+        }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                console.log(response.data)
+                Modal.success({ content: 'Imagem deletada' })
+                this.getImages()
+            })
+            .catch((error) => {
+                Modal.error({ content: 'Erro ao deletar' })
+                console.log(error);
+            })
+    }
+
+    getImages = async () => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        axios.post(Constants.ApiUrl + 'gallery/event', {
+            event_id: this.props.event.id
+        }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                console.log(response.data)
+                let images = response.data.map((img) => {
+                    return {
+                        uid: img.id,
+                        name: "",
+                        url: img.image_url,
+                        event_id: img.event_id,
+                        status: "done"
+                    }
+                })
+                this.setState({ fileList: images })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    addImage = async ({ file, onSuccess }) => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+        this.setState({ loading: true });
+
+        let filedata = '';
+        this.getBase64(file, (result) => {
+            filedata = result;
+            axios.post(Constants.ApiUrl + 'gallery/create', {
+                event_id: this.props.event.id, image: filedata
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+                .then((response) => {
+                    console.log(response.data);
+                    onSuccess("ok");
+                    Modal.success({
+                        content: 'Imagem salva!',
+                    });
+                })
+                .catch((error) => {
+                    Modal.error({
+                        content: 'Erro ao salvar.',
+                    });
+                    console.log(error);
+                })
+        });
+
+
+
+
+    };
 
     render() {
         const { previewVisible, previewImage, fileList, previewTitle } = this.state;
@@ -85,10 +144,11 @@ export default class GalleryParent extends Component {
                 </div>
                 <div className="clearfix">
                     <Upload
-                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                        customRequest={this.addImage}
                         listType="picture-card"
                         fileList={fileList}
                         onPreview={this.handlePreview}
+                        onRemove={this.remove}
                         onChange={this.handleChange}
                     >
                         {fileList.length >= 8 ? null : uploadButton}

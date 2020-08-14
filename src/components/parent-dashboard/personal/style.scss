@@ -1,6 +1,10 @@
 #personal-parent {
     margin-bottom: 100px;
 
+    img {
+        width: 200px;
+    }
+
     .title-box {
         margin-top: 20px;
 
@@ -47,6 +51,10 @@
 
     .form {
         padding: 0 40px;
+
+        .ant-row {
+            margin: 10px 0;
+        }
     }
 
     .btn-secondary {

@@ -1,8 +1,95 @@
 import React, { Component } from 'react';
 import "./style.scss";
-import { Card, Row, Col, Form, Input, Upload, Button } from 'antd';
-
+import { Card, Row, Col, Modal, Input, Upload, Button } from 'antd';
+import { Constants } from '../../../constants';
+import axios from "axios";
 export default class NewProduct extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            description: "",
+            price: 0,
+            image: null,
+            loading: false,
+            fileList: []
+        }
+    }
+
+    dummyRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+            onSuccess("ok");
+        }, 0);
+    }
+
+    getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
+    beforeUpload = async (file) => {
+        console.log("file", file);
+
+        let filedata = '';
+        this.getBase64(file, (result) => {
+            filedata = result;
+            this.setState({ image: filedata, fileList: [file] })
+        });
+    }
+
+    send = async e => {
+        if (this.state.name == "" || this.state.price == 0 || this.state.image == null
+            || this.state.description == "") {
+            Modal.error({
+                content: 'Campos vazios.',
+            });
+            return;
+        }
+
+        let user = JSON.parse(await localStorage.getItem("user"));
+        this.setState({ loading: true });
+
+        axios.post(Constants.ApiUrl + 'products/create/', {
+            description: this.state.description,
+            available: true,
+            image: this.state.image,
+            name: this.state.name,
+            price: this.state.price
+        }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then((response) => {
+                console.log(response.data)
+                this.setState({
+                    name: "",
+                    description: "",
+                    price: 0,
+                    image: null,
+                    loading: false,
+                    fileList: []
+                });
+                Modal.success({
+                    content: 'Produto salvo!',
+                });
+            })
+            .catch((error) => {
+                this.setState({ loading: false });
+                Modal.error({
+                    content: 'Erro ao salvar.',
+                });
+                console.log(error);
+            })
+    };
+
     render() {
         return (
             <div id="new-product">
@@ -15,13 +102,16 @@ export default class NewProduct extends Component {
                             <label>Nome</label>
                         </Col>
                         <Col span={20}>
-                            <Input placeholder={""} />
+                            <Input value={this.state.name}
+                                onChange={(e) => this.setState({ name: e.target.value })} placeholder={""} />
                         </Col>
                     </Row>
                     <Row>
                         <Col span={24}>
                             <label>Descrição</label>
-                            <Input.TextArea className="mt-3" placeholder={"Escrever..."} />
+                            <Input.TextArea value={this.state.description}
+                                onChange={(e) => this.setState({ description: e.target.value })}
+                                className="mt-3" placeholder={"Escrever..."} />
                         </Col>
                     </Row>
                     <Row align="middle">
@@ -29,9 +119,11 @@ export default class NewProduct extends Component {
                             <label>Foto do Produto</label>
                         </Col>
                         <Col span={18}>
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={this.beforeUpload}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileList && this.state.fileList[0] && this.state.fileList[0].name ? this.state.fileList[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                         </Col>
@@ -41,13 +133,16 @@ export default class NewProduct extends Component {
                             <label>Preço</label>
                         </Col>
                         <Col span={20}>
-                            <Input placeholder={"R$ 0,00"} />
+                            <Input value={this.state.price}
+                                onChange={(e) => this.setState({ price: e.target.value })} type="number" placeholder={"R$ 0,00"} />
                         </Col>
                     </Row>
 
-                    <button onClick={() => this.props.next()} className="btn btn-secondary">
+                    <Button
+                        loading={this.state.loading}
+                        onClick={() => this.send()} className="btn btn-secondary">
                         SALVAR
-            </button>
+                    </Button>
                 </div>
             </div>
         );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./style.scss";
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 import HomeParent from '../../../components/parent-dashboard/home';
 import {
     HomeOutlined,
@@ -19,6 +19,7 @@ import GalleryParent from '../../../components/parent-dashboard/gallery';
 import GiftListParent from '../../../components/parent-dashboard/gift-list';
 import PersonalParent from '../../../components/parent-dashboard/personal';
 import NotesParent from '../../../components/parent-dashboard/notes';
+import GiftedsParent from '../../../components/parent-dashboard/gifteds';
 export default class ParentDashboard extends Component {
 
     constructor(props) {
@@ -31,6 +32,7 @@ export default class ParentDashboard extends Component {
 
     get = async () => {
         let user = JSON.parse(await localStorage.getItem("user"));
+        console.log("user", user)
 
         axios.get(Constants.ApiUrl + 'events/' + user.id, {
             headers: {
@@ -38,8 +40,8 @@ export default class ParentDashboard extends Component {
             }
         })
             .then((response) => {
-                console.log(response.data)
-                let event = response.data[0];
+                console.log("event", response.data)
+                let event = response.data.length > 0 ? response.data[0] : null;
                 this.setState({
                     event: event
                 })
@@ -95,7 +97,7 @@ export default class ParentDashboard extends Component {
                                 </div>
                             </Link>
 
-                            <button class="btn btn-secondary d-flex align-items-center">
+                            <button className="btn btn-secondary d-flex align-items-center">
                                 LOJA BELLE MAN <img src={require("../../../assets/images/enter.png")} />
                             </button>
                         </div>
@@ -106,15 +108,25 @@ export default class ParentDashboard extends Component {
                         this.state.event ?
                             <Switch>
                                 <div>
-                                    <Route path={`${this.props.match.path}/home`} component={HomeParent} />
+                                    <Route path={`${this.props.match.path}/home`} component={() => <HomeParent event={this.state.event} />} />
                                     <Route path={`${this.props.match.path}/config`} component={() => <ConfigParent event={this.state.event} />} />
                                     <Route path={`${this.props.match.path}/gallery`} component={() => <GalleryParent event={this.state.event} />} />
                                     <Route path={`${this.props.match.path}/gifts`} component={() => <GiftListParent event={this.state.event} />} />
                                     <Route path={`${this.props.match.path}/custom`} component={() => <CustomParent event={this.state.event} />} />
                                     <Route path={`${this.props.match.path}/personal`} component={() => <PersonalParent event={this.state.event} />} />
                                     <Route path={`${this.props.match.path}/notes`} component={() => <NotesParent event={this.state.event} />} />
+                                    <Route path={`${this.props.match.path}/gifteds`} component={() => <GiftedsParent event={this.state.event} />} />
                                 </div>
-                            </Switch> : null
+                            </Switch> : (
+                                <div id="no-event" className={'d-flex flex-column align-items-center'}>
+                                    <h3 className="mb-5 mt-5">Crie um evento para acessar tais funcionalidades.</h3>
+                                    <Link to="/first-steps">
+                                        <Button className="btn btn-secondary d-flex align-items-center">
+                                            CRIAR EVENTO
+                                        </Button>
+                                    </Link>
+                                </div>
+                            )
                     }
                 </Col>
             </Row>

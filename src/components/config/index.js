@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Row, Col, Radio, Input, DatePicker, TimePicker } from 'antd';
+import { Row, Col, Radio, Input, DatePicker, TimePicker, Select } from 'antd';
 import locale from 'antd/es/date-picker/locale/pt_BR';
-
 import "./style.scss";
 
+const { Option } = Select;
 export default class Config extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             date: null,
+            type: null,
             hour: null,
             address: "",
             dontKnowName: false,
@@ -62,6 +63,23 @@ export default class Config extends Component {
                             <TimePicker
                                 onChange={(date, dateString) => { this.setState({ hour: dateString }) }}
                                 locale={locale} placeholder={"hh:mm"} />
+                        </Col>
+                    </Row>
+                    <Row align="middle">
+                        <Col span={6}>
+                            <label>Tipo do Evento</label>
+                        </Col>
+                        <Col span={18}>
+                            <Select
+                                placeholder="Selecione"
+                                onChange={(value) => this.setState({ type: value })}
+                            >
+                                <Option value="revelation">Chá Revelação</Option>
+                                <Option value="diaper">Chá de Fralda</Option>
+                                <Option value="baby">Chá de Bebê</Option>
+                                <Option value="baptize">Batizado</Option>
+                                <Option value="birth_day">Aniversário</Option>
+                            </Select>
                         </Col>
                     </Row>
                     <Row align="middle">

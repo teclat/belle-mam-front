@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { Row, Col, Modal, Input, DatePicker, TimePicker } from 'antd';
+import { Row, Col, Modal, Input, DatePicker, TimePicker, Button } from 'antd';
 import locale from 'antd/es/date-picker/locale/pt_BR';
 import { Constants } from '../../../constants';
 import axios from "axios";
@@ -20,6 +20,7 @@ export default class ConfigParent extends Component {
             babyName: props.event.baby_name,
             babyBirthday: moment(props.event.baby_birthday),
             babyBirthdayString: moment(props.event.baby_birthday).format('DD/MM/YYYY'),
+            loading: false
         }
         console.log("event", props.event);
     }
@@ -133,9 +134,11 @@ export default class ConfigParent extends Component {
                         </Col>
                     </Row>
 
-                    <button onClick={() => this.save()} className="btn btn-secondary">
+                    <Button
+                        loading={this.state.loading}
+                        onClick={() => this.save()} className="btn btn-secondary">
                         SALVAR
-                    </button>
+                    </Button>
                 </div>
             </div>
         )

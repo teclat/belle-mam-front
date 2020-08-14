@@ -14,14 +14,15 @@ import AdminDashboard from './containers/dashboard/admin';
 
 export default () => {
     return (
-        <BrowserRouter basename="/">
+        <BrowserRouter
+            basename="/">
             <Switch>
                 <Route path="/" exact={true} component={Home} />
                 <Route path="/home" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/first-steps" component={FirstStep} />
-                <Route path="/invite" component={Invite} />
+                <Route path="/invite/:url" component={Invite} />
                 <Route path="/why" component={WhyBelleMam} />
                 <Route path="/partners" component={Partners} />
                 <Route path="/parents" component={ParentDashboard} />

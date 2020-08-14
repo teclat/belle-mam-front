@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./style.scss";
-import { Card, Row, Col, Form, Input, Radio, Button, Select } from 'antd';
+import { Card, Row, Col, Upload, Input, Radio, Button, Select, Modal } from 'antd';
 import axios from "axios";
 import { Constants } from '../../constants';
 
@@ -18,8 +18,37 @@ export default class Register extends Component {
             phone: "",
             events: "",
             password: "",
-            relationship: null
+            relationship: null,
+            loading: false,
+            image: null,
         }
+    }
+
+    dummyRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+            onSuccess("ok");
+        }, 0);
+    }
+
+    getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
+    beforeUpload = async (file) => {
+        console.log("file", file);
+
+        let filedata = '';
+        this.getBase64(file, (result) => {
+            filedata = result;
+            this.setState({ image: filedata })
+        });
     }
 
     register = () => {
@@ -27,18 +56,20 @@ export default class Register extends Component {
         if (this.state.role == "parent") {
             if (this.state.email === "" || this.state.password === "" || this.state.name === ""
                 || this.state.phone === "" || this.state.city === "" || this.state.state === ""
-                || this.state.relationship === null || this.state.events.length === 0) {
-                alert("Existem campos vazios. Preencha e tente novamente.");
+                || this.state.relationship === null || this.state.image === null || this.state.events.length === 0) {
+                Modal.error({ content: "Existem campos vazios. Preencha e tente novamente." });
                 return;
             }
         } else {
             if (this.state.email === "" || this.state.password === "" || this.state.name === ""
-                || this.state.phone === "" || this.state.city === "" || this.state.state === ""
+                || this.state.phone === "" || this.state.city === "" || this.state.image === null || this.state.state === ""
                 || this.state.events.length === 0) {
-                alert("Existem campos vazios. Preencha e tente novamente.");
+                Modal.error({ content: "Existem campos vazios. Preencha e tente novamente." });
                 return;
             }
         }
+
+        this.setState({ loading: true })
 
         axios.post(Constants.ApiUrl + 'users/create', {
             role: this.state.role,
@@ -49,9 +80,11 @@ export default class Register extends Component {
             phone: this.state.phone,
             events: this.state.events,
             password: this.state.password,
+            image: this.state.image,
             relationship: this.state.relationship
         })
             .then((response) => {
+                this.setState({ loading: false })
                 console.log(response.data);
                 let user = response.data;
                 localStorage.setItem("user", JSON.stringify(user));
@@ -63,11 +96,12 @@ export default class Register extends Component {
                 } else if (user.role === "guest") {
                     this.props.history.push('/guest/personal');
                 } else {
-                    alert("Erro de executar cadastro.");
+                    Modal.error({ content: "Erro de executar cadastro." });
                 }
             })
             .catch((error) => {
-                alert("Erro de executar cadastro.");
+                this.setState({ loading: false })
+                Modal.error({ content: "Erro de executar cadastro." });
                 console.log(error);
             })
     }
@@ -113,7 +147,7 @@ export default class Register extends Component {
                                                     placeholder={"Ana Freitas"} />
                                             </Col>
                                         </Row>
-                                        <Row>
+                                        <Row align="middle">
                                             <Col span={4}>
                                                 <label>Email</label>
                                             </Col>
@@ -123,7 +157,7 @@ export default class Register extends Component {
                                                     placeholder={"anafreitas1@gmail.com"} />
                                             </Col>
                                         </Row>
-                                        <Row>
+                                        <Row align="middle">
                                             <Col span={4}>
                                                 <label>Senha</label>
                                             </Col>
@@ -133,7 +167,7 @@ export default class Register extends Component {
                                                     type="password" placeholder={"*******"} />
                                             </Col>
                                         </Row>
-                                        <Row>
+                                        <Row align="middle">
                                             <Col span={4}>
                                                 <label>Telefone</label>
                                             </Col>
@@ -143,7 +177,7 @@ export default class Register extends Component {
                                                     placeholder={"(85) 99999 9999"} />
                                             </Col>
                                         </Row>
-                                        <Row>
+                                        <Row align="middle">
                                             <Col span={4}>
                                                 <label>Cidade</label>
                                             </Col>
@@ -153,7 +187,7 @@ export default class Register extends Component {
                                                     placeholder={"Fortaleza"} />
                                             </Col>
                                         </Row>
-                                        <Row>
+                                        <Row align="middle">
                                             <Col span={4}>
                                                 <label>Estado</label>
                                             </Col>
@@ -163,7 +197,19 @@ export default class Register extends Component {
                                                     placeholder={"Ceará"} />
                                             </Col>
                                         </Row>
-
+                                        <Row align="middle">
+                                            <Col span={5}>
+                                                <label>Foto</label>
+                                            </Col>
+                                            <Col span={19}>
+                                                <Upload name="file" customRequest={this.dummyRequest}
+                                                    beforeUpload={this.beforeUpload}>
+                                                    <Button>
+                                                        Escolher...
+                                                    </Button>
+                                                </Upload>
+                                            </Col>
+                                        </Row>
                                         <Row>
                                             <Col span={4}>
                                                 <label>Tipo de Evento</label>
@@ -199,11 +245,13 @@ export default class Register extends Component {
                                             </Row> : null
                                         }
 
-                                        <div
+                                        <Button
+                                            loading={this.state.loading}
                                             onClick={() => { this.register() }}
-                                            className="btn btn-secondary">
+                                            className="btn btn-secondary"
+                                        >
                                             CADASTRAR!
-                                        </div>
+                                        </Button>
                                     </div>
                             }
                         </Col>

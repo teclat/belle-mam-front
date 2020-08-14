@@ -59,6 +59,13 @@
 
 /* ------------- BUTTONS */
 
+
+.btn {
+    line-height: 1em;
+    cursor: pointer;
+    height: 40px;
+}
+
 .btn-outline {
     background: transparent;
     border: 2px solid white;
@@ -120,6 +127,18 @@
 .btn-secondary:active {
     color: white;
     background: #a092f9;
+}
+
+.btn-secondary {
+    display: flex;
+    align-items: center;
+
+    &:active,
+    &:focus,
+    .ant-btn-loading {
+        color: white;
+        background: #a092f9;
+    }
 }
 
 /* ------------- ALIGN */

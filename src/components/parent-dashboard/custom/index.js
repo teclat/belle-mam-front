@@ -13,16 +13,47 @@ export default class CustomParent extends Component {
             historyText: props.event.history_text,
             phone: props.event.phone,
             inviteText: props.event.invite_text,
+            url: props.event.url,
+            validUrl: false,
+            baby_image: null,
+            fileBaby: [],
+            mom_name: props.event.mom_name,
+            mom_image: null,
+            fileMom: [],
+            dad_name: props.event.dad_name,
+            dad_image: null,
+            fileDad: [],
+            background_image: null,
+            fileBack: [],
             loading: false
         }
         console.log("event", props.event);
     }
 
+    dummyRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+            onSuccess("ok");
+        }, 0);
+    }
+
+    getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
     save = async () => {
         const event = this.props.event;
         if (this.state.theme == "" || this.state.historyText == ""
+            || this.state.url == "" || this.state.mom_name == ""
+            || this.state.dad_name == ""
             || this.state.phone == "" || this.state.inviteText == "") {
-            Modal.warning({
+            Modal.error({
                 content: 'Campos vazios.',
             });
             return;
@@ -43,17 +74,16 @@ export default class CustomParent extends Component {
             history_text: this.state.historyText,
             invite_text: this.state.inviteText,
             url: event.url,
-            baby_image: event.baby_image,
-            mom_image: event.mom_image,
-            dad_image: event.dad_image,
-            background_image: event.background_image
+            baby_image: event.baby_image_url,
+            mom_image: event.mom_image_url,
+            dad_image: event.dad_image_url,
+            background_image: event.background_image_url,
         }, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
         })
             .then((response) => {
-                console.log(response.data)
                 this.setState({ loading: false });
                 Modal.success({
                     content: 'Personalização salva!',
@@ -96,56 +126,114 @@ export default class CustomParent extends Component {
                                 value={this.state.historyText} style={{ marginTop: 10 }} placeholder={"Escrever..."} />
                         </Col>
                     </Row>
-                    {/* <Row align="middle">
+                    {/* <img
+                        className={'mb-3'}
+                        src={this.props.event.baby_image_url} />
+                    <Row align="middle">
                         <Col span={6}>
                             <label>Foto do Bebê</label>
                         </Col>
                         <Col span={18}>
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ baby_image: filedata, fileBaby: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileBaby && this.state.fileBaby[0] && this.state.fileBaby[0].name ? this.state.fileBaby[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                         </Col>
                     </Row>
+                    <img
+                        className={'mb-3'}
+                        src={this.props.event.mom_image_url} />
                     <Row align="middle">
                         <Col span={6}>
                             <label>Foto da Mamãe</label>
                         </Col>
                         <Col span={18} className="d-flex">
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ mom_image: filedata, fileMom: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileMom && this.state.fileMom[0] && this.state.fileMom[0].name ? this.state.fileMom[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
-                            <Radio.Group>
-                                <Radio value="no">Prefiro não enviar</Radio>
-                            </Radio.Group>
                         </Col>
                     </Row>
+                    <Row align="middle">
+                        <Col span={6}>
+                            <label>Nome da Mamãe</label>
+                        </Col>
+                        <Col span={18}>
+                            <Input value={this.state.mom_name}
+                                onChange={(e) => { this.setState({ mom_name: e.target.value }) }}
+                                placeholder={""} />
+                        </Col>
+                    </Row>
+                    <img
+                        className={'mb-3'}
+                        src={this.props.event.dad_image_url} />
                     <Row align="middle">
                         <Col span={6}>
                             <label>Foto do Papai</label>
                         </Col>
                         <Col span={18} className="d-flex">
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ dad_image: filedata, fileDad: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileDad && this.state.fileDad[0] && this.state.fileDad[0].name ? this.state.fileDad[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
-                            <Radio.Group>
-                                <Radio value="no">Prefiro não enviar</Radio>
-                            </Radio.Group>
                         </Col>
                     </Row>
+                    <Row align="middle">
+                        <Col span={6}>
+                            <label>Nome do Papai</label>
+                        </Col>
+                        <Col span={18}>
+                            <Input value={this.state.dad_name}
+                                onChange={(e) => { this.setState({ dad_name: e.target.value }) }}
+                                placeholder={""} />
+                        </Col>
+                    </Row>
+                    <img
+                        className={'mb-3'}
+                        src={this.props.event.background_image_url} />
                     <Row align="middle">
                         <Col span={6}>
                             <label>Foto do Fundo</label>
                         </Col>
                         <Col span={18}>
-                            <Upload>
+                            <Upload name="file" customRequest={this.dummyRequest}
+                                multiple={false} showUploadList={false}
+                                beforeUpload={(file) => {
+                                    let filedata = '';
+                                    this.getBase64(file, (result) => {
+                                        filedata = result;
+                                        this.setState({ background_image: filedata, fileBack: [file] })
+                                    });
+                                }}>
                                 <Button>
-                                    Escolher...
+                                    {this.state.fileBack && this.state.fileBack[0] && this.state.fileBack[0].name ? this.state.fileBack[0].name : 'Escolher...'}
                                 </Button>
                             </Upload>
                         </Col>
@@ -167,9 +255,11 @@ export default class CustomParent extends Component {
                         </Col>
                     </Row>
 
-                    <button onClick={() => this.save()} className="btn btn-secondary">
+                    <Button
+                        loading={this.state.loading}
+                        onClick={() => this.save()} className="btn btn-secondary">
                         SALVAR
-                    </button>
+                    </Button>
                 </div>
             </div>
         );

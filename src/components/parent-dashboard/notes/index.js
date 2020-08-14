@@ -44,9 +44,10 @@ export default class NotesParent extends Component {
                     this.state.notes.map((note) => {
                         return <div key={note.id} className="note d-flex align-items-center">
                             <Col span={6} class="note-img mr-5">
-                                <img className="note-img" src={require("../../../assets/images/couple-testimonial.jpg")} />
+                                <img className="note-img" src={note.user.image_url} />
                             </Col>
                             <Col span={18}>
+                                <h3 className={'mb-3'}>{note.user.name}</h3>
                                 <p>{note.text}</p>
                             </Col>
                         </div>

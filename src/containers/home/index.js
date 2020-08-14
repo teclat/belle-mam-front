@@ -9,6 +9,30 @@ import Services from '../../components/home/services'
 
 export default class Home extends Component {
 
+    componentDidMount = () => this.handleScroll();
+
+    componentDidUpdate = prevProps => {
+        const { location: { pathname, hash } } = this.props;
+        if (
+            pathname !== prevProps.location.pathname ||
+            hash !== prevProps.location.hash
+        ) {
+            this.handleScroll();
+        }
+    };
+
+    handleScroll = () => {
+        const { location: { hash } } = this.props;
+        const element = document.getElementById(hash.replace("#", ""));
+
+        setTimeout(() => {
+            window.scrollTo({
+                behavior: element ? "smooth" : "auto",
+                top: element ? element.offsetTop : 0
+            });
+        }, 100);
+    };
+
     state = {
         service: 2
     }

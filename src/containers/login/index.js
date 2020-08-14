@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./style.scss";
-import { Card, Row, Col, Form, Input, Radio, Button } from 'antd';
+import { Card, Row, Col, Form, Input, Modal, Button } from 'antd';
 import axios from "axios";
 import { Constants } from '../../constants';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,8 @@ export default class Login extends Component {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            loading: false
         }
     }
 
@@ -19,15 +20,18 @@ export default class Login extends Component {
         console.log(this.state);
 
         if (this.state.email === "" || this.state.password === "") {
-            alert("Existem campos vazios. Preencha e tente novamente.");
+            Modal.error({ content: "Existem campos vazios. Preencha e tente novamente."} );
             return;
         }
+
+        this.setState({ loading: true })
 
         axios.post(Constants.ApiUrl + 'users/login', {
             email: this.state.email,
             password: this.state.password
         })
             .then((response) => {
+                this.setState({ loading: false });
                 let user = response.data;
                 localStorage.setItem("user", JSON.stringify(user));
 
@@ -42,7 +46,8 @@ export default class Login extends Component {
                 }
             })
             .catch((error) => {
-                alert("Erro de efetuar login.");
+                this.setState({ loading: false });
+                Modal.error({ content: "Erro de efetuar login."} );
                 console.log(error);
             })
     }
@@ -83,11 +88,12 @@ export default class Login extends Component {
                                     </Col>
                                 </Row>
 
-                                <div
+                                <Button
+                                    loading={this.state.loading}
                                     onClick={() => { this.login() }}
                                     className="btn btn-secondary">
                                     ENTRAR
-                                </div>
+                                </Button>
 
                                 <div className="link text-center mt-5">
                                     <Link to="/register">
