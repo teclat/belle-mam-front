@@ -44,6 +44,7 @@ export default class FirstStep extends Component {
             date: date[2] + "-" + date[1] + "-" + date[0],
             hour: hour[0] + ":" + hour[1],
             address: this.state.config.address,
+            live: this.state.config.live,
             baby_image: this.state.custom.baby_image,
             mom_image: this.state.custom.mom_image,
             dad_image: this.state.custom.dad_image,

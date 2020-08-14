@@ -30,6 +30,11 @@ export default class ParentDashboard extends Component {
         this.get();
     }
 
+    logout = async () => {
+        await localStorage.removeItem("user");
+        this.props.history.push('/');
+    }
+
     get = async () => {
         let user = JSON.parse(await localStorage.getItem("user"));
         console.log("user", user)
@@ -52,6 +57,7 @@ export default class ParentDashboard extends Component {
     }
 
     render() {
+        let url = "https://belle-mam.herokuapp.com/convite/" + this.state.event.url
         console.log(this.props);
         return (
             <Row id="parent-dashboard">
@@ -67,32 +73,32 @@ export default class ParentDashboard extends Component {
                                 </div>
                             </Link>
                             <Link to={'/parents/config'}>
-                                <div className={"link " + (this.props.location.pathname == "/parents/config" ? "active" : "")}>
-                                    <SettingFilled className="mr-3" />
+                                <div className={"link d-flex align-items-center " + (this.props.location.pathname == "/parents/config" ? "active" : "")}>
+                                    <img style={{ width: 20 }} className="mr-3" src={require("../../../assets/images/settings.png")} />
                                     Configurações
                                 </div>
                             </Link>
                             <Link to={'/parents/gallery'}>
-                                <div className={"link " + (this.props.location.pathname == "/parents/gallery" ? "active" : "")}>
-                                    <PictureOutlined className="mr-3" />
+                                <div className={"link d-flex align-items-center " + (this.props.location.pathname == "/parents/gallery" ? "active" : "")}>
+                                    <img style={{ width: 20 }} className="mr-3" src={require("../../../assets/images/gallery.png")} />
                                     Galeria
                                 </div>
                             </Link>
                             <Link to={'/parents/gifts'}>
-                                <div className={"link " + (this.props.location.pathname == "/parents/gifts" ? "active" : "")}>
-                                    <GiftFilled className="mr-3" />
+                                <div className={"link d-flex align-items-center " + (this.props.location.pathname == "/parents/gifts" ? "active" : "")}>
+                                    <img style={{ width: 20 }} className="mr-3" src={require("../../../assets/images/gift-white.png")} />
                                     Lista de Presentes
                                 </div>
                             </Link>
                             <Link to={'/parents/personal'}>
-                                <div className={"link " + (this.props.location.pathname == "/parents/personal" ? "active" : "")}>
-                                    <UserOutlined className="mr-3" />
+                                <div className={"link d-flex align-items-center " + (this.props.location.pathname == "/parents/personal" ? "active" : "")}>
+                                    <img style={{ width: 20 }} className="mr-3" src={require("../../../assets/images/user-white.png")} />
                                     Dados Pessoais
                                 </div>
                             </Link>
                             <Link to={'/parents/custom'}>
-                                <div className={"link " + (this.props.location.pathname == "/parents/custom" ? "active" : "")}>
-                                    <HighlightOutlined className="mr-3" />
+                                <div className={"link d-flex align-items-center " + (this.props.location.pathname == "/parents/custom" ? "active" : "")}>
+                                    <img style={{ width: 20 }} className="mr-3" src={require("../../../assets/images/paint-brush-white.png")} />
                                     Personalizar
                                 </div>
                             </Link>
@@ -104,6 +110,18 @@ export default class ParentDashboard extends Component {
                     </div>
                 </Col>
                 <Col span={19}>
+                    <div className={"exit-row d-flex mt-3 justify-content-between align-items-center ml-3 mr-3"}>
+                        <p>PAINEL PRINCIPAL</p>
+                        {this.state.event && this.state.event.url ?
+                            <a target="_blank" href={url}>
+                                IR PARA O CONVITE
+                            </a> : null
+                        }
+                        <div onClick={() => this.logout()} className={"d-flex align-items-center exit"}>
+                            <p className={"mr-3"}>SAIR</p>
+                            <img style={{ width: 20 }} src={require("../../../assets/images/enter-purple.png")} />
+                        </div>
+                    </div>
                     {
                         this.state.event ?
                             <Switch>

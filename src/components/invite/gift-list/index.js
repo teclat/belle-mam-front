@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'antd';
 import "./style.scss";
+import {
+    WhatsAppOutlined
+} from '@ant-design/icons';
 import { Constants } from '../../../constants';
 import axios from "axios";
 export default class GiftList extends Component {
@@ -16,6 +19,14 @@ export default class GiftList extends Component {
 
     gift = async () => {
         let user = JSON.parse(await localStorage.getItem("user"));
+
+        if (!user) {
+            Modal.error({
+                content: 'Cadastre-se e entre na sua conta para poder enviar um recado.',
+            });
+            return;
+        }
+
         this.setState({ loading: true });
 
         axios.post(Constants.ApiUrl + 'events/give-gift', {
@@ -53,7 +64,7 @@ export default class GiftList extends Component {
                     {
                         this.props.event && this.props.event.products ?
                             this.props.event.products.map((product) => {
-                                return <li class="d-flex flex-column justify-content-around align-items-center">
+                                return <li key={product.id} class="d-flex flex-column justify-content-around align-items-center">
                                     <img src={product.image_url} />
                                     <p class="text">{product.name}</p>
                                     <p class="money">R$ {product.price}</p>
@@ -66,10 +77,12 @@ export default class GiftList extends Component {
                     }
                 </ul>
                 <div class="d-flex flex-row justify-content-center">
-                    <button class="btn btn-outline">VER MAIS</button>
-                    <button class="btn btn-outline d-flex align-items-center justify-content-around">
-                        <img src={require("../../../assets/images/whats.png")} /> FALAR COM A LOJA
-                    </button>
+                    {/* <button class="btn btn-outline">VER MAIS</button> */}
+                    <a target={'_blank'} href="https://api.whatsapp.com/send?phone='5585981768451'&text=%20Oi, tudo bem. Pode me ajudar?%20"
+                        className="btn btn-outline d-flex align-items-center justify-content-around">
+                        <WhatsAppOutlined className="mr-3" />
+                        FALAR COM A LOJA
+                    </a>
                 </div>
                 <Modal
                     onCancel={() => this.setState({ showGift: false })}

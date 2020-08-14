@@ -23,6 +23,7 @@ export default () => {
                 <Route path="/register" component={Register} />
                 <Route path="/first-steps" component={FirstStep} />
                 <Route path="/invite/:url" component={Invite} />
+                <Route path="/convite/:url" component={Invite} />
                 <Route path="/why" component={WhyBelleMam} />
                 <Route path="/partners" component={Partners} />
                 <Route path="/parents" component={ParentDashboard} />

@@ -17,6 +17,7 @@ export default class ConfigParent extends Component {
             hour: moment("2020-10-01T" + props.event.hour + ".000Z"),
             hourString: props.event.hour,
             address: props.event.address,
+            live: props.event.live,
             babyName: props.event.baby_name,
             babyBirthday: moment(props.event.baby_birthday),
             babyBirthdayString: moment(props.event.baby_birthday).format('DD/MM/YYYY'),
@@ -47,6 +48,7 @@ export default class ConfigParent extends Component {
             hour: this.state.hourString,
             address: this.state.address,
             phone: event.phone,
+            live: this.state.live,
             baby_name: this.state.babyName,
             baby_birthday: babyBirth[2] + "-" + babyBirth[1] + "-" + babyBirth[0],
             theme: event.theme,
@@ -113,6 +115,15 @@ export default class ConfigParent extends Component {
                         <Col span={18}>
                             <Input onChange={(e) => this.setState({ address: e.target.value })}
                                 value={this.state.address} placeholder={"Fortaleza"} />
+                        </Col>
+                    </Row>
+                    <Row align="middle">
+                        <Col span={6}>
+                            <label>URL da Live</label>
+                        </Col>
+                        <Col span={18}>
+                            <Input onChange={(e) => this.setState({ live: e.target.value })}
+                                value={this.state.live} placeholder={"Fortaleza"} />
                         </Col>
                     </Row>
                     <Row align="middle">

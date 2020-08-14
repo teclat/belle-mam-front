@@ -44,7 +44,7 @@ export default class HomeParent extends Component {
     }
 
     render() {
-        let url = "https://belle-mam.herokuapp.com/invite/" + this.props.event.url
+        let url = "https://belle-mam.herokuapp.com/convite/" + this.props.event.url
         return (
             <Col id="home-parent">
                 <Modal

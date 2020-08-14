@@ -11,12 +11,39 @@ export default class InviteBox extends Component {
             loading: false,
             note: '',
             showParticipate: false,
-            showSendNote: false,
+            showSendNote: false
         }
+    }
+
+    getDifference = () => {
+        var today = new Date();
+        var eventDay = new Date(this.props.event.date);
+        eventDay.setDate(eventDay.getDate() + 1);
+        var difference = null;
+
+        if (today.getDate() == eventDay.getDate() &&
+            today.getMonth() == eventDay.getMonth() &&
+            today.getFullYear() == eventDay.getFullYear()) {
+            difference = 0;
+        } else if (today > eventDay) {
+            difference = "-";
+        } else {
+            difference = eventDay.getTime() - today.getTime();
+            difference = difference / (1000 * 3600 * 24);
+            difference = Math.floor(difference);
+        }
+
+        return difference;
     }
 
     participate = async () => {
         let user = JSON.parse(await localStorage.getItem("user"));
+        if (!user) {
+            Modal.error({
+                content: 'Cadastre-se e entre na sua conta para poder participar de um evento.',
+            });
+            return;
+        }
         this.setState({ loading: true });
 
         axios.post(Constants.ApiUrl + 'users/subscribe', {
@@ -48,7 +75,32 @@ export default class InviteBox extends Component {
         });
     }
 
+    remember = async e => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        if (!user) {
+            Modal.error({
+                content: 'Cadastre-se e entre na sua conta para poder marcar um lembrete.',
+            });
+            return;
+        }
+
+        Modal.success({
+            content: 'Você receberá um email lembrando do evento.',
+        });
+
+    };
+
     send = async e => {
+        let user = JSON.parse(await localStorage.getItem("user"));
+
+        if (!user) {
+            Modal.error({
+                content: 'Cadastre-se e entre na sua conta para poder enviar um recado.',
+            });
+            return;
+        }
+
         if (this.state.note == "") {
             Modal.warning({
                 content: 'Recado está vazio.',
@@ -56,7 +108,6 @@ export default class InviteBox extends Component {
             return;
         }
 
-        let user = JSON.parse(await localStorage.getItem("user"));
         this.setState({ loading: true });
 
         axios.post(Constants.ApiUrl + 'notes/create', {
@@ -89,6 +140,41 @@ export default class InviteBox extends Component {
         });
     };
 
+    getTypeText = (type) => {
+        let typeText = ''
+        if (type) {
+            switch (type) {
+                case "baby":
+                    typeText = "Chá"
+                    break;
+                case "revelation":
+                    typeText = "Chá"
+                    break;
+                case "diaper":
+                    typeText = "Chá"
+                    break;
+                case "baptize":
+                    typeText = "Batizado"
+                    break;
+                case "birth_day":
+                    typeText = "Niver"
+                    break;
+            }
+        }
+        return typeText;
+    }
+
+    getPhone = (phone) => {
+        if (phone) {
+            phone = phone.replace(' ', '');
+            phone = phone.replace('-', '');
+            phone = phone.replace('(', '');
+            phone = phone.replace(')', '');
+        }
+        console.log(phone);
+        return phone ? phone : '';
+    }
+
     render() {
         return (
             <section id="invite" class={this.props.event.theme == "green" ? "invite-green" : "invite-purple"}>
@@ -98,8 +184,11 @@ export default class InviteBox extends Component {
                         <div class="main-img d-flex justify-content-center align-items-center">
                             <img src={this.props.event.baby_image_url} />
                         </div>
-                        <div style={{ paddingLeft: 30 }}>
-                            <button class="btn btn-live">ASSISTA ONLINE</button>
+                        <div className={'mt-3'} style={{ paddingLeft: 30 }}>
+                            <a
+                                target="_blank" className="btn btn-live"
+                                href={this.props.event && this.props.event.live ? this.props.event.live : ""}
+                            >ASSISTA ONLINE</a>
                             <h3 class="subtitle">QUEM JÁ CONFIRMOU</h3>
                             <div class="d-flex flex-row flex-wrap confirmeds">
                                 {
@@ -130,20 +219,22 @@ export default class InviteBox extends Component {
                             </div>
                         </div>
                         <h3 class="subtitle">CONVIDAM PARA O</h3>
-                        <h1>Chá do {this.props.event.baby_name}</h1>
+                        <h1>{this.getTypeText(this.props.event.type)} do(a) {this.props.event.baby_name}</h1>
                         <p class="text">
                             {this.props.event.history_text}
                         </p>
                         <div class="d-flex flex-row">
                             <button onClick={() => this.setState({ showParticipate: true })} class={"btn " + (this.props.event.theme == "green" ? 'btn-secondary' : 'btn-primary')}>CONFIRME SUA PRESENÇA!</button>
-                            <button class="btn btn-outline d-flex align-items-center justify-content-around">
-                                <img src={require("../../../assets/images/" + (this.props.event.theme == "green" ? 'whats-green.png' : 'whats-purple.png'))} /> FALE COM OS PAPAIS
-                    </button>
+                            <a target={'_blank'} href={"https://api.whatsapp.com/send?phone='" + this.getPhone(this.props.event.phone) + "'&text=%20Oi, tudo bem. Pode me ajudar?%20"}
+                                className="btn btn-outline d-flex align-items-center justify-content-around">
+                                <img src={require("../../../assets/images/" + (this.props.event.theme == "green" ? 'whats-green.png' : 'whats-purple.png'))} />
+                                FALE COM OS PAPAIS
+                            </a>
                         </div>
                         <div class="d-flex flex-row">
                             <button
                                 onClick={() => this.showSendNote()}
-                                class={"btn " + (this.props.event.theme == "green" ? 'btn-secondary' : 'btn-primary')} style={{ marginTop: 20, padding: 15 }}>
+                                class={"btn d-flex justify-content-center " + (this.props.event.theme == "green" ? 'btn-secondary' : 'btn-primary')} style={{ marginTop: 20, padding: 15 }}>
                                 DEIXE SEU RECADO!
                             </button>
                         </div>
@@ -162,10 +253,12 @@ export default class InviteBox extends Component {
                             <div></div>
                             <div class="text-center">
                                 <p>FALTAM</p>
-                                <p><span>02</span></p>
+                                <p><span>{this.getDifference()}</span></p>
                                 <p>DIAS</p>
                             </div>
-                            <button class={"btn " + (this.props.event.theme == "green" ? 'btn-secondary' : 'btn-primary')}>LEMBRETE</button>
+                            <button
+                                onClick={() => this.remember()}
+                                className={"btn d-flex justify-content-center " + (this.props.event.theme == "green" ? 'btn-secondary' : 'btn-primary')}>LEMBRETE</button>
                         </div>
                     </div>
                 </div>

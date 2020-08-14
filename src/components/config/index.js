@@ -15,6 +15,7 @@ export default class Config extends Component {
             address: "",
             dontKnowName: false,
             babyName: "",
+            live: "",
             babyBirth: null
         }
     }
@@ -90,6 +91,16 @@ export default class Config extends Component {
                             <Input
                                 onChange={(e) => { this.setState({ address: e.target.value }) }}
                                 placeholder={"Fortaleza"} />
+                        </Col>
+                    </Row>
+                    <Row align="middle">
+                        <Col span={6}>
+                            <label>URL da Live</label>
+                        </Col>
+                        <Col span={18}>
+                            <Input
+                                onChange={(e) => { this.setState({ live: e.target.value }) }}
+                                placeholder={""} />
                         </Col>
                     </Row>
                     <Row align="middle">

@@ -13,13 +13,7 @@ export default class Testimonial extends Component {
     }
 
     get = async e => {
-        let user = JSON.parse(await localStorage.getItem("user"));
-
-        axios.get(Constants.ApiUrl + 'custom/testimonial', {
-            headers: {
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
+        axios.get(Constants.ApiUrl + 'custom/testimonial')
             .then((response) => {
                 console.log(response.data)
                 this.setState({ testimonial: response.data });

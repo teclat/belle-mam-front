@@ -14,6 +14,12 @@ import NewProduct from '../../../components/admin-dashboard/new-product';
 import Products from '../../../components/admin-dashboard/products';
 import CustomHome from '../../../components/admin-dashboard/custom-home';
 export default class AdminDashboard extends Component {
+
+    logout = async () => {
+        await localStorage.removeItem("user");
+        this.props.history.push('/');
+    }
+
     render() {
         return (
             <Row id="admin-dashboard">
@@ -47,6 +53,13 @@ export default class AdminDashboard extends Component {
                     </div>
                 </Col>
                 <Col span={19}>
+                    <div className={"exit-row d-flex mt-3 justify-content-between align-items-center ml-3 mr-3"}>
+                        <p>PAINEL PRINCIPAL</p>
+                        <div onClick={() => this.logout()} className={"d-flex align-items-center exit"}>
+                            <p className={"mr-3"}>SAIR</p>
+                            <img style={{ width: 20 }} src={require("../../../assets/images/enter-purple.png")} />
+                        </div>
+                    </div>
                     <Switch>
                         <div>
                             <Route path={`${this.props.match.path}/products`} component={Products} />
