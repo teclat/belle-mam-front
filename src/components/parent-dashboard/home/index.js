@@ -66,9 +66,18 @@ export default class HomeParent extends Component {
                             <img src={require("../../../assets/images/purple-heart.png")} />
                         </div>
                     </div>
-                    <h3>
-                        FALTAM <span>02</span> DIAS
-                    </h3>
+                    {
+                        this.state.dashboard.difference ?
+                            (
+                                this.state.dashboard.difference >= 0 ?
+                                    <h3> FALTAM <span>{'0' + this.state.dashboard.difference}</span> DIAS </h3>
+                                    :
+                                    <h3> JÁ PASSOU </h3>
+                            ) : null
+                    }
+                    {
+                    }
+
                 </Row>
                 <Row align="stretch">
                     <Col className="d-flex" span={12}>
