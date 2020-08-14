@@ -86,8 +86,8 @@ export default class Register extends Component {
             .then((response) => {
                 this.setState({ loading: false })
                 console.log(response.data);
-                let user = response.data;
-                localStorage.setItem("user", JSON.stringify(user));
+                // let user = response.data;
+                // localStorage.setItem("user", JSON.stringify(user));
 
                 this.props.history.push('/');
                 Modal.success({ content: "Cadastro realizado." });
