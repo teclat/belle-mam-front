@@ -1,0 +1,87 @@
+#register {
+    background: url('../../assets/images/register-back-pattern.png');
+    min-height: 100vh;
+    padding-top: 20px;
+
+    >img {
+        width: 200px;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        line-height: 1em;
+        height: 40px;
+    }
+
+    .ant-upload {
+        border-radius: 20px;
+
+        button {
+            background: #f1f1f1;
+            border-radius: 20px;
+            padding: 0px 30px;
+        }
+    }
+
+    .card {
+        min-width: 1000px;
+        transition: all ease 0.5s;
+        margin-bottom: 100px;
+        border-radius: 20px;
+        border: none;
+
+        .ant-card-body {
+            padding: 0px;
+        }
+
+        .register-img {
+            background: url("../../assets/images/register-img.png");
+            background-size: cover;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .register-form {
+            padding: 20px 40px;
+
+            .roles {
+                h5 {
+                    font-size: 1.5em;
+                    color: #7C7FE9;
+                }
+
+                .btn {
+                    margin: 40px 0;
+                }
+            }
+
+            .ant-select {
+                width: 100%;
+                margin-left: 20px;
+
+                .ant-select-selector {
+                    background: #f1f1f1;
+                    line-height: 2.5em;
+                    border-radius: 20px;
+                    border: none;
+                }
+            }
+
+            .title-box {
+                margin-bottom: 20px;
+
+                h2 {
+                    color: #7C7FE9;
+                    font-weight: 700;
+                }
+            }
+
+            label {
+                color: #7C7FE9;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+}

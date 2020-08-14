@@ -1,0 +1,47 @@
+#header {
+    z-index: 999;
+    width: 100%;
+    position: absolute;
+
+
+    a,
+    p {
+        color: white;
+    }
+
+    &.purple {
+
+        a,
+        p {
+            color: #7C7FE9;
+        }
+    }
+
+    .header-logo {
+        width: 200px;
+    }
+
+    li {
+        margin-left: 30px;
+        font-weight: 600;
+
+        &:hover {
+            cursor: pointer;
+            padding-bottom: 4px;
+            border-bottom: 2px solid white;
+        }
+    }
+
+    .btn-outline {
+        &.purple {
+            border-color: #7C7FE9;
+            color: #7C7FE9;
+        }
+    }
+
+    .menu-btn:hover {
+        cursor: pointer;
+        border: none;
+        padding-bottom: 0px;
+    }
+}

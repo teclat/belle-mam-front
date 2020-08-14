@@ -1,0 +1,86 @@
+#present-list {
+    padding-top: 50px;
+
+    &.invite-green {
+        background: #7fc5af;
+
+        ul li {
+            .text {
+                color: #7fc5af;
+            }
+
+            .money {
+                color: #7fc5af;
+            }
+        }
+    }
+
+    &.invite-purple {
+        background: #9a9ce9;
+
+        ul li {
+            .text {
+                color: #9a9ce9;
+            }
+
+            .money {
+                color: #9a9ce9;
+            }
+        }
+    }
+
+    h2 {
+        text-align: center;
+        color: white;
+        font-size: 2.5em;
+    }
+
+    ul {
+        margin-top: 50px;
+
+        li {
+            border-radius: 15px;
+            background-color: white;
+            max-width: 250px;
+            padding-bottom: 20px;
+
+            .text {
+                margin-top: 5px;
+                margin-bottom: 20px;
+                font-weight: bold;
+                text-align: center;
+                max-width: 150px;
+            }
+
+            .money {
+                margin-bottom: 20px;
+                font-size: 2.5em;
+                font-weight: bold;
+            }
+
+            img {
+                border-radius: 15px;
+                width: 100%;
+            }
+        }
+    }
+
+    .btn-outline {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        margin-left: 20px;
+        border-radius: 100px;
+        font-weight: 700;
+        padding-top: 0;
+        line-height: 1.2em;
+        padding-bottom: 0;
+        max-width: 210px;
+
+        img {
+            height: 20px;
+            width: 20px;
+            margin-right: 10px;
+        }
+    }
+
+}

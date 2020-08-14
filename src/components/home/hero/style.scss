@@ -1,0 +1,45 @@
+#hero {
+    height: 82vh;
+
+    .hero-box {
+        max-width: 550px;
+        color: white;
+        padding-left: 100px;
+    }
+
+    .hero-box h1 {
+        color: white;
+        font-family: 'GoodDogNew', 'Maven Pro', sans-serif !important;
+    }
+
+    .chat-btn {
+        background: #5cdab5;
+        position: fixed;
+        z-index: 999;
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        right: 20px;
+        bottom: 20vh;
+        -webkit-box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
+        -moz-box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
+        box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
+        transition: all ease 0.2s;
+    }
+
+    .chat-btn.scrolled {
+        right: 20px;
+        bottom: 20px;
+        transition: all ease 0.2s;
+    }
+
+    .chat-btn:hover {
+        cursor: pointer;
+    }
+
+    .chat-btn img {
+        width: 35px;
+        height: 35px;
+        margin-top: 5px;
+    }
+}
