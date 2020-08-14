@@ -1,3 +1,3 @@
 export const Constants = {
-    ApiUrl: "http://localhost:8080/api/",
+    ApiUrl: "https://belle-mam-back.herokuapp.com/api/",
 };
