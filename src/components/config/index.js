@@ -15,9 +15,9 @@ function Config(props) {
   const [live, setLive] = useState("");
   const [babyBirth, setBabyBirth] = useState(null);
 
-  React.useEffect(() => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
-  }, []);
+  // React.useEffect(() => {
+  //   let user = await JSON.parse(await localStorage.getItem("user"));
+  // }, []);
 
   const next = () => {
     if (

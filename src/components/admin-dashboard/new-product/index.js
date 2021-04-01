@@ -163,7 +163,7 @@ function NewProduct(props) {
         </Row>
 
         <Button
-          loading={loading}
+          loading={isLoading}
           onClick={() => send()}
           className="btn btn-secondary"
         >
