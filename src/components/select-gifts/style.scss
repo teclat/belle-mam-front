@@ -1,45 +1,59 @@
 #select-gifts {
+  .title-box {
+    margin-top: 20px;
 
-    .title-box {
-        margin-top: 20px;
-
-        h2,
-        h4 {
-            color: #7C7FE9;
-        }
-
-        h2 {
-            font-size: 2.5em;
-        }
-
-        h4 {
-            margin: 30px 0;
-            font-size: 1.5em;
-            font-weight: 800;
-        }
+    h2,
+    h4 {
+      color: #7c7fe9;
     }
 
-    ul {
-        margin-top: 50px;
+    h2 {
+      font-size: 2.5em;
     }
 
-    .btns {
-        margin-top: 40px;
+    h4 {
+      margin: 30px 0;
+      font-size: 1.5em;
+      font-weight: 800;
     }
+  }
 
-    .btn {
-        display: flex;
-        width: 200px;
-        justify-content: center;
-        line-height: 2em;
-    }
+  .gifts {
+    justify-content: center;
+  }
 
-    .btn-secondary {
-        margin-left: 40px;
-    }
+  .gifts ul {
+    display: grid;
+    margin-top: 50px;
+    gap: 1rem;
+    grid-template-columns: auto auto auto auto;
+  }
 
-    .btn-outline {
-        border-color: #57dac1;
-        color: #57dac1;
-    }
+  .btnsContainer {
+    margin: 40px 0;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .btns {
+    margin: 40px 0;
+  }
+
+  .btn {
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    line-height: 2em;
+  }
+
+  .btn-secondary {
+    margin: 0;
+  }
+
+  .btn-outline {
+    border-color: #57dac1;
+    color: #57dac1;
+  }
 }
