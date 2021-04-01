@@ -14,7 +14,7 @@ function GiftListParent(props) {
   }, []);
 
   const get = async () => {
-    let user = JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(await localStorage.getItem("user"));
     if (props.event.id === undefined) {
       console.log("Event not set.");
     } else {
@@ -45,7 +45,7 @@ function GiftListParent(props) {
         quantity: product.quantity,
       };
     });
-    let user = JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(await localStorage.getItem("user"));
 
     axios
       .patch(

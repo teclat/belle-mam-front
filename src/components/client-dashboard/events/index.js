@@ -13,7 +13,7 @@ function EventsGuest(props) {
   }, []);
 
   const get = async () => {
-    let user = JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(await localStorage.getItem("user"));
     //this.setState({ loading: true });
     setIsloading(true);
 
