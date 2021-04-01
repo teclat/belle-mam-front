@@ -13,13 +13,13 @@ export default class Gallery extends Component {
                 <OwlCarousel options={{ nav: true, center: true, loop: true, navText: ["<", ">"] }} class="owl-carousel owl-carousel-gallery">
                     {
                         this.props.event && this.props.event.gallery ?
-                            this.props.event.gallery.map((note) => {
+                            this.props.event.gallery.map((gallery) => {
                                 return <div class="box">
-                                    <img src={require("../../../assets/images/baby-shower.png")} />
-                                    <div class="label">
+                                    <img src={gallery.image_url} />
+                                    {/* <div class="label">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus condimentum lacus eget justo
                                         eleifend, ac ultrices lectus vehicula.
-                                    </div>
+                                    </div> */}
                                 </div>
                             })
                             : null

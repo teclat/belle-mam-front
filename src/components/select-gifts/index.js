@@ -23,7 +23,7 @@ export default class SelectGifts extends Component {
       isLoading: true,
     });
 
-    let user = JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(await localStorage.getItem("user"));
     console.log("user", user);
 
     axios

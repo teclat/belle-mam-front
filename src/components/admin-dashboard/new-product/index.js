@@ -33,7 +33,7 @@ function NewProduct(props) {
     console.log("file", file);
 
     let filedata = "";
-    this.getBase64(file, (result) => {
+    getBase64(file, (result) => {
       filedata = result;
       //this.setState({ image: filedata, fileList: [file] })
       setImage(filedata);
@@ -49,7 +49,7 @@ function NewProduct(props) {
       return;
     }
 
-    let user = JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(await localStorage.getItem("user"));
     //this.setState({ loading: true });
     setIsLoading(true);
 
@@ -111,8 +111,8 @@ function NewProduct(props) {
           </Col>
           <Col span={20}>
             <Input
-              value={this.state.name}
-              onChange={(e) => this.setState({ name: e.target.value })}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder={""}
             />
           </Col>
@@ -121,8 +121,8 @@ function NewProduct(props) {
           <Col span={24}>
             <label>Descrição</label>
             <Input.TextArea
-              value={this.state.description}
-              onChange={(e) => this.setState({ description: e.target.value })}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               className="mt-3"
               placeholder={"Escrever..."}
             />
@@ -135,16 +135,14 @@ function NewProduct(props) {
           <Col span={18}>
             <Upload
               name="file"
-              customRequest={this.dummyRequest}
+              customRequest={dummyRequest}
               multiple={false}
               showUploadList={false}
-              beforeUpload={this.beforeUpload}
+              beforeUpload={beforeUpload}
             >
               <Button>
-                {this.state.fileList &&
-                this.state.fileList[0] &&
-                this.state.fileList[0].name
-                  ? this.state.fileList[0].name
+                {fileList && fileList[0] && fileList[0].name
+                  ? fileList[0].name
                   : "Escolher..."}
               </Button>
             </Upload>
@@ -156,8 +154,8 @@ function NewProduct(props) {
           </Col>
           <Col span={20}>
             <Input
-              value={this.state.price}
-              onChange={(e) => this.setState({ price: e.target.value })}
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
               type="number"
               placeholder={"R$ 0,00"}
             />
@@ -165,8 +163,8 @@ function NewProduct(props) {
         </Row>
 
         <Button
-          loading={this.state.loading}
-          onClick={() => this.send()}
+          loading={isLoading}
+          onClick={() => send()}
           className="btn btn-secondary"
         >
           SALVAR

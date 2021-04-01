@@ -36,9 +36,18 @@ export default class Invite extends Component {
             <div>
                 <Header />
                 <InviteBox event={this.state.event} />
-                <GiftList event={this.state.event} />
-                <Gallery event={this.state.event} />
-                <Notes event={this.state.event} />
+                {
+                    this.state.event && this.state.event.products && this.state.event.products.length > 0 ?
+                        <GiftList event={this.state.event} /> : null
+                }
+                {
+                    this.state.event && this.state.event.gallery && this.state.event.gallery.length > 0 ?
+                        <Gallery event={this.state.event} /> : null
+                }
+                {
+                    this.state.event && this.state.event.notes && this.state.event.notes.length > 0 ?
+                        <Notes event={this.state.event} /> : null
+                }
                 <Footer />
             </div>
         )

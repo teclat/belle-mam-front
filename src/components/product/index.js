@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./style.scss";
-import { Row, Col, Switch, Select, Divider } from "antd";
+import { Switch, Select } from "antd";
 
 const { Option } = Select;
 

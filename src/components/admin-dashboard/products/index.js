@@ -12,7 +12,7 @@ function Products(props) {
   }, []);
 
   const get = async () => {
-    let user = JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(await localStorage.getItem("user"));
 
     axios
       .get(Constants.ApiUrl + "products", {
@@ -37,7 +37,7 @@ function Products(props) {
       </div>
       <div className="gifts justify-content-center">
         <ul class="d-flex flex-row justify-content-around flex-wrap">
-          {this.state.products.map((product) => {
+          {products.map((product) => {
             return <Product product={product} />;
           })}
         </ul>

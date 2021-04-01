@@ -86,18 +86,19 @@ export default class Register extends Component {
             .then((response) => {
                 this.setState({ loading: false })
                 console.log(response.data);
-                let user = response.data;
-                localStorage.setItem("user", JSON.stringify(user));
+                // let user = response.data;
+                // localStorage.setItem("user", JSON.stringify(user));
 
-                if (user.role === "parent") {
-                    this.props.history.push('/parents/first-steps');
-                } else if (user.role === "admin") {
-                    this.props.history.push('/admin/products');
-                } else if (user.role === "guest") {
-                    this.props.history.push('/guest/personal');
-                } else {
-                    Modal.error({ content: "Erro de executar cadastro." });
-                }
+                this.props.history.push('/');
+                Modal.success({ content: "Cadastro realizado." });
+                // if (user.role === "parent") {
+                // } else if (user.role === "admin") {
+                //     this.props.history.push('/admin/products');
+                // } else if (user.role === "guest") {
+                //     this.props.history.push('/guest/personal');
+                // } else {
+                //     Modal.error({ content: "Erro de executar cadastro." });
+                // }
             })
             .catch((error) => {
                 this.setState({ loading: false })
