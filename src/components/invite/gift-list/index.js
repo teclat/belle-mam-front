@@ -15,7 +15,7 @@ export default class GiftList extends Component {
   }
 
   gift = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       Modal.error({

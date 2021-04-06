@@ -50,7 +50,7 @@ function PersonalClient(props) {
   };
 
   const get = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     axios
       .get(Constants.ApiUrl + "users/" + user.id, {
@@ -85,7 +85,7 @@ function PersonalClient(props) {
   };
 
   const update = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (name === "" || phone === "" || city === "" || state === "") {
       Modal.error({

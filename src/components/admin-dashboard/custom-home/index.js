@@ -58,7 +58,7 @@ function CustomHome(props) {
       return;
     }
 
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     setLoading(true);
 
     axios

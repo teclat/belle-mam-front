@@ -28,7 +28,7 @@ export default class HomeParent extends Component {
   };
 
   get = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     this.setState({ user_name: user.userName });
 
     axios

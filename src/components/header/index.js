@@ -11,7 +11,7 @@ export default class Header extends Component {
   }
 
   componentDidMount = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.setState({ user });
     }

@@ -45,7 +45,7 @@ export default class GalleryParent extends Component {
   }
 
   remove = async (file) => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     axios
       .post(
@@ -72,7 +72,7 @@ export default class GalleryParent extends Component {
   };
 
   getImages = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     axios
       .post(
@@ -105,7 +105,7 @@ export default class GalleryParent extends Component {
   };
 
   addImage = async ({ file, onSuccess }) => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     this.setState({ loading: true });
 
     let filedata = "";

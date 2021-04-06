@@ -67,7 +67,7 @@ export default class Customization extends Component {
   };
 
   verifyUrl = async (url) => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     console.log(user.token);
     axios
       .get(Constants.ApiUrl + "events/verify/" + url, {

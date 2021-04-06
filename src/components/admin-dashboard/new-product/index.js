@@ -49,7 +49,7 @@ function NewProduct(props) {
       return;
     }
 
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     //this.setState({ loading: true });
     setIsLoading(true);
 

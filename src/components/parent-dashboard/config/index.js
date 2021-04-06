@@ -41,7 +41,7 @@ function ConfigParent(props) {
       if (canDeleteEvent === true) {
         console.log("TESTE2");
         const event = props.event;
-        let user = JSON.parse(await localStorage.getItem("user"));
+        let user = await JSON.parse(localStorage.getItem("user"));
         //this.setState({ loading: true });
         setIsLoading(true);
         axios
@@ -104,7 +104,7 @@ function ConfigParent(props) {
       return;
     }
 
-    let user = JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     //this.setState({ loading: true });
     setIsLoading(true);
 

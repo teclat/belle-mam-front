@@ -38,7 +38,7 @@ export default class InviteBox extends Component {
   };
 
   participate = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     if (!user) {
       Modal.error({
         content:
@@ -84,7 +84,7 @@ export default class InviteBox extends Component {
   };
 
   remember = async (e) => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       Modal.error({
@@ -100,7 +100,7 @@ export default class InviteBox extends Component {
   };
 
   send = async (e) => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       Modal.error({

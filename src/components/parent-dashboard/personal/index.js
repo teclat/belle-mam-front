@@ -49,7 +49,7 @@ export default class PersonalParent extends Component {
   };
 
   get = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     axios
       .get(Constants.ApiUrl + "users/" + user.id, {
@@ -76,7 +76,7 @@ export default class PersonalParent extends Component {
   };
 
   update = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (
       this.state.name === "" ||
