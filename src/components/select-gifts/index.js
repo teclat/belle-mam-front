@@ -4,26 +4,81 @@ import Product from "../product";
 import { Constants } from "../../constants";
 import axios from "axios";
 import { Button } from "antd";
-export default class SelectGifts extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: 1,
-      products: [],
-      selecteds: [],
-      isLoading: false,
-      hasMorePages: true,
-    };
-    this.get();
-  }
+import { useState } from "react";
+import FirstRender from "../../hooks/FirstRender";
 
-  get = async () => {
-    console.log(this.state.isLoading);
-    this.setState({
-      isLoading: true,
-    });
+function SelectGifts(props) {
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(8);
+  const [products, setProducts] = useState([]);
+  const [lastAddedLength, setLastAddedLength] = useState(0);
+  const [selecteds, setSelecteds] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMorePages, setHasMorePages] = useState(true);
+  const [pageLimit, setPageLimit] = useState(page + 1);
 
-    let user = await JSON.parse(await localStorage.getItem("user"));
+  const isFirstRender = FirstRender();
+
+  React.useEffect(() => {
+    getProducts();
+  }, []);
+
+  React.useEffect(() => {
+    if (!isFirstRender) {
+      console.log("PRODUCTS: ", products);
+      console.log("Page Limit: ", pageLimit, "Page", page);
+    }
+  }, [products]);
+
+  const parseProducts = (data) => {
+    let parsedProducts = [];
+
+    for (let i = 0; i < data.length; i++) {
+      let forEachProduct = {
+        id: "",
+        name: "",
+        stock_quantity: "",
+        slug: "",
+        permalink: "",
+        purchased: "",
+        type: "",
+        description: "",
+        short_description: "",
+        sku: "",
+        price: "",
+        regular_price: "",
+        weight: "",
+        dimensions: { length: "", width: "", height: "" },
+        categories: [],
+        images: [],
+      };
+      forEachProduct.id = data[i].id;
+      forEachProduct.name = data[i].name;
+      forEachProduct.stock_quantity = data[i].stock_quantity;
+      forEachProduct.slug = data[i].slug;
+      forEachProduct.permalink = data[i].permalink;
+      forEachProduct.purchased = data[i].purchased;
+      forEachProduct.type = data[i].type;
+      forEachProduct.description = data[i].description;
+      forEachProduct.short_description = data[i].short_description;
+      forEachProduct.sku = data[i].sku;
+      forEachProduct.price = data[i].price;
+      forEachProduct.regular_price = data[i].regular_price;
+      forEachProduct.weight = data[i].weight;
+      forEachProduct.dimensions.length = data[i].dimensions.length;
+      forEachProduct.dimensions.width = data[i].dimensions.width;
+      forEachProduct.dimensions.height = data[i].dimensions.height;
+      forEachProduct.categories = data[i].categories;
+      forEachProduct.images = data[i].images;
+      parsedProducts.push(forEachProduct);
+    }
+    return parsedProducts;
+  };
+
+  const getProducts = async () => {
+    setIsLoading(true);
+
+    let user = await JSON.parse(localStorage.getItem("user"));
     console.log("user", user);
 
     axios
@@ -33,124 +88,148 @@ export default class SelectGifts extends Component {
         },
 
         params: {
-          page: this.state.page,
-          per_page: 8,
+          page: page,
+          per_page: perPage,
         },
       })
+
       .then((response) => {
-        let pageLimit = response.headers["x-wp-totalpages"];
-        if (pageLimit <= this.state.page) {
-          this.setState({
-            hasMorePages: false,
-          });
+        setPageLimit(response.headers["x-wp-totalpages"]);
+
+        let data = response.data;
+
+        console.log(response.data);
+
+        let parsedProducts = parseProducts(data);
+
+        setProducts([...products, ...parsedProducts]);
+
+        setLastAddedLength(parseProducts.length);
+
+        if (page >= pageLimit) {
+          setHasMorePages(false);
           console.log("End of products list.");
-          console.log(this.state.hasMorePages);
+        } else {
+          setPage(page + 1);
         }
 
-        console.log(pageLimit);
-
-        this.setState({
-          products: [...this.state.products, ...response.data],
-        });
-
-        console.log("PRODUCTS", this.state.products);
-
-        this.setState({ page: this.state.page + 1 });
-
-        this.setState({
-          isLoading: false,
-        });
+        setIsLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
-        this.setState({
-          isLoading: false,
-        });
+
+      .catch((err) => {
+        console.error(err.message);
+        setIsLoading(false);
       });
   };
 
-  change = (id, values) => {
+  const removeProducts = () => {
+    setIsLoading(true);
+
+    let productsTemp = products;
+    productsTemp.splice(-1, lastAddedLength);
+    setProducts(productsTemp);
+
+    setIsLoading(false);
+  };
+
+  const changeSelecteds = (id, values) => {
     console.log(values);
-    let selecteds = this.state.selecteds;
+    let selectedsTemp = selecteds;
     let exist = false;
-    if (selecteds.length > 0) {
-      let product = selecteds.filter((p) => p.product_id == id)[0];
+    if (selectedsTemp.length > 0) {
+      let product = selectedsTemp.filter((p) => p.product_id === id)[0];
       if (product) {
         exist = true;
-        if (values.selected == true) {
+        if (values.selected === true) {
           product.quantity = values.qtd;
         } else {
-          var index = selecteds
+          var index = selectedsTemp
             .map((p) => {
               return p.product_id;
             })
             .indexOf(id);
-          selecteds.splice(index, 1);
+          selectedsTemp.splice(index, 1);
         }
       }
     }
 
     if (!exist) {
-      if (values.selected == true) {
+      if (values.selected === true) {
         selecteds.push({
           product_id: id,
           quantity: values.qtd,
         });
       }
     }
-    console.log("pppp", selecteds);
-    this.setState({ selecteds: selecteds });
+    console.log("pppp", selectedsTemp);
+    setSelecteds(selectedsTemp);
   };
 
-  render() {
-    return (
-      <div id="select-gifts">
-        <div className="d-flex flex-column justify-content-center align-items-center title-box">
-          <div className="d-flex">
-            <h2>Falta pouco!</h2>
-            <img src={require("../../assets/images/purple-heart.png")} />
-          </div>
-          <h4>Vamos escolher os produtos do seu evento</h4>
+  const sendSelecteds = async () => {
+    setIsLoading(true);
+  };
+
+  return (
+    <div id="select-gifts">
+      <div className="d-flex flex-column justify-content-center align-items-center title-box">
+        <div className="d-flex">
+          <h2>Falta pouco!</h2>
+          <img src={require("../../assets/images/purple-heart.png")} alt="" />
         </div>
-        <div className="gifts">
-          {/* <ul class="d-flex flex-row justify-content-around"> */}
-          <ul>
-            {this.state.products.map((product) => {
-              return (
-                <Product
-                  event_product={product.id}
-                  change={this.change}
-                  gifted={false}
-                  product={product}
-                />
-              );
-            })}
-          </ul>
-        </div>
-        {/* <div className="d-flex btns justify-content-around"> */}
-        <div className="btnsContainer">
-          {this.state.hasMorePages === true ? (
-            <Button
-              loading={this.state.isLoading}
-              onClick={() => {
-                this.get();
-              }}
-              className="btn btn-secondary"
-            >
-              MAIS PRODUTOS
-            </Button>
-          ) : null}
+        <h4>Vamos escolher os produtos do seu evento</h4>
+      </div>
+      <div className="gifts">
+        {/* <ul class="d-flex flex-row justify-content-around"> */}
+        <ul>
+          {products.map((product) => {
+            return (
+              <Product
+                key={product.id}
+                event_product={product.id}
+                change={changeSelecteds}
+                gifted={false}
+                product={product}
+              />
+            );
+          })}
+        </ul>
+      </div>
+      {/* <div className="d-flex btns justify-content-around"> */}
+      <div className="btnsContainer">
+        {hasMorePages === true ? (
           <Button
-            loading={this.props.isLoading}
+            loading={isLoading}
             onClick={() => {
-              this.props.save(this.state.selecteds);
+              getProducts();
             }}
             className="btn btn-secondary"
           >
-            FINALIZAR
+            MAIS PRODUTOS
           </Button>
-        </div>
+        ) : null}
+        {page !== 1 ? (
+          <Button
+            loading={isLoading}
+            onClick={() => {
+              removeProducts();
+            }}
+            className="btn btn-secondary"
+          >
+            MENOS PRODUTOS
+          </Button>
+        ) : null}
+        <Button
+          loading={props.isLoading}
+          onClick={() => {
+            props.save(selecteds);
+          }}
+          className="btn btn-secondary"
+        >
+          FINALIZAR
+        </Button>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default SelectGifts;

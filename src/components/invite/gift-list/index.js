@@ -15,7 +15,7 @@ export default class GiftList extends Component {
   }
 
   gift = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       Modal.error({
@@ -62,12 +62,12 @@ export default class GiftList extends Component {
       <section
         id="present-list"
         class={
-          this.props.event.theme == "green" ? "invite-green" : "invite-purple"
+          this.props.event.theme === "green" ? "invite-green" : "invite-purple"
         }
       >
         <div class="d-flex justify-content-center align-items-center invite-title-box">
           <h2>Lista de Presentes</h2>
-          <img src={require("../../../assets/images/white-heart.png")} />
+          <img src={require("../../../assets/images/white-heart.png")} alt="" />
         </div>
         <ul class="d-flex flex-row justify-content-around">
           {this.props.event && this.props.event.products
@@ -77,7 +77,7 @@ export default class GiftList extends Component {
                     key={product.id}
                     class="d-flex flex-column justify-content-around align-items-center"
                   >
-                    <img src={product.image_url} />
+                    <img src={product.image_url} alt="" />
                     <p class="text">{product.name}</p>
                     <p class="money">R$ {product.price}</p>
                     <button
@@ -86,7 +86,7 @@ export default class GiftList extends Component {
                       }}
                       class={
                         "btn " +
-                        (this.props.event.theme == "green"
+                        (this.props.event.theme === "green"
                           ? "btn-secondary"
                           : "btn-primary")
                       }
@@ -102,6 +102,7 @@ export default class GiftList extends Component {
           {/* <button class="btn btn-outline">VER MAIS</button> */}
           <a
             target={"_blank"}
+            rel="noopener noreferrer"
             href="https://api.whatsapp.com/send?phone='5585981768451'&text=%20Oi, tudo bem. Pode me ajudar?%20"
             className="btn btn-outline d-flex align-items-center justify-content-around"
           >

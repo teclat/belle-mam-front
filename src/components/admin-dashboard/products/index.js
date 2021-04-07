@@ -12,7 +12,7 @@ function Products(props) {
   }, []);
 
   const get = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     axios
       .get(Constants.ApiUrl + "products", {

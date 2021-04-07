@@ -51,14 +51,14 @@ function CustomHome(props) {
   };
 
   const send = async (e) => {
-    if (text == "" || image == "" || obs == "") {
+    if (text === "" || image === "" || obs === "") {
       Modal.warning({
         content: "Campos vazios.",
       });
       return;
     }
 
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     setLoading(true);
 
     axios

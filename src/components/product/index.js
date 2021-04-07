@@ -9,32 +9,46 @@ export default class Product extends Component {
     gifted: false,
     selected: this.props.selected,
     qtd: this.props.qtd ? this.props.qtd : 0,
-    placeholder: 0,
   };
 
   change = () => {
     this.props.change(this.props.event_product, this.state);
   };
 
+  handleQtdChange = (e) => {
+    let min = 0;
+    let max = this.props.product.stock_quantity;
+
+    if (e.target.value <= max && e.target.value > min) {
+      this.setState({ qtd: e.target.value });
+    } else if (e.target.value > max) {
+      this.setState({ qtd: max });
+    } else {
+      this.setState({ qtd: min });
+    }
+
+    this.change();
+  };
+
   render() {
-    console.log(this.props.product);
+    //console.log(this.props.product);
     return (
       // <li id="product" class="d-flex flex-column align-items-center">
       <li id="product">
         {this.props.product.images[0] !== undefined ? (
-          <img src={this.props.product.images[0].src} />
+          <img src={this.props.product.images[0].src} alt="" />
         ) : (
           <img
             src={require("../../assets/images/woocommerce-placeholder.png")}
-            alt="IMAGE"
+            alt="IMAGEM"
           />
         )}
-        <p class="text">{this.props.product.name}</p>
-        <p class="money">
+        <p className="text">{this.props.product.name}</p>
+        <p className="money">
           R${" "}
           {parseFloat(this.props.product.price).toFixed(2).split(".").join(",")}
         </p>
-        {this.props.gifted == false ? (
+        {this.props.gifted === false ? (
           <div className="selectContainer">
             <div className="selectButtonContainer">
               <p>ESCOLHER</p>
@@ -48,12 +62,16 @@ export default class Product extends Component {
               />
             </div>
             <div className="selectButtonContainer">
-              <label for="qtdeInput">QUANTIDADE</label>
+              <label htmlFor="qtdeInput">QUANTIDADE</label>
               <input
                 id="qtdeInput"
                 type="number"
                 min="0"
                 max={this.props.product.stock_quantity}
+                value={this.state.qtd}
+                onChange={(e) => {
+                  this.handleQtdChange(e);
+                }}
               />
             </div>
             {/* <Select

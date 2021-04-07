@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post("users/login", body);
       if (response.data) {
         const user = response.data;
-        localStorage.setItem("user", JSON.stringify(user));
+        await localStorage.setItem("user", JSON.stringify(user));
 
         // if (user.role === "parent") {
         //   this.props.history.push("/parents/home");

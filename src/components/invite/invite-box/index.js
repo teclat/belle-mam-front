@@ -21,9 +21,9 @@ export default class InviteBox extends Component {
     var difference = null;
 
     if (
-      today.getDate() == eventDay.getDate() &&
-      today.getMonth() == eventDay.getMonth() &&
-      today.getFullYear() == eventDay.getFullYear()
+      today.getDate() === eventDay.getDate() &&
+      today.getMonth() === eventDay.getMonth() &&
+      today.getFullYear() === eventDay.getFullYear()
     ) {
       difference = 0;
     } else if (today > eventDay) {
@@ -38,7 +38,7 @@ export default class InviteBox extends Component {
   };
 
   participate = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     if (!user) {
       Modal.error({
         content:
@@ -84,7 +84,7 @@ export default class InviteBox extends Component {
   };
 
   remember = async (e) => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       Modal.error({
@@ -100,7 +100,7 @@ export default class InviteBox extends Component {
   };
 
   send = async (e) => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       Modal.error({
@@ -110,7 +110,7 @@ export default class InviteBox extends Component {
       return;
     }
 
-    if (this.state.note == "") {
+    if (this.state.note === "") {
       Modal.warning({
         content: "Recado está vazio.",
       });
@@ -175,6 +175,9 @@ export default class InviteBox extends Component {
         case "birth_day":
           typeText = "Niver";
           break;
+        default:
+          typeText = "";
+          break;
       }
     }
     return typeText;
@@ -196,18 +199,19 @@ export default class InviteBox extends Component {
       <section
         id="invite"
         class={
-          this.props.event.theme == "green" ? "invite-green" : "invite-purple"
+          this.props.event.theme === "green" ? "invite-green" : "invite-purple"
         }
       >
         <div class="invite-back"></div>
         <div class="invite-box d-flex flex-row">
           <div class="d-flex flex-column first-column align-items-center">
             <div class="main-img d-flex justify-content-center align-items-center">
-              <img src={this.props.event.baby_image_url} />
+              <img src={this.props.event.baby_image_url} alt="" />
             </div>
             <div className={"mt-3"} style={{ paddingLeft: 30 }}>
               <a
                 target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-live"
                 href={
                   this.props.event && this.props.event.live
@@ -221,7 +225,9 @@ export default class InviteBox extends Component {
               <div class="d-flex flex-row flex-wrap confirmeds">
                 {this.props.event && this.props.event.guests
                   ? this.props.event.guests.map((guest) => {
-                      return <img class="avatar" src={guest.image_url} />;
+                      return (
+                        <img class="avatar" src={guest.image_url} alt="" />
+                      );
                     })
                   : null}
               </div>
@@ -230,7 +236,11 @@ export default class InviteBox extends Component {
           <div class="d-flex flex-column second-column">
             <div class="d-flex flex-row align-items-center">
               <div class="d-flex flex-row align-items-center">
-                <img class="avatar" src={this.props.event.mom_image_url} />
+                <img
+                  class="avatar"
+                  src={this.props.event.mom_image_url}
+                  alt=""
+                />
                 <div class="ml-2 mr-2">
                   <p>
                     <span>A Mamãe</span>
@@ -239,7 +249,11 @@ export default class InviteBox extends Component {
                 </div>
               </div>
               <div class="d-flex flex-row align-items-center">
-                <img class="avatar" src={this.props.event.dad_image_url} />
+                <img
+                  class="avatar"
+                  src={this.props.event.dad_image_url}
+                  alt=""
+                />
                 <div class="ml-2 mr-2">
                   <p>
                     <span>O Papai</span>
@@ -259,7 +273,7 @@ export default class InviteBox extends Component {
                 onClick={() => this.setState({ showParticipate: true })}
                 class={
                   "btn " +
-                  (this.props.event.theme == "green"
+                  (this.props.event.theme === "green"
                     ? "btn-secondary"
                     : "btn-primary")
                 }
@@ -268,6 +282,7 @@ export default class InviteBox extends Component {
               </button>
               <a
                 target={"_blank"}
+                rel="noopener noreferrer"
                 href={
                   "https://api.whatsapp.com/send?phone='" +
                   this.getPhone(this.props.event.phone) +
@@ -277,9 +292,10 @@ export default class InviteBox extends Component {
               >
                 <img
                   src={require("../../../assets/images/" +
-                    (this.props.event.theme == "green"
+                    (this.props.event.theme === "green"
                       ? "whats-green.png"
                       : "whats-purple.png"))}
+                  alt=""
                 />
                 FALE COM OS PAPAIS
               </a>
@@ -289,7 +305,7 @@ export default class InviteBox extends Component {
                 onClick={() => this.showSendNote()}
                 class={
                   "btn d-flex justify-content-center " +
-                  (this.props.event.theme == "green"
+                  (this.props.event.theme === "green"
                     ? "btn-secondary"
                     : "btn-primary")
                 }
@@ -304,18 +320,20 @@ export default class InviteBox extends Component {
             <div class="d-flex flex-row info align-items-center">
               <img
                 src={require("../../../assets/images/" +
-                  (this.props.event.theme == "green"
+                  (this.props.event.theme === "green"
                     ? "location-green.png"
                     : "location-purple.png"))}
+                alt=""
               />
               <p>{this.props.event.address}</p>
             </div>
             <div class="d-flex flex-row info align-items-center">
               <img
                 src={require("../../../assets/images/" +
-                  (this.props.event.theme == "green"
+                  (this.props.event.theme === "green"
                     ? "clock-green.png"
                     : "clock-purple.png"))}
+                alt=""
               />
               <p>{this.props.event.hour}h</p>
             </div>
@@ -332,7 +350,7 @@ export default class InviteBox extends Component {
                 onClick={() => this.remember()}
                 className={
                   "btn d-flex justify-content-center " +
-                  (this.props.event.theme == "green"
+                  (this.props.event.theme === "green"
                     ? "btn-secondary"
                     : "btn-primary")
                 }

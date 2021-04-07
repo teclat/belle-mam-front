@@ -11,7 +11,7 @@ export default class Header extends Component {
   }
 
   componentDidMount = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.setState({ user });
     }
@@ -41,6 +41,7 @@ export default class Header extends Component {
             class="header-logo"
             src={require("../../assets/images/" +
               (this.props.purple ? "cha-bebe-logo.png" : "logo-white.png"))}
+            alt=""
           />
         </Link>
         <ul class="d-flex align-items-center">
@@ -90,9 +91,10 @@ export default class Header extends Component {
               class="btn btn-primary d-flex align-items-center"
               href="https://bellemam.com.br/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               LOJA BELLE MAN{" "}
-              <img src={require("../../assets/images/enter.png")} />
+              <img src={require("../../assets/images/enter.png")} alt="" />
             </a>
           </li>
         </ul>
