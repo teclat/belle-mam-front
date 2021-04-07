@@ -25,11 +25,12 @@ import AuthContext from "../../../hooks/AuthContext";
 
 function ParentDashboard(props) {
   const [event, setEvent] = useState({});
+  const [isLoading, setIsloading] = useState(false);
 
   const { isAuth } = useContext(AuthContext);
 
   React.useEffect(() => {
-    get();
+    getEvents();
   }, []);
 
   const logout = async () => {
@@ -37,8 +38,8 @@ function ParentDashboard(props) {
     props.history.push("/");
   };
 
-  const get = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+  const getEvents = async () => {
+    let user = await JSON.parse(localStorage.getItem("user"));
     console.log("user", user);
 
     axios
@@ -58,6 +59,12 @@ function ParentDashboard(props) {
       });
   };
 
+  const dashboardIsloading = () => {
+    setIsloading(true);
+    console.log("Carregando Dashboard...");
+    setIsloading(false);
+  };
+
   //get();
   //let url = "https://belle-mam.herokuapp.com/convite/" + event.url;
   let url = "";
@@ -69,7 +76,7 @@ function ParentDashboard(props) {
         span={5}
         className="leftColumn d-flex flex-column align-items-center"
       >
-        <img src={require("../../../assets/images/logo-white.png")} />
+        <img src={require("../../../assets/images/logo-white.png")} alt="" />
         <div className="d-flex flex-column justify-content-center align-items-center">
           <div>
             <p className="menu-title">MEU EVENTO &lt;3</p>
@@ -77,7 +84,7 @@ function ParentDashboard(props) {
               <div
                 className={
                   "link " +
-                  (props.location.pathname == "/parents/home" ? "active" : "")
+                  (props.location.pathname === "/parents/home" ? "active" : "")
                 }
               >
                 <HomeOutlined className="mr-3" />
@@ -88,7 +95,9 @@ function ParentDashboard(props) {
               <div
                 className={
                   "link d-flex align-items-center " +
-                  (props.location.pathname == "/parents/config" ? "active" : "")
+                  (props.location.pathname === "/parents/config"
+                    ? "active"
+                    : "")
                 }
               >
                 {/* <img
@@ -103,7 +112,7 @@ function ParentDashboard(props) {
               <div
                 className={
                   "link d-flex align-items-center " +
-                  (props.location.pathname == "/parents/gallery"
+                  (props.location.pathname === "/parents/gallery"
                     ? "active"
                     : "")
                 }
@@ -120,7 +129,7 @@ function ParentDashboard(props) {
               <div
                 className={
                   "link d-flex align-items-center " +
-                  (props.location.pathname == "/parents/gifts" ? "active" : "")
+                  (props.location.pathname === "/parents/gifts" ? "active" : "")
                 }
               >
                 {/* <img
@@ -135,7 +144,7 @@ function ParentDashboard(props) {
               <div
                 className={
                   "link d-flex align-items-center " +
-                  (props.location.pathname == "/parents/personal"
+                  (props.location.pathname === "/parents/personal"
                     ? "active"
                     : "")
                 }
@@ -152,7 +161,9 @@ function ParentDashboard(props) {
               <div
                 className={
                   "link d-flex align-items-center " +
-                  (props.location.pathname == "/parents/custom" ? "active" : "")
+                  (props.location.pathname === "/parents/custom"
+                    ? "active"
+                    : "")
                 }
               >
                 {/* <img
@@ -168,9 +179,10 @@ function ParentDashboard(props) {
               className="btn btn-secondary d-flex align-items-center"
               href="https://bellemam.com.br/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               LOJA BELLE MAN{" "}
-              <img src={require("../../../assets/images/enter.png")} />
+              <img src={require("../../../assets/images/enter.png")} alt="" />
             </a>
           </div>
         </div>
@@ -183,7 +195,7 @@ function ParentDashboard(props) {
         >
           <p>PAINEL PRINCIPAL</p>
           {Object.keys(event).length !== 0 && event.url ? (
-            <a target="_blank" href={url}>
+            <a target="_blank" rel="noopener noreferrer" href={url}>
               IR PARA O CONVITE
             </a>
           ) : null}
@@ -200,35 +212,75 @@ function ParentDashboard(props) {
             <div>
               <Route
                 path={`${props.match.path}/home`}
-                component={() => <HomeParent event={event} />}
+                component={() => (
+                  <HomeParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
               <Route
                 path={`${props.match.path}/config`}
-                component={() => <ConfigParent event={event} />}
+                component={() => (
+                  <ConfigParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
               <Route
                 path={`${props.match.path}/gallery`}
-                component={() => <GalleryParent event={event} />}
+                component={() => (
+                  <GalleryParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
               <Route
                 path={`${props.match.path}/gifts`}
-                component={() => <GiftListParent event={event} />}
+                component={() => (
+                  <GiftListParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
               <Route
                 path={`${props.match.path}/custom`}
-                component={() => <CustomParent event={event} />}
+                component={() => (
+                  <CustomParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
               <Route
                 path={`${props.match.path}/personal`}
-                component={() => <PersonalParent event={event} />}
+                component={() => (
+                  <PersonalParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
               <Route
                 path={`${props.match.path}/notes`}
-                component={() => <NotesParent event={event} />}
+                component={() => (
+                  <NotesParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
               <Route
                 path={`${props.match.path}/gifteds`}
-                component={() => <GiftedsParent event={event} />}
+                component={() => (
+                  <GiftedsParent
+                    event={event}
+                    dashboardIsloading={dashboardIsloading}
+                  />
+                )}
               />
             </div>
           </Switch>
@@ -253,236 +305,3 @@ function ParentDashboard(props) {
 }
 
 export default ParentDashboard;
-
-// export default class ParentDashboard extends Component {
-//   // constructor(props) {
-//   //   super(props);
-//   //   this.state = {
-//   //     event: {},
-//   //   };
-//   //   this.get();
-//   // }
-
-//   logout = async () => {
-//     await localStorage.removeItem("user");
-//     this.props.history.push("/");
-//   };
-
-//   get = async () => {
-//     let user = JSON.parse(await localStorage.getItem("user"));
-//     console.log("user", user);
-
-//     axios
-//       .get(Constants.ApiUrl + "events/" + user.id, {
-//         headers: {
-//           Authorization: `Bearer ${user.token}`,
-//         },
-//       })
-//       .then((response) => {
-//         console.log("event", response.data);
-//         let event = response.data.length > 0 ? response.data[0] : null;
-//         this.state({
-//           event: event,
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
-
-//   render() {
-//     let url = "https://belle-mam.herokuapp.com/convite/" + this.state.event.url;
-//     console.log(this.props);
-//     return (
-//       <Row id="parent-dashboard">
-//         <Col
-//           span={5}
-//           className="leftColumn d-flex flex-column align-items-center"
-//         >
-//           <img src={require("../../../assets/images/logo-white.png")} />
-//           <div className="d-flex flex-column justify-content-center align-items-center">
-//             <div>
-//               <p className="menu-title">MEU EVENTO &lt;3</p>
-//               <Link to={"/parents/home"}>
-//                 <div
-//                   className={
-//                     "link " +
-//                     (this.props.location.pathname == "/parents/home"
-//                       ? "active"
-//                       : "")
-//                   }
-//                 >
-//                   <HomeOutlined className="mr-3" />
-//                   Início
-//                 </div>
-//               </Link>
-//               <Link to={"/parents/config"}>
-//                 <div
-//                   className={
-//                     "link d-flex align-items-center " +
-//                     (this.props.location.pathname == "/parents/config"
-//                       ? "active"
-//                       : "")
-//                   }
-//                 >
-//                   {/* <img
-//                     style={{ width: 20 }}
-//                     className="mr-3"
-//                     src={require("../../../assets/images/settings.png")}
-//                   /> */}
-//                   Configurações
-//                 </div>
-//               </Link>
-//               <Link to={"/parents/gallery"}>
-//                 <div
-//                   className={
-//                     "link d-flex align-items-center " +
-//                     (this.props.location.pathname == "/parents/gallery"
-//                       ? "active"
-//                       : "")
-//                   }
-//                 >
-//                   {/* <img
-//                     style={{ width: 20 }}
-//                     className="mr-3"
-//                     src={require("../../../assets/images/gallery.png")}
-//                   /> */}
-//                   Galeria
-//                 </div>
-//               </Link>
-//               <Link to={"/parents/gifts"}>
-//                 <div
-//                   className={
-//                     "link d-flex align-items-center " +
-//                     (this.props.location.pathname == "/parents/gifts"
-//                       ? "active"
-//                       : "")
-//                   }
-//                 >
-//                   {/* <img
-//                     style={{ width: 20 }}
-//                     className="mr-3"
-//                     src={require("../../../assets/images/gift-white.png")}
-//                   /> */}
-//                   Lista de Presentes
-//                 </div>
-//               </Link>
-//               <Link to={"/parents/personal"}>
-//                 <div
-//                   className={
-//                     "link d-flex align-items-center " +
-//                     (this.props.location.pathname == "/parents/personal"
-//                       ? "active"
-//                       : "")
-//                   }
-//                 >
-//                   {/* <img
-//                     style={{ width: 20 }}
-//                     className="mr-3"
-//                     src={require("../../../assets/images/user-white.png")}
-//                   /> */}
-//                   Dados Pessoais
-//                 </div>
-//               </Link>
-//               <Link to={"/parents/custom"}>
-//                 <div
-//                   className={
-//                     "link d-flex align-items-center " +
-//                     (this.props.location.pathname == "/parents/custom"
-//                       ? "active"
-//                       : "")
-//                   }
-//                 >
-//                   {/* <img
-//                     style={{ width: 20 }}
-//                     className="mr-3"
-//                     src={require("../../../assets/images/paint-brush-white.png")}
-//                   /> */}
-//                   Personalizar
-//                 </div>
-//               </Link>
-
-//               <button className="btn btn-secondary d-flex align-items-center">
-//                 LOJA BELLE MAN{" "}
-//                 <img src={require("../../../assets/images/enter.png")} />
-//               </button>
-//             </div>
-//           </div>
-//         </Col>
-//         <Col span={19}>
-//           <div
-//             className={
-//               "exit-row d-flex mt-3 justify-content-between align-items-center ml-3 mr-3"
-//             }
-//           >
-//             <p>PAINEL PRINCIPAL</p>
-//             {this.state.event && this.state.event.url ? (
-//               <a target="_blank" href={url}>
-//                 IR PARA O CONVITE
-//               </a>
-//             ) : null}
-//             <div
-//               onClick={() => this.logout()}
-//               className={"d-flex align-items-center exit"}
-//             >
-//               <p className={"mr-3"}>SAIR</p>
-//               {/* <img style={{ width: 20 }} src={require("../../../assets/images/enter-purple.png")} /> */}
-//             </div>
-//           </div>
-//           {this.state.event ? (
-//             <Switch>
-//               <div>
-//                 <Route
-//                   path={`${this.props.match.path}/home`}
-//                   component={() => <HomeParent event={this.state.event} />}
-//                 />
-//                 <Route
-//                   path={`${this.props.match.path}/config`}
-//                   component={() => <ConfigParent event={this.state.event} />}
-//                 />
-//                 <Route
-//                   path={`${this.props.match.path}/gallery`}
-//                   component={() => <GalleryParent event={this.state.event} />}
-//                 />
-//                 <Route
-//                   path={`${this.props.match.path}/gifts`}
-//                   component={() => <GiftListParent event={this.state.event} />}
-//                 />
-//                 <Route
-//                   path={`${this.props.match.path}/custom`}
-//                   component={() => <CustomParent event={this.state.event} />}
-//                 />
-//                 <Route
-//                   path={`${this.props.match.path}/personal`}
-//                   component={() => <PersonalParent event={this.state.event} />}
-//                 />
-//                 <Route
-//                   path={`${this.props.match.path}/notes`}
-//                   component={() => <NotesParent event={this.state.event} />}
-//                 />
-//                 <Route
-//                   path={`${this.props.match.path}/gifteds`}
-//                   component={() => <GiftedsParent event={this.state.event} />}
-//                 />
-//               </div>
-//             </Switch>
-//           ) : (
-//             <div
-//               id="no-event"
-//               className={"d-flex flex-column align-items-center"}
-//             >
-//               <h3 className="mb-5 mt-5">
-//                 Crie um evento para acessar tais funcionalidades.
-//               </h3>
-//               <Link to="/first-steps">
-//                 <Button className="btn btn-secondary d-flex align-items-center">
-//                   CRIAR EVENTO
-//                 </Button>
-//               </Link>
-//             </div>
-//           )}
-//         </Col>
-//       </Row>
-//     );
-//   }
-// }
