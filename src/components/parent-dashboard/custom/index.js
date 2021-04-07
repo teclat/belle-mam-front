@@ -49,13 +49,13 @@ export default class CustomParent extends Component {
   save = async () => {
     const event = this.props.event;
     if (
-      this.state.theme == "" ||
-      this.state.historyText == "" ||
-      this.state.url == "" ||
-      this.state.mom_name == "" ||
-      this.state.dad_name == "" ||
-      this.state.phone == "" ||
-      this.state.inviteText == ""
+      this.state.theme === "" ||
+      this.state.historyText === "" ||
+      this.state.url === "" ||
+      this.state.mom_name === "" ||
+      this.state.dad_name === "" ||
+      this.state.phone === "" ||
+      this.state.inviteText === ""
     ) {
       Modal.error({
         content: "Campos vazios.",

@@ -71,7 +71,10 @@ export default class HomeParent extends Component {
           <div className="d-flex flex-column justify-content-center align-items-center title-box">
             <div className="d-flex">
               <h2>Olá, {this.state.user_name}!</h2>
-              <img src={require("../../../assets/images/purple-heart.png")} />
+              <img
+                src={require("../../../assets/images/purple-heart.png")}
+                alt=""
+              />
             </div>
           </div>
           {this.state.dashboard.difference ? (
@@ -99,6 +102,7 @@ export default class HomeParent extends Component {
                       <img
                         className="product-img"
                         src={this.state.dashboard.lastProduct.image_url}
+                        alt=""
                       />
                     </Col>
 
@@ -131,7 +135,10 @@ export default class HomeParent extends Component {
                 {this.state.dashboard && this.state.dashboard.lastNote ? (
                   <>
                     <Col span={6} class="note-img mr-5">
-                      <img src={this.state.dashboard.lastNote.user.image_url} />
+                      <img
+                        src={this.state.dashboard.lastNote.user.image_url}
+                        alt=""
+                      />
                     </Col>
                     <Col span={18}>
                       <p>{this.state.dashboard.lastNote.text}</p>
@@ -192,6 +199,7 @@ export default class HomeParent extends Component {
           </button>
           <a
             target={"_blank"}
+            rel="noopener noreferrer"
             href="https://api.whatsapp.com/send?phone='5585981768451'&text=%20Oi, tudo bem. Pode me ajudar?%20"
             className="btn btn-secondary"
           >

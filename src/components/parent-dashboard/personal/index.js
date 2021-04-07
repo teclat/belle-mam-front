@@ -135,6 +135,7 @@ export default class PersonalParent extends Component {
             style={{ alignSelf: "center" }}
             className={"mb-3"}
             src={this.state.user.image_url}
+            alt=""
           />
           <Row align="middle">
             <Col span={5}>
@@ -207,7 +208,7 @@ export default class PersonalParent extends Component {
             </Col>
           </Row>
 
-          {this.state.role == "parent" ? (
+          {this.state.role === "parent" ? (
             <Row>
               <Col span={4}>
                 <label>Parentesco</label>

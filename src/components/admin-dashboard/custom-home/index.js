@@ -51,7 +51,7 @@ function CustomHome(props) {
   };
 
   const send = async (e) => {
-    if (text == "" || image == "" || obs == "") {
+    if (text === "" || image === "" || obs === "") {
       Modal.warning({
         content: "Campos vazios.",
       });

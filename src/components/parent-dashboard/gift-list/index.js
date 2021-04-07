@@ -71,7 +71,7 @@ function GiftListParent(props) {
 
   const change = (id, values) => {
     let newProducts = products;
-    let product = newProducts.filter((p) => p.id == id)[0];
+    let product = newProducts.filter((p) => p.id === id)[0];
     product.selected = values.selected;
     product.quantity = values.qtd;
     console.log(values);

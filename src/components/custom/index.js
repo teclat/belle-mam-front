@@ -46,19 +46,19 @@ export default class Customization extends Component {
 
   next = () => {
     if (
-      this.state.theme == null ||
-      this.state.inviteText == "" ||
-      this.state.url == "" ||
-      this.state.baby_image == "" ||
-      this.state.background_image == "" ||
-      this.state.mom_name == "" ||
-      this.state.dad_name == "" ||
-      this.state.historyText == "" ||
-      this.state.phone == ""
+      this.state.theme === null ||
+      this.state.inviteText === "" ||
+      this.state.url === "" ||
+      this.state.baby_image === "" ||
+      this.state.background_image === "" ||
+      this.state.mom_name === "" ||
+      this.state.dad_name === "" ||
+      this.state.historyText === "" ||
+      this.state.phone === ""
     ) {
       Modal.error("Existem campos vazios. Preencha e tente novamente.");
       return;
-    } else if (this.state.validUrl == false) {
+    } else if (this.state.validUrl === false) {
       Modal.error("URL inválida.");
       return;
     } else {
@@ -90,7 +90,7 @@ export default class Customization extends Component {
         <div className="d-flex flex-column justify-content-center align-items-center title-box">
           <div className="d-flex">
             <h2>Ótimo!</h2>
-            <img src={require("../../assets/images/purple-heart.png")} />
+            <img src={require("../../assets/images/purple-heart.png")} alt="" />
           </div>
           <h4>Agora vamos personalizar sua página do evento</h4>
         </div>

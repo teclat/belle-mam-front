@@ -48,7 +48,7 @@ export default class NotesParent extends Component {
           return (
             <div key={note.id} className="note d-flex align-items-center">
               <Col span={6} class="note-img mr-5">
-                <img className="note-img" src={note.user.image_url} />
+                <img className="note-img" src={note.user.image_url} alt="" />
               </Col>
               <Col span={18}>
                 <h3 className={"mb-3"}>{note.user.name}</h3>

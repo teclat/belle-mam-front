@@ -42,7 +42,7 @@ function NewProduct(props) {
   };
 
   const send = async (e) => {
-    if (name == "" || price == 0 || image == null || description == "") {
+    if (name === "" || price === 0 || image === null || description === "") {
       Modal.error({
         content: "Campos vazios.",
       });
