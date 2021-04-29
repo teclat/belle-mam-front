@@ -1,0 +1,36 @@
+.gift-message-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: text-top;
+}
+
+.gift-message-main-container > h2 {
+  margin-top: 1rem;
+}
+
+.gift-message-main-form > textarea {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 30rem;
+  min-height: 29vh;
+  padding: 0.5rem;
+}
+
+.gift-message-char-count {
+  margin-top: 0.5rem;
+}
+
+.gift-message-buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.gift-message-buttons > button {
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}

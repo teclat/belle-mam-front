@@ -1,0 +1,20 @@
+.payment-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.payment-buttons {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.payment-buttons > button {
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}

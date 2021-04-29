@@ -11,6 +11,7 @@ import WhyBelleMam from "./../containers/why-belle-mam";
 import Partners from "./../containers/partners";
 import GuestDashboard from "./../containers/dashboard/guest";
 import AdminDashboard from "./../containers/dashboard/admin";
+import Checkout from "../containers/checkout";
 
 export default () => {
   return (
@@ -23,6 +24,7 @@ export default () => {
         <Route path="/first-steps" component={FirstStep} />
         <Route path="/invite/:url" component={Invite} />
         <Route path="/convite/:url" component={Invite} />
+        <Route path="/checkout" component={Checkout} />
         <Route path="/why" component={WhyBelleMam} />
         <Route path="/partners" component={Partners} />
         <Route path="/parents" component={ParentDashboard} />
