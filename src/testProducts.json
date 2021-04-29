@@ -1,0 +1,1276 @@
+[
+  {
+      "id": 2964,
+      "name": "ALECRIM QT . VERBENOMA",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "slug": "alecrim-qt-verbenoma",
+      "permalink": "https://bellemam.com.br/produto/alecrim-qt-verbenoma/",
+      "purchased": false,
+      "type": "simple",
+      "description": "",
+      "short_description": "<p><strong>Alecrim qt. verbenona 10ml</strong></p>\n<p> </p>\n<p><strong>Óleo essencial do bom humor</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Rosmarinus officinalis verbenoniferum</p>\n<p><strong>Origem:</strong> EUA</p>\n<p><strong>Obtenção:</strong> destilação a vapor dos ramos floridos</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Aroma herbal, fresco, o mais relaxante dos alecrins.</p>\n<p>Harmonizador físico e nervoso, restaura e energia vital suavemente, equilibrando oscilações de humor das mudanças hormonais no período pré-menstrual e pré-menopausa.</p>\n<p>Segundo Rudolf Steiner, pai da antroposofia, o alecrim auxilia a acalmar as angústias mentais e emocionais.</p>\n<p>Utilizado em aromatização ambiental aporta estabilidade e tranquilidade ao ambiente, amenizando a raiva, a impaciência e a irritação.</p>\n<p>Relaxa a mente afetada pelo desgaste energético causado pela fragilidade nervosa.</p>\n<p>Auxilia a mulher na fase madura a aceitar os sinais da passagem do tempo com maturidade.</p>\n<p>Apazigua o excesso de fogo do biotipo ayurveda Pitta.</p>\n<p> </p>\n<p><strong>Desaconselhável o uso durante a gestação.</strong></p>\n",
+      "sku": "751320380593",
+      "price": "55.00000000",
+      "regular_price": "55.00000000",
+      "weight": "0.03800",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "6.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2963,
+              "date_created": "2021-03-30T08:14:11",
+              "date_created_gmt": "2021-03-30T14:14:11",
+              "date_modified": "2021-03-30T08:14:11",
+              "date_modified_gmt": "2021-03-30T14:14:11",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10101514192_oleo-essencial-alecrim-verbenona-3.jpg",
+              "name": "10101514192_oleo-essencial-alecrim-verbenona-3.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2957,
+      "name": "HO WOOD 5ML",
+      "slug": "ho-wood-5ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/ho-wood-5ml/",
+      "purchased": false,
+      "type": "simple",
+      "description": "",
+      "short_description": "<p><strong>Ho Wood </strong></p>\n<p><strong>Óleo essencial da cooperação</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Cinnamomum camphora qt. linalol</p>\n<p><strong>Origem:</strong> China</p>\n<p><strong>Obtenção:</strong> destilação a vapor</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Este aroma possui frequências vibratórias que abrem o coração para a espiritualidade e conscientizam da importância do trabalho pelo bem comum.</p>\n<p>Tônico do sistema nervoso central.</p>\n<p>Antisséptico, auxilia no tratamento de infecções pulmonares.</p>\n<p>Anti-inflamatório, combate infecções urinárias e ginecológicas.</p>\n<p> </p>\n<p><strong>Desaconselhável o uso nos três primeiros meses de gestação.</strong></p>\n",
+      "sku": "751320380791",
+      "price": "29.90000000",
+      "regular_price": "29.90000000",
+      "weight": "0.03700",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "6.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2956,
+              "date_created": "2021-03-30T08:13:33",
+              "date_created_gmt": "2021-03-30T14:13:33",
+              "date_modified": "2021-03-30T08:13:33",
+              "date_modified_gmt": "2021-03-30T14:13:33",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10526723181_oleo-essencial-ho-wood-Belle20Mam.jpg",
+              "name": "10526723181_oleo-essencial-ho-wood-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2946,
+      "name": "ALECRIM QT. CINEOL 10ML",
+      "slug": "alecrim-qt-cineol-10ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/alecrim-qt-cineol-10ml/",
+      "date_created": "2021-03-30T11:11:53",
+      "date_created_gmt": "2021-03-30T14:11:53",
+      "date_modified": "2021-03-30T11:11:53",
+      "date_modified_gmt": "2021-03-30T14:11:53",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Alecrim qt. cineol</strong> </p>\n<p><strong>Óleo essencial do estudante</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Rosmarinus officinalis cineoliferum</p>\n<p><strong>Origem:</strong> Marrocos</p>\n<p><strong>Obtenção:</strong> destilação a vapor dos ramos floridos</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Aroma herbal, fresco, adstringente, energizante.</p>\n<p>Fortalece a clareza mental, estimula a memória e a concentração.</p>\n<p>Revigorante, reduz a letargia da mente e o cansaço físico após longas jornadas de estudo.</p>\n<p>Prepara o corpo para iniciar o dia com disposição e alegria.</p>\n<p>Anima, alivia a tristeza da mente depressiva.</p>\n<p>O óleo essencial adicionado no difusor ambiental, em inalação e vaporização, apresenta potencial descongestionante respiratório.</p>\n<p>Adicionado ao óleo vegetal para massagem pode aliviar o cansaço e a dor muscular.</p>\n<p> </p>\n<p><strong>Desaconselhável o uso durante a gestação.</strong></p>\n",
+      "sku": "0751320380586",
+      "price": "39.00000000",
+      "regular_price": "39.00000000",      
+      "weight": "0.04600",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "7.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2945,
+              "date_created": "2021-03-30T08:11:53",
+              "date_created_gmt": "2021-03-30T14:11:53",
+              "date_modified": "2021-03-30T08:11:53",
+              "date_modified_gmt": "2021-03-30T14:11:53",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10422421802_10101637641_oleo-essencial-alecrim-cineol-3.jpg",
+              "name": "10422421802_10101637641_oleo-essencial-alecrim-cineol-3.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2944,
+      "name": "BERGAMOTA 10ML",
+      "slug": "bergamota-10ml-2",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/bergamota-10ml-2/",
+      "date_created": "2021-03-30T11:11:47",
+      "date_created_gmt": "2021-03-30T14:11:47",
+      "date_modified": "2021-03-30T11:11:47",
+      "date_modified_gmt": "2021-03-30T14:11:47",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Bergamota </strong></p>\n<p><strong>Óleo essencial do amor próprio</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong>Citrus bergamia</p>\n<p><strong>Origem:</strong> Itália</p>\n<p><strong>Obtenção:</strong> prensagem a frio</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Seu aroma suave e delicado tem o poder de transformar o medo, a vergonha e a rejeição, empoderando quem o utiliza em seu dia-a-dia.</p>\n<p>Promove a autoestima e ameniza a autocrítica.</p>\n<p>Trata problemas de pele, diminui a hiperatividade das glândulas sebáceas.</p>\n<p>Útil em distúrbios do apetite.</p>\n<p>Antisséptico, digestivo, cicatrizante.</p>\n<p>Fotossensível e levemente dermoagressivo.</p>\n<p> </p>\n<p><strong>Fotossensível, deve-se evitar exposição ao sol durante 6h após seu uso.</strong></p>\n",
+      "sku": "0751320380616",
+      "price": "89.00000000",
+      "regular_price": "89.00000000",
+      "weight": "0.04800",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "7.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2943,
+              "date_created": "2021-03-30T08:11:46",
+              "date_created_gmt": "2021-03-30T14:11:46",
+              "date_modified": "2021-03-30T08:11:46",
+              "date_modified_gmt": "2021-03-30T14:11:46",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10499232682_oleo-essencial-bergamota-Belle20Mam.jpg",
+              "name": "10499232682_oleo-essencial-bergamota-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2931,
+      "name": "YLANG YLANG III 10ML",
+      "slug": "ylang-ylang-iii-10ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/ylang-ylang-iii-10ml/",
+      "date_created": "2021-03-30T11:10:10",
+      "date_created_gmt": "2021-03-30T14:10:10",
+      "date_modified": "2021-03-30T11:10:10",
+      "date_modified_gmt": "2021-03-30T14:10:10",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Ylang Ylang III 10ml</strong></p>\n<p><strong>Óleo essencial da sedução</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Cananga odorata</p>\n<p><strong>Origem:</strong> Madagáscar</p>\n<p><strong>Obtenção:</strong> Destilação a vapor</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Seu aroma doce e delicado desperta a sensualidade, a libido, a sedução e o romance.</p>\n<p>Ansiolítico. Suaviza a irritação aportando leveza e bom humor.</p>\n<p>Trata frigidez e impotência.</p>\n<p>Tônico uterino usado para a depressão pós-parto.</p>\n<p>Hipotensor.</p>\n<p>Desaconselhável o uso durante os três primeiros meses da gestação.</p>\n",
+      "sku": "0751320381057",
+      "price": "71.00000000",
+      "regular_price": "71.00000000",
+      "weight": "0.04800",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "7.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2930,
+              "date_created": "2021-03-30T08:10:10",
+              "date_created_gmt": "2021-03-30T14:10:10",
+              "date_modified": "2021-03-30T08:10:10",
+              "date_modified_gmt": "2021-03-30T14:10:10",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10528058937_oleo-essencial-ylang-ylang-III-Belle20Mam.jpg",
+              "name": "10528058937_oleo-essencial-ylang-ylang-III-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2923,
+      "name": "CAMOMILA ROMANA 5 ML",
+      "slug": "camomila-romana-5-ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/camomila-romana-5-ml/",
+      "date_created": "2021-03-30T11:09:28",
+      "date_created_gmt": "2021-03-30T14:09:28",
+      "date_modified": "2021-03-30T11:09:28",
+      "date_modified_gmt": "2021-03-30T14:09:28",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Camomila Romana </strong></p>\n<p><strong>Óleo essencial da temperança</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Anthemis nobilis</p>\n<p><strong>Origem:</strong> França</p>\n<p><strong>Obtenção:</strong> Destilação a vapor</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p> </p>\n<p>Aroma acolhedor e relaxante.</p>\n<p>Ajuda pessoas nostálgicas e que sentem tristezas repentinas e sem sentido.</p>\n<p>Bom para hiperativos.</p>\n<p>Calmante do sistema nervoso, é ótimo para pessoas que sofreram traumas e choques profundos.</p>\n<p>Ajuda a amenizar stress pré-operatório.</p>\n<p>Anti-inflamatório.</p>\n<p>Pode ser aplicado em alergias, coceiras, furúnculos, terçol e reações alérgicas da pele por efeitos colaterais de medicamentos.</p>\n",
+      "sku": "751320381231",
+      "price": "190.00000000",
+      "regular_price": "190.00000000",
+      "weight": "0.03700",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "6.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2922,
+              "date_created": "2021-03-30T08:09:28",
+              "date_created_gmt": "2021-03-30T14:09:28",
+              "date_modified": "2021-03-30T08:09:28",
+              "date_modified_gmt": "2021-03-30T14:09:28",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10500037699_oleo-essencial-camomila-romana-Belle20Mam.jpg",
+              "name": "10500037699_oleo-essencial-camomila-romana-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2917,
+      "name": "FUNCHO DOCE 5 ML",
+      "slug": "funcho-doce-5-ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/funcho-doce-5-ml/",
+      "date_created": "2021-03-30T11:08:57",
+      "date_created_gmt": "2021-03-30T14:08:57",
+      "date_modified": "2021-03-30T11:08:57",
+      "date_modified_gmt": "2021-03-30T14:08:57",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Funcho doce </strong></p>\n<p><strong>Óleo essencial da perseverança</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Foeniculum vulgare</p>\n<p><strong>Origem:</strong> Índia</p>\n<p><strong>Obtenção:</strong> Destilação a vapor</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Empoderador em sua essência, inspira a confiança e a perseverança na busca das próprias metas. Purifica a energia pessoal.</p>\n<p>Strogen like, regula as glândulas reprodutivas femininas. Usado para dores e disfunções mentruais, mudanças hormonais da pré e menopausa.</p>\n<p>Lactagogo.</p>\n<p>Diminui a obcessão por comida. Digestivo, carminativo, vermífugo e antifúngico.</p>\n<p>Potente diurético, age no combate a edemas, drenagem linfática.</p>\n<p>Previne o ganho de peso e o acúmulo de gordura localizada.</p>\n<p>Antioxidante.</p>\n<p> </p>\n<p><strong>Desaconselhável o uso durante gestação.</strong></p>\n",
+      "sku": "751320381248",
+      "price": "39.00000000",
+      "regular_price": "39.00000000",
+      "weight": "0.03700",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "6.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2916,
+              "date_created": "2021-03-30T08:08:57",
+              "date_created_gmt": "2021-03-30T14:08:57",
+              "date_modified": "2021-03-30T08:08:57",
+              "date_modified_gmt": "2021-03-30T14:08:57",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10518639784_oleo-essencial-funcho-doce-Belle20Mam.jpg",
+              "name": "10518639784_oleo-essencial-funcho-doce-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2910,
+      "name": "CRAVO BOTAO 10ML",
+      "slug": "cravo-botao-10ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/cravo-botao-10ml/",
+      "date_created": "2021-03-30T11:08:20",
+      "date_created_gmt": "2021-03-30T14:08:20",
+      "date_modified": "2021-03-30T11:08:20",
+      "date_modified_gmt": "2021-03-30T14:08:20",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Cravo botão 10ml</strong></p>\n<p><strong>Óleo essencial da mudança</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Eugenia caryophyllus</p>\n<p><strong>Origem:</strong> Indonésia</p>\n<p><strong>Obtenção:</strong> destilação a vapor dos botões secos</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Aroma pungente, excitante, inspirador e ativador.</p>\n<p>A mensagem do cravo é: mova-se, faça as coisas acontecerem.</p>\n<p>Transforma o foco da energia da contemplação para a ação.</p>\n<p>Revitalizante, indicado para momentos onde necessita-se de iniciativa para realizar mudanças, finalizar tarefas físicas, dar continuidade em projetos.</p>\n<p>Faz a assepsia energética ambiental, libera a energia psíquica antiga impregnada em objetos, roupas, ambientes, incentivando o desapego.</p>\n<p>Potencial analgésico, diminui a sensibilidade da polpa dentária, acalmando a dor de dente aguda.</p>\n<p>Usado popularmente como antisséptico e antimicrobiano capaz de eliminar bactérias presentes na cavidade oral, auxiliando na assepssia e saúde bucal. Usado em bochechos promove um hálito agradável, podendo amenizar a retração de gengivas.</p>\n<p>Ameniza a dor muscular.</p>\n<p>Antifúngico, tem sido usado na podologia no combate a fungos de unha.</p>\n<p>Revitalizante de unhas, útil em tratamento de unhas quebradiças, rachadas ou fracas.</p>\n<p>Indicado para os biotipos ayurvédicos Kapha e Vata.</p>\n<p> </p>\n<p><strong>Desaconselhável o uso durante a gestação.</strong></p>\n<p><strong>Dermoagressivo, diluir em óleo vegetal. Se usado puro sobre a pele pode provocar ardência, vermelhidão ou irritação.</strong></p>\n<p><strong>Não se deve exagerar no consumo do OE de cravo botão e folha.</strong></p>\n<p><strong>Aconselha-se evitar o uso prolongado por pessoas com sensibilidade gástrica e hemofílicos.</strong></p>\n",
+      "sku": "0751320380722",
+      "price": "0.00000000",
+      "regular_price": "0.00000000",
+      "weight": "0.04800",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "7.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2909,
+              "date_created": "2021-03-30T08:08:19",
+              "date_created_gmt": "2021-03-30T14:08:19",
+              "date_modified": "2021-03-30T08:08:19",
+              "date_modified_gmt": "2021-03-30T14:08:19",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11871780315_oleo-essencial-cravo-botao-Belle20Mam.jpg",
+              "name": "11871780315_oleo-essencial-cravo-botao-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2908,
+      "name": "LOURO 5ML",
+      "slug": "louro-5ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/louro-5ml/",
+      "date_created": "2021-03-30T11:08:16",
+      "date_created_gmt": "2021-03-30T14:08:16",
+      "date_modified": "2021-03-30T11:08:16",
+      "date_modified_gmt": "2021-03-30T14:08:16",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Louro 5ml</strong></p>\n<p><strong>Óleo essencial do merecimento</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Laurus nobilis</p>\n<p><strong>Origem:</strong> Turquia</p>\n<p><strong>Obtenção:</strong> Destilação a vapor</p>\n<p><strong>Coleção:</strong> Terra Flor Essencial</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Afasta negatividade e a incerteza.</p>\n<p>Aporta luz às questões da alma, trazendo discernimento para aceitar as próprias deficiências e reconhecer as conquistas.</p>\n<p>Anti-infeccioso potente.</p>\n<p>Revitaliza o couro cabeludo, fortalece os cabelos prevenindo a queda e estimulando o crescimento capilar.</p>\n<p>Adstringente, tônico cutâneo, cicatrizante.</p>\n<p>Emenagogo.</p>\n<p> </p>\n<p><strong>Desaconselhável o uso durante os três primeiros meses da gestação.</strong></p>\n",
+      "sku": "0751320381279",
+      "price": "0.00000000",
+      "regular_price": "0.00000000",
+      "weight": "0",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "6.5"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2907,
+              "date_created": "2021-03-30T08:08:16",
+              "date_created_gmt": "2021-03-30T14:08:16",
+              "date_modified": "2021-03-30T08:08:16",
+              "date_modified_gmt": "2021-03-30T14:08:16",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11886762116_oleo-essencial-louro-Belle20Mam.jpeg",
+              "name": "11886762116_oleo-essencial-louro-Belle20Mam.jpeg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2906,
+      "name": "PINHEIRO SILVESTRE 5ML",
+      "slug": "pinheiro-silvestre-5ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/pinheiro-silvestre-5ml/",
+      "date_created": "2021-03-30T11:08:13",
+      "date_created_gmt": "2021-03-30T14:08:13",
+      "date_modified": "2021-03-30T11:08:13",
+      "date_modified_gmt": "2021-03-30T14:08:13",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Pinheiro Silvestre 5ML</strong></p>\n<p><strong>Óleo Essencial da Produtividade</strong></p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Pinus sylvestris</p>\n<p><strong>Origem:</strong> França</p>\n<p><strong>Obtenção:</strong> destilação a vapor das folhas</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>O óleo essencial de Pinheiro Silvestre possui um aroma de limpeza, purifica, desodoriza e refresca o ambiente. Ativa o sentimento de alerta, clareza e produtividade. Dissipa a preocupação e o cansaço. Promove o bem-estar no inverno para toda a família. Excelente opção para o alívio da congestão respiratória. Protege o ambiente contra ácaros, fungos. Pode apresentar ação diurética, coadjuvante em tratamentos no combate a edemas e excesso de ácido úrico. Muito usado no enxague final na máquina de lavar.</p>\n<p> </p>\n<p>O óleo essencial de Pinheiro Silvestre é também coadjuvante no tratamento de eczema, psoríase, coceira. Acalma a irritação cutânea acometida por sarna ou picadas de pulgas. Auxilia o tratamento no combate a piolhos.</p>\n<p> </p>\n<p>Não há contraindicação na literatura pesquisada!</p>\n<p> </p>\n<p>Acompanha guia prático de uso para diversos casos e óleos essenciais!</p>\n",
+      "sku": "0751320382108",
+      "price": "0.00000000",
+      "regular_price": "0.00000000",
+      "weight": "0.04800",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "6.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2905,
+              "date_created": "2021-03-30T08:08:13",
+              "date_created_gmt": "2021-03-30T14:08:13",
+              "date_modified": "2021-03-30T08:08:13",
+              "date_modified_gmt": "2021-03-30T14:08:13",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11887075663_oleo-essencial-pinheiro20silvestre-Belle20Mam20.jpg",
+              "name": "11887075663_oleo-essencial-pinheiro20silvestre-Belle20Mam20.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2903,
+      "name": "SINERGIA CAPILAR 10ML",
+      "slug": "sinergia-capilar-10ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/sinergia-capilar-10ml/",
+      "date_created": "2021-03-29T12:26:50",
+      "date_created_gmt": "2021-03-29T15:26:50",
+      "date_modified": "2021-03-30T11:10:13",
+      "date_modified_gmt": "2021-03-30T14:10:13",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "<p><strong>Sinergia Capilar 10ml</strong></p>\n<p><strong>Blend de óleos essenciais 100% natural</strong></p>\n<p> </p>\n<p><strong>Coleção:</strong> Terra Flor Sinergia</p>\n<p><strong>Certificação:</strong> IBD Ingredientes Naturais</p>\n<p> </p>\n<p>Escolhemos os melhores óleos essenciais tonificantes para revitalizar, dar brilho e maciez aos cabelos.</p>\n<p>Ativa a microcirculação do couro cabeludo, promove uma melhor oxigenação e nutrição das raízes diminuindo a oleosidade.</p>\n<p>Também evita a queda e estimula o crescimento capilar.</p>\n",
+      "sku": "0751320380456",
+      "price": "63.00000000",
+      "regular_price": "63.00000000",
+      "weight": "0.04800",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "7.2"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 22,
+              "name": "Óleos Essenciais",
+              "slug": "oleos-essenciais"
+          },
+          {
+              "id": 24,
+              "name": "Sinergias",
+              "slug": "sinergias"
+          },
+          {
+              "id": 87,
+              "name": "Terra Flor",
+              "slug": "terra-flor"
+          }
+      ],
+      "images": [
+          {
+              "id": 2902,
+              "date_created": "2021-03-29T09:26:50",
+              "date_created_gmt": "2021-03-29T15:26:50",
+              "date_modified": "2021-03-29T09:26:50",
+              "date_modified_gmt": "2021-03-29T15:26:50",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/10422288746_10384119724_sinergia-capilar-3.jpg",
+              "name": "10422288746_10384119724_sinergia-capilar-3.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2841,
+      "name": "PERFUMEIRA TANBOZINHO AGATA",
+      "slug": "perfumeira-tanbozinho-agata",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/perfumeira-tanbozinho-agata/",
+      "date_created": "2021-03-27T09:04:04",
+      "date_created_gmt": "2021-03-27T12:04:04",
+      "date_modified": "2021-03-27T09:04:04",
+      "date_modified_gmt": "2021-03-27T12:04:04",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p><strong>As perfumeiras ou colares aromáticos individuais</strong> são feitos para trazer os benefícios da aromaterapia para o seu dia a dia. Modelo feito em pedra preciosa, artesanal e única, feito à mão, pode ter variações de cor e tamanho.</p>\n<p> </p>\n<p>Os óleos essenciais, obtidos de plantas aromáticas, são extratos naturais que nos proporcionam diversos benefícios terapêuticos. A inalação é um dos meios mais eficientes para a absorção dos óleos essenciais, pois o estímulo olfatório tem a capacidade de produzir efeito sistêmico, ajudando a aliviar diversas desordens do organismo.</p>\n<p> </p>\n<p><strong>Modo de usar:</strong> Colocar um pouco de algodão na perfumeira e adicionar de 1 a 3 gotas do óleo essencial de sua preferência.</p>\n<p> </p>\n<p><strong>Variações de pedras:</strong> Ver na galeria – se preferir pode consultar o modelo escolhido, pois pode ter variações de cor e formato da pedra – são pedras naturais e únicas.</p>\n<p> </p>\n<p><strong>Contém:</strong> 01 perfumeira com cordão encerado ajustável.</p>\n<p> </p>\n<p><strong>Dicas de Uso de Óleos Essenciais:</strong></p>\n<p> </p>\n<p>Gripes e resfriados: Eucalipto Glóbulos (adultos), Tea Tree, Limão Tahiti</p>\n<p>Relaxamento: Lavanda Francesa, Camomila Romana, Laranja Doce (crianças)</p>\n<p>Transtornos de humor: Bergamota, May Chang, Patchouli, Gerânio e Sálvia Esclareia (mulheres)</p>\n<p>Melhoria na disposição: Alecrim cineol, Menta, Hortelã Pimenta, Capim Limão</p>\n<p>Digestivos: Hortelã Pimenta, Manjericão, Anis Estrelado</p>\n<p>Práticas de Meditação: Olíbano, Breu Branco, May Chang</p>\n<p> </p>\n<p><strong>Dicas de Uso das pedras por signo:</strong></p>\n<p> </p>\n<p>Áries: Ágata, jaspe, cornalina.</p>\n<p>Touro: Quartzo rosa, amazonita, ametista.</p>\n<p>Gêmeos: Olho-de-tigre, citrino, ágata.</p>\n<p>Câncer: Pedra-da-lua, malaquita, quartzo verde.</p>\n<p>Leão: Ágata, citrino, ametista.</p>\n<p>Virgem: Ametista, citrino, pedra-da-lua.</p>\n<p>Libra: Citrino, quartzo rosa, turquesa.</p>\n<p>Escorpião: Obsidiana, ágata, hematita.</p>\n<p>Sagitário: Ametista, olho-de-trigre, citrino.</p>\n<p>Capricórnio: Ágata, ônix, quartzo verde.</p>\n<p>Aquário: Ametista, sodalita, granada.</p>\n<p>Peixes: Ametista, ônix, pedra-da-lua.</p>\n<p> </p>\n",
+      "short_description": "<p><strong>As perfumeiras ou colares aromáticos individuais</strong> são feitos para trazer os benefícios da aromaterapia para o seu dia a dia. Modelo feito em pedra natural, artesanal e único, com cordão encerado ajustável. A cor e formato das pedras podem ter variações, pois são pedras naturais.</p>\n<p>Disponíveis em vários modelos e tipos de pedras, encontre a sua!</p>\n",
+      "sku": "TANBOZINHO AGATA",
+      "price": "0.00000000",
+      "regular_price": "0.00000000",
+      "weight": "0.01200",
+      "dimensions": {
+          "length": "2",
+          "width": "6",
+          "height": "8"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 72,
+              "name": "Belle Mam",
+              "slug": "belle-mam"
+          },
+          {
+              "id": 19,
+              "name": "Difusores Pessoais",
+              "slug": "difusores-pessoais"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          }
+      ],
+      "images": []
+  },
+  {
+      "id": 2831,
+      "name": "ALECRIM HIDROLATO 120 ML SPRAY",
+      "slug": "alecrim-hidrolato-120-ml-spray",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/alecrim-hidrolato-120-ml-spray/",
+      "date_created": "2021-03-26T16:47:16",
+      "date_created_gmt": "2021-03-26T19:47:16",
+      "date_modified": "2021-03-30T10:04:24",
+      "date_modified_gmt": "2021-03-30T13:04:24",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p> </p>\n<p><strong>PROPRIEDADES NA AROMATERAPIA:</strong></p>\n<p> </p>\n<p>– É muito popular na aromaterapia por aquecer, estimular e restaurar a energia vital.</p>\n<p>– Sua ação estimulante é benéfica para problemas no couro cabeludo, podendo combater a caspa, queda e ativar o crescimento capilar. </p>\n<p>– Seu aroma herbal refresca o ambiente e ajuda a manter a mente alerta.</p>\n<p> </p>\n<p><strong>Recomendações:</strong></p>\n<p> </p>\n<p>– Conserve-os em geladeira para melhorar a sua durabilidade, pois são mais frágeis do que os óleos essenciais.</p>\n<p> </p>\n",
+      "short_description": "<p> Por definição, os hidrolatos são “a água condensada coproduzida durante a destilação a vapor ou hidro destilação de material vegetal para fins aromaterapêuticos” – Suzanne Catty, autora do livro “Hydrosols: The Next Aromatherapy”.</p>\n<p> </p>\n<p>Os hidrolatos são obtidos no momento da destilação das plantas para a obtenção de óleos essenciais – a fração de moléculas não solúveis em água (os óleos essenciais) é separada da fração solúvel em água (os hidrolatos). São conhecidos também como águas florais ou águas bioativas.</p>\n<p> </p>\n<p>Crianças e pessoas sensíveis são os mais beneficiados pelos hidrolatos, pois na prática é uma água carregada de compostos ativos das plantas em concentração muito menor do que os óleos essenciais, mais suaves e seguros de usar.</p>\n<p> </p>\n<p><strong>Nome cientifico: </strong>Rosmarinus officinali</p>\n<p><strong>Obtenção:</strong> destilação à vapor das folhas e flores</p>\n<p> </p>\n",
+      "sku": "7898452696154",
+      "price": "41.99000000",
+      "regular_price": "41.99000000",
+      "weight": "160.00000",
+      "dimensions": {
+          "length": "4",
+          "width": "4",
+          "height": "16"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          }
+      ],
+      "images": [
+          {
+              "id": 2830,
+              "date_created": "2021-03-26T13:47:15",
+              "date_created_gmt": "2021-03-26T19:47:15",
+              "date_modified": "2021-03-26T13:47:15",
+              "date_modified_gmt": "2021-03-26T19:47:15",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11132875284_Hidrolato-Alecrim-Quinari-Belle20Mam.jpg",
+              "name": "11132875284_Hidrolato-Alecrim-Quinari-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2829,
+      "name": "LAVANDA  HIDROLATO 120 ML SPRAY",
+      "slug": "lavanda-hidrolato-120-ml-spray",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/lavanda-hidrolato-120-ml-spray/",
+      "date_created": "2021-03-26T16:47:12",
+      "date_created_gmt": "2021-03-26T19:47:12",
+      "date_modified": "2021-03-26T16:47:12",
+      "date_modified_gmt": "2021-03-26T19:47:12",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p> <strong>PROPRIEDADES NA AROMATERAPIA:</strong></p>\n<p> </p>\n<p>– Ideal para todos os tipos de peles por conta de suas propriedades regenerativas e curativas.</p>\n<p>– Excelente para pós sol, pele irritada com o calor, brotoejas, queimaduras.</p>\n<p>– Alivia coceiras por contato com plantas ou picadas de insetos.</p>\n<p>– Limpa e tonifica a pele, ideal para uso em máscaras de argila.</p>\n<p>– Aroma suave, doce e calmante, pode ser usado por crianças e adultos para melhorar a qualidade do sono. No campo emocional, combate distúrbios de agressividade, nervosismo, agitação e impaciência.</p>\n<p> </p>\n<p><strong>Recomendações:</strong></p>\n<p> </p>\n<p>– Conserve-os em geladeira para melhorar a sua durabilidade, pois são mais frágeis do que os óleos essenciais.</p>\n",
+      "short_description": "<p>Por definição, os hidrolatos são “a água condensada coproduzida durante a destilação a vapor ou hidro destilação de material vegetal para fins aromaterapêuticos” – Suzanne Catty, autora do livro “Hydrosols: The Next Aromatherapy”.</p>\n<p> </p>\n<p>Os hidrolatos são obtidos no momento da destilação das plantas para a obtenção de óleos essenciais – a fração de moléculas não solúveis em água (os óleos essenciais) é separada da fração solúvel em água (os hidrolatos). São conhecidos também como águas florais ou águas bioativas.</p>\n<p> </p>\n<p>Crianças e pessoas sensíveis são os mais beneficiados pelos hidrolatos, pois na prática é uma água carregada de compostos ativos das plantas em concentração muito menor do que os óleos essenciais, mais suaves e seguros de usar.</p>\n<p> </p>\n<p>No livro “Cuidando dos Filhos com Óleos Essenciais” da Daniely Festy, são normalmente recomendados para casos especiais como lavagem dos olhos e cuidados internos (ingestão) para alguns problemas dos pequenos.</p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Lavandula angustifolia / officinalis </p>\n<p><strong>Obtenção:</strong> destilação à vapor das folhas e flores</p>\n<p> </p>\n<p> </p>\n",
+      "sku": "7898452696130",
+      "price": "39.90000000",
+      "regular_price": "39.90000000",
+      "weight": "0.16000",
+      "dimensions": {
+          "length": "4",
+          "width": "4",
+          "height": "16"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 45,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia-recem-nascido"
+          },
+          {
+              "id": 25,
+              "name": "Ciclos da Vida do Bebê",
+              "slug": "ciclos-da-vida-do-bebe"
+          },
+          {
+              "id": 48,
+              "name": "Farmácia Natural",
+              "slug": "farmacia-natural-recem-nascido"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          },
+          {
+              "id": 43,
+              "name": "Recém Nascido",
+              "slug": "recem-nascido"
+          }
+      ],
+      "images": [
+          {
+              "id": 2828,
+              "date_created": "2021-03-26T13:47:12",
+              "date_created_gmt": "2021-03-26T19:47:12",
+              "date_modified": "2021-03-26T13:47:12",
+              "date_modified_gmt": "2021-03-26T19:47:12",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11133362385_Hidrolato-Lavanda-Quinari-Belle20Mam.jpg",
+              "name": "11133362385_Hidrolato-Lavanda-Quinari-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2827,
+      "name": "MELALEUCA (TEA TREE) HIDROLATO 120 ML SPRAY",
+      "slug": "melaleuca-tea-tree-hidrolato-120-ml-spray",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/melaleuca-tea-tree-hidrolato-120-ml-spray/",
+      "date_created": "2021-03-26T16:47:10",
+      "date_created_gmt": "2021-03-26T19:47:10",
+      "date_modified": "2021-03-26T16:47:10",
+      "date_modified_gmt": "2021-03-26T19:47:10",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p><strong>PROPRIEDADES NA AROMATERAPIA:</strong></p>\n<p> </p>\n<p>– Excelente antisséptico e fortalecedor do sistema imunológico.</p>\n<p>– Na pele, ele equilibra a oleosidade natural, efetivo em qualquer condição de pele ferida, acne, fungos, furúnculos, dermatite de contato. Recomendado para limpeza de pele, máscaras faciais de argila, em tônicos e sinergias bifásicas para tratamento de manchas de pele, cuidados com a barba e o cabelo.</p>\n<p>– Revitalizante e refrescante, ideal para todos os momentos.</p>\n<p> </p>\n<p><strong>Recomendações:</strong></p>\n<p> </p>\n<p>– Conserve-os em geladeira para melhorar a sua durabilidade, pois são mais frágeis do que os óleos essenciais.</p>\n",
+      "short_description": "<p>Por definição, os hidrolatos são “a água condensada coproduzida durante a destilação a vapor ou hidro destilação de material vegetal para fins aromaterapêuticos” – Suzanne Catty, autora do livro “Hydrosols: The Next Aromatherapy”.</p>\n<p> </p>\n<p>Os hidrolatos são obtidos no momento da destilação das plantas para a obtenção de óleos essenciais – a fração de moléculas não solúveis em água (os óleos essenciais) é separada da fração solúvel em água (os hidrolatos). São conhecidos também como águas florais ou águas bioativas.</p>\n<p> </p>\n<p>Crianças e pessoas sensíveis são os mais beneficiados pelos hidrolatos, pois na prática é uma água carregada de compostos ativos das plantas em concentração muito menor do que os óleos essenciais, mais suaves e seguros de usar.</p>\n<p> </p>\n<p>No livro “Cuidando dos Filhos com Óleos Essenciais” da Daniely Festy, são normalmente recomendados para casos especiais como lavagem dos olhos e cuidados internos (ingestão) para alguns problemas dos pequenos.</p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Melaleuca alternifolia</p>\n<p><strong>Obtenção:</strong> destilação à vapor das folhas e flores</p>\n<p> </p>\n",
+      "sku": "7898452696123",
+      "price": "41.99000000",
+      "regular_price": "41.99000000",
+      "weight": "0.16000",
+      "dimensions": {
+          "length": "4",
+          "width": "4",
+          "height": "16"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          }
+      ],
+      "images": [
+          {
+              "id": 2826,
+              "date_created": "2021-03-26T13:47:09",
+              "date_created_gmt": "2021-03-26T19:47:09",
+              "date_modified": "2021-03-26T13:47:09",
+              "date_modified_gmt": "2021-03-26T19:47:09",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11133227501_Hidrolato-Tea20Tree-Quinari-Belle20Mam.jpg",
+              "name": "11133227501_Hidrolato-Tea20Tree-Quinari-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2825,
+      "name": "CAMOMILA HIDROLATO 120 ML SPRAY",
+      "slug": "camomila-hidrolato-120-ml-spray",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/camomila-hidrolato-120-ml-spray/",
+      "date_created": "2021-03-26T16:47:05",
+      "date_created_gmt": "2021-03-26T19:47:05",
+      "date_modified": "2021-03-29T16:59:09",
+      "date_modified_gmt": "2021-03-29T19:59:09",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p><strong>PROPRIEDADES NA AROMATERAPIA:</strong></p>\n<p> </p>\n<p>– Excelente anti inflamatório que apresenta resultados efetivos em qualquer condição de pele irritada, rachaduras, queimaduras, eczema e psoríase.</p>\n<p>– Útil para coceiras alérgicas tanto na pele quanto nos olhos derivadas de rinite, sinusite, alergias alimentares.</p>\n<p>– Valioso em compressas para veias inchadas, hemorroidas e varizes.</p>\n<p>– Calmante muito recomendado para bebês a partir de 2 meses na água do banho e produto indispensável para crianças nervosas que apresentam erupções na pele.</p>\n<p> </p>\n<p><strong>Recomendações:</strong></p>\n<p> </p>\n<p>– Conserve-os em geladeira para melhorar a sua durabilidade, pois são mais frágeis do que os óleos essenciais.</p>\n<p> </p>\n",
+      "short_description": "<p>Por definição, os hidrolatos são “a água condensada coproduzida durante a destilação a vapor ou hidro destilação de material vegetal para fins aromaterapêuticos” – Suzanne Catty, autora do livro “Hydrosols: The Next Aromatherapy”.</p>\n<p> </p>\n<p>Os hidrolatos são obtidos no momento da destilação das plantas para a obtenção de óleos essenciais – a fração de moléculas não solúveis em água (os óleos essenciais) é separada da fração solúvel em água (os hidrolatos). São conhecidos também como águas florais ou águas bioativas.</p>\n<p> </p>\n<p>Crianças e pessoas sensíveis são os mais beneficiados pelos hidrolatos, pois na prática é uma água carregada de compostos ativos das plantas em concentração muito menor do que os óleos essenciais, mais suaves e seguros de usar.</p>\n<p> </p>\n<p>No livro “Cuidando dos Filhos com Óleos Essenciais” da Daniely Festy, são normalmente recomendados para casos especiais como lavagem dos olhos e cuidados internos (ingestão) para alguns problemas dos pequenos.</p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Matricaria recutita</p>\n<p><strong>Obtenção:</strong> destilação à vapor das folhas e flores</p>\n<p> </p>\n<p> </p>\n<p> </p>\n",
+      "sku": "7898452696161",
+      "price": "39.90000000",
+      "regular_price": "39.90000000",
+      "weight": "0.16000",
+      "dimensions": {
+          "length": "4",
+          "width": "4",
+          "height": "16"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 45,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia-recem-nascido"
+          },
+          {
+              "id": 25,
+              "name": "Ciclos da Vida do Bebê",
+              "slug": "ciclos-da-vida-do-bebe"
+          },
+          {
+              "id": 48,
+              "name": "Farmácia Natural",
+              "slug": "farmacia-natural-recem-nascido"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          },
+          {
+              "id": 43,
+              "name": "Recém Nascido",
+              "slug": "recem-nascido"
+          }
+      ],
+      "images": [
+          {
+              "id": 2824,
+              "date_created": "2021-03-26T13:47:04",
+              "date_created_gmt": "2021-03-26T19:47:04",
+              "date_modified": "2021-03-26T13:47:04",
+              "date_modified_gmt": "2021-03-26T19:47:04",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11132943361_Hidrolato-Camomila-Quinari-Belle20Mam.jpg",
+              "name": "11132943361_Hidrolato-Camomila-Quinari-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2823,
+      "name": "CAPIM LIMAO HIDROLATO 120 ML SPRAY",
+      "slug": "capim-limao-hidrolato-120-ml-spray",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/capim-limao-hidrolato-120-ml-spray/",
+      "date_created": "2021-03-26T16:47:01",
+      "date_created_gmt": "2021-03-26T19:47:01",
+      "date_modified": "2021-03-26T16:47:01",
+      "date_modified_gmt": "2021-03-26T19:47:01",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p><strong>PROPRIEDADES NA AROMATERAPIA:</strong></p>\n<p> </p>\n<p>– Usado como tônico facial, adstringente e revitalizante da pele mista e oleosa.</p>\n<p>– Ajuda a amenizar a flacidez e os sinais de fadiga e cansaço, proporcionando mais elastidade para a pele.</p>\n<p>– Nos cabelos, ajuda na limpeza do bulbo capilar e no controle da oleosidade</p>\n<p>– No ambiente pode ser borrifado para relaxamento da mente e indução do sono</p>\n<p> </p>\n<p><strong>Recomendações:</strong></p>\n<p> </p>\n<p>– Conserve-os em geladeira para melhorar a sua durabilidade, pois são mais frágeis do que os óleos essenciais.</p>\n",
+      "short_description": "<p>Por definição, os hidrolatos são “a água condensada coproduzida durante a destilação a vapor ou hidro destilação de material vegetal para fins aromaterapêuticos” – Suzanne Catty, autora do livro “Hydrosols: The Next Aromatherapy”.</p>\n<p> </p>\n<p>Os hidrolatos são obtidos no momento da destilação das plantas para a obtenção de óleos essenciais – a fração de moléculas não solúveis em água (os óleos essenciais) é separada da fração solúvel em água (os hidrolatos). São conhecidos também como águas florais ou águas bioativas.</p>\n<p> </p>\n<p>Crianças e pessoas sensíveis são os mais beneficiados pelos hidrolatos, pois na prática é uma água carregada de compostos ativos das plantas em concentração muito menor do que os óleos essenciais, mais suaves e seguros de usar.</p>\n<p> </p>\n<p> </p>\n<p><strong>Nome cientifico:</strong> Cymbopogon Citratus</p>\n<p><strong>Obtenção:</strong> destilação à vapor das folhas e flores</p>\n<p> </p>\n<p> </p>\n<p> </p>\n<p> </p>\n<p> </p>\n",
+      "sku": "7898452696147",
+      "price": "41.99000000",
+      "regular_price": "41.99000000",
+      "weight": "0.16000",
+      "dimensions": {
+          "length": "4",
+          "width": "4",
+          "height": "16"
+      },      
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          }
+      ],
+      "images": [
+          {
+              "id": 2822,
+              "date_created": "2021-03-26T13:46:59",
+              "date_created_gmt": "2021-03-26T19:46:59",
+              "date_modified": "2021-03-26T13:46:59",
+              "date_modified_gmt": "2021-03-26T19:46:59",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11133089846_Hidrolato-Capim20Limao-Quinari-Belle20Mam.jpg",
+              "name": "11133089846_Hidrolato-Capim20Limao-Quinari-Belle20Mam.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2817,
+      "name": "PERFUME NATURAL FEMININO IRIS 50ML",
+      "slug": "perfume-natural-feminino-iris-50ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/perfume-natural-feminino-iris-50ml/",
+      "date_created": "2021-03-26T16:44:16",
+      "date_created_gmt": "2021-03-26T19:44:16",
+      "date_modified": "2021-03-26T16:46:56",
+      "date_modified_gmt": "2021-03-26T19:46:56",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p><strong>Composição:</strong> Boswellia carterii oil, citrus nobilis peel oil, illicium verum fruit/seed oil, juniperus</p>\n<p>communis fruit oil, pelargonium graveolens oil, citrus aurantium leaf oil, pogostemon cablin oil</p>\n<p>and alcohol.</p>\n<p> </p>\n<p><strong>Informações Importantes:</strong> Perfume elaborado com matérias primas naturais. Isento de</p>\n<p>químicos sintéticos. Manter em local fresco, longe da luz e fora do alcance das crianças. Em</p>\n<p>caso de contato com os olhos, enxaguar abundantemente. Havendo irritação, suspenda o uso</p>\n<p>e procure orientação médica. Não usar em crianças menores de 2 anos. Uso externo.</p>\n<p> </p>\n<p><strong>Tempo de Fixação:</strong> Depende do tipo de pele, podendo variar de 30 minutos a 4 horas.</p>\n<p> </p>\n<p><strong>Perfumista:</strong> Ane Walsh</p>\n",
+      "short_description": "<p><strong> ÍRIS</strong> Perfume Feminino Vegano 100% Natural <strong>QUINARÍ</strong> 50 mL </p>\n<p> </p>\n<p><strong>Significado: ÍRIS,</strong> na mitologia grega, é uma deusa mensageira que deixava um rastro multicolorido ao atravessar os céus. Sua manifestação ocorre pelo surgimento do arco-íris, que simboliza a ligação do céu com a terra. Assim, o perfume natural <strong>ÍRIS</strong> da<strong> QUINARÍ</strong> é composto por notas multicoloridas, florais e alegres que vão ajudá-la na purificação da sua energia, tornando-a ainda mais radiante e contagiosa.</p>\n<p> </p>\n",
+      "sku": "7898452696888",
+      "price": "88.70000000",
+      "regular_price": "88.70000000",
+      "weight": "0.12000",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "18"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 59,
+              "name": "Cuidados",
+              "slug": "cuidados"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          },
+          {
+              "id": 62,
+              "name": "Rosto e Corpo",
+              "slug": "rosto-e-corpo"
+          }
+      ],
+      "images": [
+          {
+              "id": 2821,
+              "date_created": "2021-03-26T13:46:56",
+              "date_created_gmt": "2021-03-26T19:46:56",
+              "date_modified": "2021-03-26T13:46:56",
+              "date_modified_gmt": "2021-03-26T19:46:56",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11132360701_Perfume20Iris-Belle20Mam-1.jpg",
+              "name": "11132360701_Perfume20Iris-Belle20Mam-1.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2815,
+      "name": "PERFUME NATURAL FEMININO GAIA 50ML",
+      "slug": "perfume-natural-feminino-gaia-50ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/perfume-natural-feminino-gaia-50ml/",
+      "date_created": "2021-03-26T16:44:13",
+      "date_created_gmt": "2021-03-26T19:44:13",
+      "date_modified": "2021-03-26T16:46:52",
+      "date_modified_gmt": "2021-03-26T19:46:52",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "<p><strong>Composição: </strong>Cananga odorata flower oil, lavandula officinalis flower oil, ocimum basilicum oil,</p>\n<p>pelargonium graveolens oil, pogostemon cablin oil and alcohol.</p>\n<p> </p>\n<p><strong>Informações Importantes:</strong> Perfume elaborado com matérias primas naturais. Isento de</p>\n<p>químicos sintéticos. Manter em local fresco, longe da luz e fora do alcance das crianças. Em</p>\n<p>caso de contato com os olhos, enxaguar abundantemente. Havendo irritação, suspenda o uso</p>\n<p>e procure orientação médica. Não usar em crianças menores de 2 anos. Uso externo.</p>\n<p> </p>\n<p><strong>Tempo de Fixação:</strong> Depende do tipo de pele, podendo variar de 30 minutos a 4 horas.</p>\n<p> </p>\n<p><strong>Perfumista:</strong> Ane Walsh</p>\n",
+      "short_description": "<p><strong>GAIA</strong> Perfume Feminino Vegano 100% Natural <strong>QUINARÍ</strong> 50 mL</p>\n<p> </p>\n<p><strong>Significado: GAIA,</strong> na mitologia grega, é a personificação divina do planeta Terra. É o equivalente a &amp;quot;Mãe Terra&amp;quot; ou &amp;quot;Mãe Natureza&amp;quot;. Por isto, o perfume natural <strong>GAIA</strong> da <strong>QUINARÍ</strong> é</p>\n<p>representado por notas da natureza, mais frescas, de cachoeira e orvalho, que vão ajudá-la a entrar em conexão com a Mãe Terra a fim de atrair para si o que nela existe de mais puro e</p>\n<p>belo.</p>\n<p> </p>\n",
+      "sku": "7898452696895",
+      "price": "88.70000000",
+      "regular_price": "88.70000000",
+      "weight": "0.12000",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "18"
+      },
+      
+      
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 59,
+              "name": "Cuidados",
+              "slug": "cuidados"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          },
+          {
+              "id": 62,
+              "name": "Rosto e Corpo",
+              "slug": "rosto-e-corpo"
+          }
+      ],
+      "images": [
+          {
+              "id": 2820,
+              "date_created": "2021-03-26T13:46:52",
+              "date_created_gmt": "2021-03-26T19:46:52",
+              "date_modified": "2021-03-26T13:46:52",
+              "date_modified_gmt": "2021-03-26T19:46:52",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11132299051_Perfume20Gaia-Belle20Mam-1.jpg",
+              "name": "11132299051_Perfume20Gaia-Belle20Mam-1.jpg",
+              "alt": ""
+          }
+      ]
+  },
+  {
+      "id": 2813,
+      "name": "COSMOS PERFUME VEGANO NATURAL QUINARI 50 ML",
+      "slug": "cosmos-perfume-vegano-natural-quinari-50-ml",
+      "stock_quantity": "05",
+      "selected_quantity": "3",
+      "permalink": "https://bellemam.com.br/produto/cosmos-perfume-vegano-natural-quinari-50-ml/",
+      "date_created": "2021-03-26T16:44:09",
+      "date_created_gmt": "2021-03-26T19:44:09",
+      "date_modified": "2021-03-26T16:46:48",
+      "date_modified_gmt": "2021-03-26T19:46:48",
+      "purchased": false,
+      "type": "simple",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "",
+      "short_description": "",
+      "sku": "7898452696871",
+      "price": "52.70000000",
+      "regular_price": "52.70000000",
+      "weight": "0.12000",
+      "dimensions": {
+          "length": "3",
+          "width": "3",
+          "height": "18"
+      },
+      "categories": [
+          {
+              "id": 17,
+              "name": "Aromaterapia",
+              "slug": "aromaterapia"
+          },
+          {
+              "id": 59,
+              "name": "Cuidados",
+              "slug": "cuidados"
+          },
+          {
+              "id": 20,
+              "name": "Hidrolatos",
+              "slug": "hidrolatos"
+          },
+          {
+              "id": 68,
+              "name": "Nossas Marcas",
+              "slug": "nossas-marcas"
+          },
+          {
+              "id": 85,
+              "name": "Quinarí",
+              "slug": "quinari"
+          },
+          {
+              "id": 62,
+              "name": "Rosto e Corpo",
+              "slug": "rosto-e-corpo"
+          }
+      ],
+      "images": [
+          {
+              "id": 2819,
+              "date_created": "2021-03-26T13:46:48",
+              "date_created_gmt": "2021-03-26T19:46:48",
+              "date_modified": "2021-03-26T13:46:48",
+              "date_modified_gmt": "2021-03-26T19:46:48",
+              "src": "https://bellemam.com.br/wp-content/uploads/2021/03/11132262633_Perfume20Cosmos-Belle20Mam-1.jpg",
+              "name": "11132262633_Perfume20Cosmos-Belle20Mam-1.jpg",
+              "alt": ""
+          }
+      ]
+  }
+]
