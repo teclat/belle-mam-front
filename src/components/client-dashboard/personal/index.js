@@ -43,7 +43,6 @@ function PersonalClient(props) {
     let filedata = "";
     getBase64(file, (result) => {
       filedata = result;
-      //this.setState({ image: filedata, fileList: [file] });
       setImage(filedata);
       setFilelist([file]);
     });
@@ -60,15 +59,6 @@ function PersonalClient(props) {
       })
       .then((response) => {
         let user = response.data;
-        // this.setState({
-        //   user: user,
-        //   name: user.name,
-        //   phone: user.phone,
-        //   role: user.role,
-        //   city: user.city,
-        //   state: user.state,
-        //   relationship: user.relationship,
-        // });
         setUser(user);
         setName(user.name);
         setPhone(user.phone);
@@ -141,7 +131,7 @@ function PersonalClient(props) {
           alt=""
         />
         <Row align="middle">
-          <Col span={5}>
+          <Col span={4}>
             <label>Mudar Foto</label>
           </Col>
           <Col span={19}>

@@ -24,31 +24,13 @@ export const AuthProvider = ({ children }) => {
   async function signIn(email, password) {
     try {
       const body = { email: email, password: password };
-      // const response = await fetch('http://192.168.25.200:5000/user/login', {
-      //     method : 'POST',
-      //     headers : { "Content-Type" : "application/json" },
-      //     body : JSON.stringify(body)
-      // })
-
       console.log(body);
       const response = await api.post("users/login", body);
       if (response.data) {
         const user = response.data;
         await localStorage.setItem("user", JSON.stringify(user));
-
-        // if (user.role === "parent") {
-        //   this.props.history.push("/parents/home");
-        // } else if (user.role === "admin") {
-        //   this.props.history.push("/admin/products");
-        // } else if (user.role === "guest") {
-        //   this.props.history.push("/guest/personal");
-        // } else {
-        //   alert("Erro de efetuar login.");
-        //   //   console.log("error");
-        // }
         console.log(user);
         setIsAuth(true);
-        //console.log(token);
       }
 
       // else {

@@ -7,11 +7,16 @@ import Router from "./routes/routes";
 import * as serviceWorker from "./serviceWorker";
 import { AuthProvider } from "./hooks/AuthContext";
 
+import store from "./redux/store/";
+import { Provider } from "react-redux";
+
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <Router />
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

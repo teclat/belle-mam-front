@@ -1,47 +1,89 @@
 #benefits {
-    padding: 40px 0;
-    background: #e9eaff;
+  padding: 2.5rem 0;
+  background: #e9eaff;
+  color: #7c7ee5;
+
+  h2 {
+    font-weight: 600;
     color: #7c7ee5;
+    max-width: 40rem;
+  }
 
-    h2 {
-        font-weight: 600;
-        color: #7c7ee5;
+  span {
+    font-weight: 900;
+    font-size: 2rem;
+  }
 
-        span {
-            font-weight: 900;
-        }
+  ul {
+    margin: 2.5rem 0.5rem 0 0.5rem;
+  }
+
+  .header-title-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .header-title-container * {
+    margin-right: 0.5rem;
+  }
+
+  .benefit-box {
+    &.left {
+      max-width: 390px;
+      display: flex;
     }
 
-    ul {
-        margin-top: 40px;
+    &.right {
+      max-width: 420px;
+      display: flex;
     }
 
-    .benefit-box {
-        &.left {
-            max-width: 390px;
-            display: flex;
-        }
-
-        &.right {
-            max-width: 420px;
-            display: flex;
-        }
-
-        .title {
-            font-weight: 800;
-            font-size: 1.5em;
-        }
-
-        .text {
-            font-weight: 900;
-            font-size: 1em;
-            line-height: 1.5em;
-        }
-
-        img {
-            width: 100px;
-            height: 100px;
-            margin-right: 20px;
-        }
+    .title {
+      font-weight: 800;
+      font-size: 1.5em;
     }
+
+    .text {
+      font-weight: 900;
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      margin-right: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #benefits ul {
+    //margin: 2.5rem 0.5rem 0 0.5rem;
+    flex-wrap: wrap;
+    //align-items: center;
+    justify-content: center;
+  }
+
+  #benefits ul > * {
+    margin-bottom: 1em;
+    max-width: 20rem !important;
+    flex: 1 1 100%;
+  }
+
+  #benefits ul:last-child {
+    margin-top: 0;
+  }
+
+  #benefits .benefit-box img {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 0.5rem;
+  }
+
+  #benefits .text {
+    min-width: 10rem;
+  }
 }

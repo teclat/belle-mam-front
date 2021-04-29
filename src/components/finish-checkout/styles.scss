@@ -1,0 +1,20 @@
+.finish-checkout-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.finish-checkout-buttons {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.finish-checkout-buttons > button {
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}

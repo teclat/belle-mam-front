@@ -2,18 +2,28 @@ import React, { Component } from "react";
 import "./style.scss";
 import { Row, Col } from "antd";
 import { HomeOutlined, ScheduleOutlined } from "@ant-design/icons";
-import { Link, Switch, Route } from "react-router-dom";
+import { Link, Switch, Route, useHistory } from "react-router-dom";
 import PersonalClient from "../../../components/client-dashboard/personal";
 import EventsGuest from "../../../components/client-dashboard/events";
+import GuestGiftList from "../../../components/client-dashboard/gift-list";
 
 function GuestDashboard(props) {
+  const history = useHistory();
   const logout = async () => {
     await localStorage.removeItem("user");
-    props.history.push("/");
+    history.push("/");
   };
 
   return (
     <Row id="guest-dashboard">
+      <input
+        type="checkbox"
+        className="guest-menu-toggle"
+        id="guest-menu-toggle"
+      />
+      <label htmlFor="guest-menu-toggle" className="guest-menu-toggle-label">
+        <span></span>
+      </label>
       <Col
         span={5}
         className="leftColumn d-flex flex-column align-items-center"
@@ -46,17 +56,17 @@ function GuestDashboard(props) {
               </div>
             </Link>
 
-            <button class="btn btn-secondary d-flex align-items-center">
+            <button className="btn btn-secondary d-flex align-items-center">
               LOJA BELLE MAN{" "}
               <img src={require("../../../assets/images/enter.png")} alt="" />
             </button>
           </div>
         </div>
       </Col>
-      <Col span={19}>
+      <Col span={19} className="main-section">
         <div
           className={
-            "exit-row d-flex mt-3 justify-content-between align-items-center ml-3 mr-3"
+            "exit-row d-flex mt-3 justify-content-between align-items-center ml-3 mr-3 guest-header-container"
           }
         >
           <p>PAINEL PRINCIPAL</p>
@@ -77,6 +87,10 @@ function GuestDashboard(props) {
             <Route
               path={`${props.match.path}/events`}
               component={EventsGuest}
+            />
+            <Route
+              path={`${props.match.path}/event/:eventUrl/`}
+              component={GuestGiftList}
             />
           </div>
         </Switch>

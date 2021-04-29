@@ -1,3 +1,4 @@
+import { relative } from "path";
 import React, { Component } from "react";
 import "./style.scss";
 
@@ -63,15 +64,16 @@ export default class Hero extends Component {
               this.state.services[this.props.service].banner) +
             ")",
           backgroundSize: "cover",
+          backgroundPosition: "auto",
+          backgroundRepeat: "no-repeat",
+          position: "relative",
         }}
         class="container-fluid d-flex align-items-center"
       >
         <div class="hero-box">
           <h1 class="h1">{this.state.services[this.props.service].title}</h1>
-          <p class="mt-4 mb-5">
-            {this.state.services[this.props.service].text}
-          </p>
-          <button class="btn btn-secondary">CRIE SUA LISTA AGORA!</button>
+          <p>{this.state.services[this.props.service].text}</p>
+          <button class="hero-button">CRIE SUA LISTA AGORA!</button>
         </div>
         <div
           class={

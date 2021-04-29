@@ -23,9 +23,13 @@ import GiftedsParent from "../../../components/parent-dashboard/gifteds";
 import { useContext } from "react";
 import AuthContext from "../../../hooks/AuthContext";
 
+import testProducts from "../../../testProducts.json";
+
 function ParentDashboard(props) {
   const [event, setEvent] = useState({});
   const [isLoading, setIsloading] = useState(false);
+
+  const [products, setProducts] = useState([]);
 
   const { isAuth } = useContext(AuthContext);
 
@@ -52,26 +56,27 @@ function ParentDashboard(props) {
         console.log("event", response.data);
         let event = response.data.length > 0 ? response.data[0] : {};
         setEvent(event);
-        console.log(event);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.error(err.message);
       });
-  };
-
-  const dashboardIsloading = () => {
-    setIsloading(true);
-    console.log("Carregando Dashboard...");
-    setIsloading(false);
   };
 
   //get();
   //let url = "https://belle-mam.herokuapp.com/convite/" + event.url;
   let url = "";
-  console.log(props);
-  console.log(event);
+  console.log("Props: ", props);
+  console.log("Event: ", event);
   return (
     <Row id="parent-dashboard">
+      <input
+        type="checkbox"
+        className="parent-menu-toggle"
+        id="parent-menu-toggle"
+      />
+      <label for="parent-menu-toggle" className="parent-menu-toggle-label">
+        <span></span>
+      </label>
       <Col
         span={5}
         className="leftColumn d-flex flex-column align-items-center"
@@ -187,10 +192,10 @@ function ParentDashboard(props) {
           </div>
         </div>
       </Col>
-      <Col span={19}>
+      <Col span={19} className="main-section">
         <div
           className={
-            "exit-row d-flex mt-3 justify-content-between align-items-center ml-3 mr-3"
+            "exit-row d-flex mt-3 justify-content-between align-items-center ml-3 mr-3 parent-header-container"
           }
         >
           <p>PAINEL PRINCIPAL</p>
@@ -212,75 +217,35 @@ function ParentDashboard(props) {
             <div>
               <Route
                 path={`${props.match.path}/home`}
-                component={() => (
-                  <HomeParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <HomeParent event={event} />}
               />
               <Route
                 path={`${props.match.path}/config`}
-                component={() => (
-                  <ConfigParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <ConfigParent event={event} />}
               />
               <Route
                 path={`${props.match.path}/gallery`}
-                component={() => (
-                  <GalleryParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <GalleryParent event={event} />}
               />
               <Route
                 path={`${props.match.path}/gifts`}
-                component={() => (
-                  <GiftListParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <GiftListParent event={event} />}
               />
               <Route
                 path={`${props.match.path}/custom`}
-                component={() => (
-                  <CustomParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <CustomParent event={event} />}
               />
               <Route
                 path={`${props.match.path}/personal`}
-                component={() => (
-                  <PersonalParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <PersonalParent event={event} />}
               />
               <Route
                 path={`${props.match.path}/notes`}
-                component={() => (
-                  <NotesParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <NotesParent event={event} />}
               />
               <Route
                 path={`${props.match.path}/gifteds`}
-                component={() => (
-                  <GiftedsParent
-                    event={event}
-                    dashboardIsloading={dashboardIsloading}
-                  />
-                )}
+                component={() => <GiftedsParent event={event} />}
               />
             </div>
           </Switch>

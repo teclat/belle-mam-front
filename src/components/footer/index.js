@@ -6,7 +6,7 @@ export default class Footer extends Component {
     return (
       <footer
         id="footer"
-        class="container-fluid d-flex justify-content-around flex-row p-5"
+        class="container-fluid d-flex justify-content-around flex-row"
       >
         <img
           class="footer-logo align-self-center"

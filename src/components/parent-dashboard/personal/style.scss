@@ -1,71 +1,91 @@
 #personal-parent {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 
-    img {
-        width: 200px;
+  img {
+    width: 200px;
+  }
+
+  .title-box {
+    margin-top: 20px;
+
+    h2,
+    h4 {
+      color: #7c7fe9;
     }
 
-    .title-box {
-        margin-top: 20px;
-
-        h2,
-        h4 {
-            color: #7C7FE9;
-        }
-
-        h2 {
-            font-size: 2.5em;
-        }
-
-        h4 {
-            margin: 30px 0;
-            font-size: 1.5em;
-            font-weight: 800;
-        }
+    h2 {
+      font-size: 2.5em;
     }
 
-    .green-ball,
-    .purple-ball {
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
+    h4 {
+      margin: 30px 0;
+      font-size: 1.5em;
+      font-weight: 800;
     }
+  }
 
-    .green-ball {
-        background-color: #57dac1;
+  .green-ball,
+  .purple-ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+  }
+
+  .green-ball {
+    background-color: #57dac1;
+  }
+
+  .ant-upload {
+    border-radius: 20px;
+
+    button {
+      background: #f1f1f1;
+      border-radius: 20px;
+      padding: 0px 30px;
     }
+  }
 
-    .ant-upload {
-        border-radius: 20px;
+  .purple-ball {
+    background-color: #7c7fe9;
+  }
 
-        button {
-            background: #f1f1f1;
-            border-radius: 20px;
-            padding: 0px 30px;
-        }
+  .form {
+    padding: 0 40px;
+
+    .ant-row {
+      margin: 10px 0;
+      align-items: center;
     }
+  }
 
-    .purple-ball {
-        background-color: #7C7FE9;
+  .btn-secondary {
+    display: flex;
+    align-items: center;
+
+    &:active,
+    &:focus,
+    .ant-btn-loading {
+      color: white;
+      background: #a092f9;
     }
+  }
+}
 
-    .form {
-        padding: 0 40px;
+@media screen and (max-width: 800px) {
+  #personal-parent .ant-upload button {
+    padding: 0 1rem;
+  }
 
-        .ant-row {
-            margin: 10px 0;
-        }
-    }
+  #personal-parent .form {
+    padding: 0 0.2rem;
+  }
 
-    .btn-secondary {
-        display: flex;
-        align-items: center;
+  #personal-parent .form .ant-row .ant-col {
+    min-width: 7rem;
+    flex: 1 1 40%;
+  }
 
-        &:active,
-        &:focus,
-        .ant-btn-loading {
-            color: white;
-            background: #a092f9;
-        }
-    }
+  #personal-parent .form .ant-input {
+    margin-left: 0;
+  }
 }
