@@ -1,0 +1,130 @@
+.cart-title {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cart-header {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cart-header > p:first-child {
+  flex-basis: 70%;
+}
+
+.cart-header > p:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  flex-basis: 20%;
+}
+
+.cart-header > p:last-child {
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 10%;
+}
+
+.cart-product-container > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+  border-top: 1px solid black;
+}
+
+.product-first-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-basis: 70%;
+  max-width: 70%;
+  overflow: hidden;
+}
+
+.product-first-section > img {
+  max-width: 4rem;
+}
+
+.product-second-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 20%;
+}
+
+.product-second-section > input {
+  width: 2rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.product-second-section > div {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.product-second-section > * > button {
+  margin-top: 0.5rem;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+.product-third-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: 10%;
+}
+
+.cart-total {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-top: 1px solid black;
+  padding: 0.5rem 0;
+}
+
+.cart-total > *:first-child {
+  flex-basis: 90%;
+  max-width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-total > *:last-child {
+  display: flex;
+  flex-basis: 10%;
+  max-width: 10%;
+  justify-content: flex-end;
+}
+
+.cart-total > *:first-child > p {
+  display: flex;
+  justify-content: center;
+  flex-basis: 20%;
+  max-width: 20%;
+}
+
+.cart-buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cart-buttons > button {
+  //margin-top: 0.5rem;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}

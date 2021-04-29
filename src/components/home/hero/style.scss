@@ -1,45 +1,103 @@
 #hero {
-    height: 82vh;
+  height: 82vh;
 
-    .hero-box {
-        max-width: 550px;
-        color: white;
-        padding-left: 100px;
-    }
+  .hero-box {
+    max-width: 550px;
+    color: white;
+    padding-left: 100px;
+  }
 
-    .hero-box h1 {
-        color: white;
-        font-family: 'GoodDogNew', 'Maven Pro', sans-serif !important;
-    }
+  .hero-box h1 {
+    color: white;
+    font-family: "GoodDogNew", "Maven Pro", sans-serif !important;
+  }
 
-    .chat-btn {
-        background: #5cdab5;
-        position: fixed;
-        z-index: 999;
-        width: 70px;
-        height: 70px;
-        border-radius: 35px;
-        right: 20px;
-        bottom: 20vh;
-        -webkit-box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
-        -moz-box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
-        box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
-        transition: all ease 0.2s;
-    }
+  .hero-box p {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+  }
 
-    .chat-btn.scrolled {
-        right: 20px;
-        bottom: 20px;
-        transition: all ease 0.2s;
-    }
+  .chat-btn {
+    background: #5cdab5;
+    position: fixed;
+    z-index: 999;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    right: 20px;
+    bottom: 20vh;
+    -webkit-box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
+    -moz-box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
+    box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
+    transition: all ease 0.2s;
+  }
 
-    .chat-btn:hover {
-        cursor: pointer;
-    }
+  .chat-btn.scrolled {
+    right: 20px;
+    bottom: 20px;
+    transition: all ease 0.2s;
+  }
 
-    .chat-btn img {
-        width: 35px;
-        height: 35px;
-        margin-top: 5px;
-    }
+  .chat-btn:hover {
+    cursor: pointer;
+  }
+
+  .chat-btn img {
+    width: 35px;
+    height: 35px;
+    margin-top: 5px;
+  }
+
+  .hero-button {
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #4cdbb1;
+    color: white;
+    font-weight: 800;
+    border: none;
+    border-radius: 30px;
+    line-height: 1.5em;
+    padding: 10px 20px;
+    box-shadow: -5px 6px 61px 0px rgba(76, 219, 177, 0.5);
+  }
+
+  .hero-button:hover {
+    color: white;
+    background: #a092f9;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #hero {
+    height: 20rem;
+    position: relative;
+    //align-items: flex-end;
+    //width: 100%;
+  }
+
+  #hero .hero-box {
+    // position: absolute;
+    // top: 20rem;
+    padding: 0 1rem;
+  }
+
+  #hero .hero-box h1 {
+    font-size: 1.2rem;
+  }
+
+  #hero .hero-box p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  #hero .hero-button {
+    font-size: small;
+    font-weight: bold;
+    height: 2rem;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 }

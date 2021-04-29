@@ -49,7 +49,7 @@ export default class PersonalParent extends Component {
   };
 
   get = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     axios
       .get(Constants.ApiUrl + "users/" + user.id, {
@@ -76,7 +76,7 @@ export default class PersonalParent extends Component {
   };
 
   update = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
 
     if (
       this.state.name === "" ||
@@ -135,9 +135,10 @@ export default class PersonalParent extends Component {
             style={{ alignSelf: "center" }}
             className={"mb-3"}
             src={this.state.user.image_url}
+            alt=""
           />
           <Row align="middle">
-            <Col span={5}>
+            <Col span={4}>
               <label>Mudar Foto</label>
             </Col>
             <Col span={19}>
@@ -207,7 +208,7 @@ export default class PersonalParent extends Component {
             </Col>
           </Row>
 
-          {this.state.role == "parent" ? (
+          {this.state.role === "parent" ? (
             <Row>
               <Col span={4}>
                 <label>Parentesco</label>

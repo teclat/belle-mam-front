@@ -11,7 +11,7 @@ export default class Header extends Component {
   }
 
   componentDidMount = async () => {
-    let user = await JSON.parse(await localStorage.getItem("user"));
+    let user = await JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.setState({ user });
     }
@@ -41,9 +41,18 @@ export default class Header extends Component {
             class="header-logo"
             src={require("../../assets/images/" +
               (this.props.purple ? "cha-bebe-logo.png" : "logo-white.png"))}
+            alt=""
           />
         </Link>
-        <ul class="d-flex align-items-center">
+        <input
+          type="checkbox"
+          className="nav-menu-toggle"
+          id="nav-menu-toggle"
+        />
+        <label for="nav-menu-toggle" className="nav-menu-toggle-label">
+          <span></span>
+        </label>
+        <ul class="d-flex align-items-start">
           <li>
             <Link to="/why">
               <p>PORQUE A BELLE MAN</p>
@@ -62,12 +71,15 @@ export default class Header extends Component {
           <li>
             <p>NOSSAS LISTAS</p>
           </li>
-          <li class="menu-btn">
+        </ul>
+        <div className="header-btn-container">
+          <div>
             {this.state.user ? (
               <Link to={() => this.getPath()}>
                 <button
                   class={
-                    "btn btn-outline " + (this.props.purple ? "purple" : "")
+                    "header-menu-btn-secondary " +
+                    (this.props.purple ? "purple" : "")
                   }
                 >
                   DASHBOARD
@@ -77,25 +89,27 @@ export default class Header extends Component {
               <Link to="/login">
                 <button
                   class={
-                    "btn btn-outline " + (this.props.purple ? "purple" : "")
+                    "header-menu-btn-secondary " +
+                    (this.props.purple ? "purple" : "")
                   }
                 >
                   ENTRAR
                 </button>
               </Link>
             )}
-          </li>
-          <li class="menu-btn">
+          </div>
+          <div>
             <a
-              class="btn btn-primary d-flex align-items-center"
+              class="header-menu-btn-primary"
               href="https://bellemam.com.br/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               LOJA BELLE MAN{" "}
-              <img src={require("../../assets/images/enter.png")} />
+              <img src={require("../../assets/images/enter.png")} alt="" />
             </a>
-          </li>
-        </ul>
+          </div>
+        </div>
       </header>
     );
   }
