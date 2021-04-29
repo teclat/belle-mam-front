@@ -5,11 +5,12 @@ export default class Benefits extends Component {
   render() {
     return (
       <section id="benefits" class="container-fluid">
-        <h2 class="text-center h2">Prático, personalizado e seguro.</h2>
-        <h2 class="text-center h2">
-          Isso é a <span>Lista de Presentes da Belle Mam.</span>
-        </h2>
-
+        <div className="header-title-container">
+          <h2 class="text-center h2">
+            Prático, personalizado e seguro. Isso é a{" "}
+            <span>Lista de Presentes da Belle Mam.</span>
+          </h2>
+        </div>
         <div>
           <ul class="d-flex justify-content-around">
             <li class="benefit-box left">

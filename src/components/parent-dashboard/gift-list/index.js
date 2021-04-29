@@ -5,36 +5,44 @@ import { Constants } from "../../../constants";
 import axios from "axios";
 import { Modal } from "antd";
 
+import json from "../../../testProducts.json";
+
 function GiftListParent(props) {
   const [products, setProducts] = useState([]);
+  const [productsArrayLenght, setProductsArrayLength] = useState(0);
+  const [perPage, setPerPage] = useState(8);
 
   React.useEffect(() => {
-    get();
-    console.log("products", products);
+    getGiftList();
   }, []);
 
-  const get = async () => {
-    let user = await JSON.parse(localStorage.getItem("user"));
-    if (props.event.id === undefined) {
-      console.log("Event not set.");
-    } else {
-      axios
-        .get(Constants.ApiUrl + "events/gifts/" + props.event.id, {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        })
-        .then((response) => {
-          let products = response.data.map((r) => {
-            r.selected = true;
-            return r;
-          });
-          setProducts(products);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+  // const getGiftList = async () => {
+  //   let user = await JSON.parse(localStorage.getItem("user"));
+  //   if (props.event.id === undefined) {
+  //     console.log("Event not set.");
+  //   } else {
+  //     axios
+  //       .get(Constants.ApiUrl + "events/gifts/" + props.event.id, {
+  //         headers: {
+  //           Authorization: `Bearer ${user.token}`,
+  //         },
+  //       })
+  //       .then((response) => {
+  //         let products = response.data.map((r) => {
+  //           r.selected = true;
+  //           return r;
+  //         });
+  //         setProducts(products);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  // };
+
+  const getGiftList = () => {
+    setProducts(json);
+    setProductsArrayLength(json.length);
   };
 
   const save = async () => {
@@ -61,7 +69,7 @@ function GiftListParent(props) {
       )
       .then((response) => {
         Modal.success({ content: "Salvo com sucesso!" });
-        get();
+        getGiftList();
       })
       .catch((error) => {
         Modal.error({ content: "Erro ao salvar!" });
@@ -86,14 +94,16 @@ function GiftListParent(props) {
       </div>
       <div className="gifts justify-content-center">
         <ul className="d-flex flex-row justify-content-around">
-          {products.map((p) => {
+          {products.slice(0, perPage).map((product) => {
             return (
               <Product
-                product={p.product}
-                change={change()}
-                selected={p.selected}
-                qtd={p.quantity}
-                event_product={p.id}
+                key={product.id}
+                product={product}
+                change={change}
+                //selected={product.selected}
+                selected={true}
+                qtd={product.quantity}
+                event_product={product.id}
                 gifted={false}
               />
             );
@@ -101,6 +111,24 @@ function GiftListParent(props) {
         </ul>
       </div>
       <div className="d-flex btns justify-content-center">
+        {productsArrayLenght >= perPage ? (
+          <div
+            onClick={() => setPerPage(perPage * 2)}
+            className="btn btn-secondary"
+          >
+            VER MAIS
+          </div>
+        ) : null}
+
+        {perPage > 8 ? (
+          <div
+            onClick={() => setPerPage(perPage / 2)}
+            className="btn btn-secondary"
+          >
+            VER MENOS
+          </div>
+        ) : null}
+
         <div onClick={() => save()} className="btn btn-secondary">
           SALVAR
         </div>

@@ -67,7 +67,7 @@ export default class HomeParent extends Component {
             body={this.props.event.invite_text + url}
           />
         </Modal>
-        <Row className="p-3 mt-5 mb-5 d-flex">
+        <Row className="p-3 mt-5 mb-5 d-flex home-welcome">
           <div className="d-flex flex-column justify-content-center align-items-center title-box">
             <div className="d-flex">
               <h2>Olá, {this.state.user_name}!</h2>
@@ -91,7 +91,7 @@ export default class HomeParent extends Component {
           ) : null}
           {}
         </Row>
-        <Row align="stretch">
+        <Row align="stretch" className="home-main-container">
           <Col className="d-flex" span={12}>
             <div className="box ml-3 mr-3" style={{ width: "100%" }}>
               <h5 className="mb-4">Último recebido</h5>
@@ -128,7 +128,9 @@ export default class HomeParent extends Component {
               <Row className="mb-3">
                 <h5>Último recado</h5>
                 <Link to={"/parents/notes"}>
-                  <button className="btn btn-primary small">VER TODOS</button>
+                  <button className="btn btn-primary small see-more-button">
+                    VER TODOS
+                  </button>
                 </Link>
               </Row>
               <Row>
@@ -147,9 +149,12 @@ export default class HomeParent extends Component {
                 ) : null}
               </Row>
             </Row>
-            <Row align="stretch">
+            <Row align="stretch" className="home-secondary-container">
               <Col className="d-flex" span={13}>
-                <div className="box mr-3 text-center d-flex flex-column align-items-center justify-content-center">
+                <div
+                  style={{ width: "100%" }}
+                  className="box mr-3 text-center d-flex flex-column align-items-center justify-content-center"
+                >
                   <h5>Total de Presentes</h5>
                   <h5 className="money">
                     R${" "}
@@ -162,7 +167,9 @@ export default class HomeParent extends Component {
                     </span>
                   </h5>
                   <Link to={"/parents/gifteds"}>
-                    <button className="btn btn-primary small">VER TODOS</button>
+                    <button className="btn btn-primary small see-more-button">
+                      VER TODOS
+                    </button>
                   </Link>
                 </div>
               </Col>
@@ -182,14 +189,19 @@ export default class HomeParent extends Component {
                     </span>
                   </h5>
                   <Link to={"/parents/gifteds"}>
-                    <button className="btn btn-primary small">VER TODOS</button>
+                    <button className="btn btn-primary small see-more-button">
+                      VER TODOS
+                    </button>
                   </Link>
                 </div>
               </Col>
             </Row>
           </Col>
         </Row>
-        <Row justify="space-between" className="p-3 mt-3">
+        <Row
+          justify="space-between"
+          className="p-3 mt-3 social-buttons-container"
+        >
           <button
             onClick={() => this.toogleSocialModal(true)}
             className="btn btn-primary"

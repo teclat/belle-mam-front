@@ -5,9 +5,11 @@ export default class HowItWorks extends Component {
   render() {
     return (
       <section id="how-it-works" class="container-fluid">
-        <h2 class="text-center h2 mb-5">
-          Entenda como funciona a <span>Lista de Presentes</span> da Belle Mam
-        </h2>
+        <div class="how-it-works-header-container">
+          <h2 class="text-center h2 mb-5">
+            Entenda como funciona a <span>Lista de Presentes</span> da Belle Mam
+          </h2>
+        </div>
         <div class="">
           <ul class="d-flex flex-column justify-content-around">
             <li class="d-flex align-items-center">
@@ -21,8 +23,8 @@ export default class HowItWorks extends Component {
             <li class="d-flex align-self-end align-items-center">
               <img src={require("../../../assets/images/share.png")} alt="" />
               <p>
-                Envie o convite virtual do seu evento e compartilha a lista com
-                seus convidados!.
+                Envie o convite virtual do seu evento e compartilhe a lista com
+                seus convidados!
               </p>
             </li>
             <li class="d-flex align-items-center">

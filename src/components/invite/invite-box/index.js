@@ -206,7 +206,14 @@ export default class InviteBox extends Component {
         <div class="invite-box d-flex flex-row">
           <div class="d-flex flex-column first-column align-items-center">
             <div class="main-img d-flex justify-content-center align-items-center">
-              <img src={this.props.event.baby_image_url} alt="" />
+              {this.props.event.baby_image_url !== "" ? (
+                <img src={this.props.event.baby_image_url} alt="" />
+              ) : (
+                <img
+                  src={require("../../../assets/images/woocommerce-placeholder.png")}
+                  alt="IMAGEM"
+                />
+              )}
             </div>
             <div className={"mt-3"} style={{ paddingLeft: 30 }}>
               <a
@@ -225,8 +232,15 @@ export default class InviteBox extends Component {
               <div class="d-flex flex-row flex-wrap confirmeds">
                 {this.props.event && this.props.event.guests
                   ? this.props.event.guests.map((guest) => {
-                      return (
+                      console.log(guest.image_url);
+                      return guest.image_url !== null ? (
                         <img class="avatar" src={guest.image_url} alt="" />
+                      ) : (
+                        <img
+                          class="avatar"
+                          src={require("../../../assets/images/woocommerce-placeholder.png")}
+                          alt="IMAGEM"
+                        />
                       );
                     })
                   : null}
@@ -236,11 +250,19 @@ export default class InviteBox extends Component {
           <div class="d-flex flex-column second-column">
             <div class="d-flex flex-row align-items-center">
               <div class="d-flex flex-row align-items-center">
-                <img
-                  class="avatar"
-                  src={this.props.event.mom_image_url}
-                  alt=""
-                />
+                {this.props.event.mom_image_url !== "" ? (
+                  <img
+                    class="avatar"
+                    src={this.props.event.mom_image_url}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    class="avatar"
+                    src={require("../../../assets/images/woocommerce-placeholder.png")}
+                    alt="IMAGEM"
+                  />
+                )}
                 <div class="ml-2 mr-2">
                   <p>
                     <span>A Mamãe</span>
@@ -249,11 +271,19 @@ export default class InviteBox extends Component {
                 </div>
               </div>
               <div class="d-flex flex-row align-items-center">
-                <img
-                  class="avatar"
-                  src={this.props.event.dad_image_url}
-                  alt=""
-                />
+                {this.props.event.dad_image_url !== "" ? (
+                  <img
+                    class="avatar"
+                    src={this.props.event.dad_image_url}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    class="avatar"
+                    src={require("../../../assets/images/woocommerce-placeholder.png")}
+                    alt="IMAGEM"
+                  />
+                )}
                 <div class="ml-2 mr-2">
                   <p>
                     <span>O Papai</span>

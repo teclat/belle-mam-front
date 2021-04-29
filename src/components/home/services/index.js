@@ -9,12 +9,12 @@ export default class Services extends Component {
   render() {
     return (
       <section id="services" class="container-fluid pt-7">
-        <div class="service-back d-flex justify-content-center">
+        {/* <div class="service-back d-flex justify-content-center">
           <img
             src={require("../../../assets/images/service-back-line.png")}
             alt=""
           />
-        </div>
+        </div> */}
         <ul class="d-flex justify-content-around">
           <li>
             <p class="text-center">CHÁ REVELAÇÃO</p>

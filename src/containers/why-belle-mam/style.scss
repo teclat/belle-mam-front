@@ -1,122 +1,223 @@
 #why {
+  Header {
+    position: relative;
+    background: #a7aafe;
+  }
+  section {
+    position: relative;
+    height: 100vh;
 
-    section {
-        position: relative;
-        height: 100vh;
+    h2 {
+      font-size: 6em;
 
-        h2 {
-            font-size: 6em;
-
-            span {
-                font-weight: 800;
-            }
-        }
-
-        p {
-            line-height: 1.2em;
-            width: 400px;
-            font-weight: 500;
-            font-size: 1.1em;
-            margin-top: 40px;
-        }
-
-        img {
-            position: absolute;
-            bottom: 0;
-        }
+      span {
+        font-weight: 800;
+      }
     }
 
-    .why-1,
-    .why-3 {
-        img {
-            right: 0;
-        }
+    p {
+      line-height: 1.2em;
+      width: 400px;
+      font-weight: 500;
+      font-size: 1.1em;
+      margin-top: 40px;
     }
 
-    .why-2,
-    .why-4 {
-        img {
-            left: 0;
-        }
+    img {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .why-1,
+  .why-3 {
+    img {
+      right: 0;
+    }
+  }
+
+  .why-2,
+  .why-4 {
+    img {
+      left: 0;
+    }
+  }
+
+  .why-1 {
+    color: white;
+    background: url("../../assets/images/why-1-back.png");
+    background-size: cover;
+
+    > div {
+      margin-left: 10%;
+      display: flex;
+      flex-direction: column;
     }
 
-    .why-1 {
-        color: white;
-        background: url("../../assets/images/why-1-back.png");
-        background-size: cover;
-
-        >div {
-            margin-left: 10%;
-        }
-
-        img {
-            max-height: 80%;
-            max-width: 70%;
-        }
-
-        h2 {
-            color: white;
-        }
+    img {
+      max-height: 80%;
+      max-width: 70%;
     }
 
-    .why-2 {
-        background: url("../../assets/images/why-2-back.png");
-        background-size: cover;
-        flex-direction: row-reverse;
-        color: #A7AAFE;
+    h2 {
+      color: white;
+    }
+  }
 
-        >div {
-            margin-right: 10%;
-        }
+  .why-2 {
+    background: url("../../assets/images/why-2-back.png");
+    background-size: cover;
+    flex-direction: row-reverse;
+    color: #a7aafe;
 
-        img {
-            max-height: 95%;
-            max-width: 70%;
-        }
-
-        h2 {
-            color: #A7AAFE;
-        }
-
+    > div {
+      margin-right: 10%;
+      display: flex;
+      flex-direction: column;
     }
 
-    .why-3 {
-        color: #009172;
-        background: url("../../assets/images/why-3-back.png");
-        background-size: cover;
-
-        >div {
-            margin-left: 10%;
-        }
-
-        img {
-            max-height: 80%;
-            max-width: 70%;
-        }
-
-        h2 {
-            font-size: 4em;
-            color: #009172;
-        }
+    img {
+      max-height: 95%;
+      max-width: 70%;
     }
 
-    .why-4 {
-        background: url("../../assets/images/why-4-back.png");
-        background-size: cover;
-        flex-direction: row-reverse;
-        color: #009172;
-
-        >div {
-            margin-right: 10%;
-        }
-
-        img {
-            max-height: 95%;
-            max-width: 70%;
-        }
-
-        h2 {
-            color: #009172;
-        }
+    h2 {
+      color: #a7aafe;
     }
+  }
+
+  .why-3 {
+    color: #009172;
+    background: url("../../assets/images/why-3-back.png");
+    background-size: cover;
+
+    > div {
+      margin-left: 10%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img {
+      max-height: 80%;
+      max-width: 70%;
+    }
+
+    h2 {
+      font-size: 4em;
+      color: #009172;
+    }
+  }
+
+  .why-4 {
+    background: url("../../assets/images/why-4-back.png");
+    background-size: cover;
+    flex-direction: row-reverse;
+    color: #009172;
+
+    > div {
+      margin-right: 10%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img {
+      max-height: 95%;
+      max-width: 70%;
+    }
+
+    h2 {
+      color: #009172;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #why section * {
+    align-self: flex-start;
+  }
+  #why section p {
+    width: 22rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #why .why-1 img,
+  #why .why-2 img,
+  #why .why-3 img,
+  #why .why-4 img {
+    max-width: 60%;
+    max-height: 50%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #why section div {
+    margin: 0 !important;
+    width: 100%;
+  }
+
+  #why section h2 {
+    align-self: center;
+    font-size: 4em;
+  }
+
+  #why > * {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #why .why-1 p,
+  #why .why-3 p {
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+
+  #why .why-2 p,
+  #why .why-4 p {
+    margin-top: 2rem;
+    align-self: flex-end;
+    margin-left: 0;
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #why .why-1 img,
+  #why .why-2 img,
+  #why .why-3 img,
+  #why .why-4 img {
+    max-width: 50%;
+    max-height: 40%;
+  }
+
+  #why .why-1 h2,
+  #why .why-2 h2,
+  #why .why-3 h2,
+  #why .why-4 h2 {
+    margin-top: 0.5em;
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #why .why-1 p,
+  #why .why-3 p {
+    width: 18rem;
+    margin-left: 1em;
+    margin-top: 2rem;
+  }
+  #why .why-2 p,
+  #why .why-4 p {
+    width: 18rem;
+    margin-left: 0;
+    margin-right: 1em;
+    margin-top: 2rem;
+  }
+
+  #why .why-1 h2,
+  #why .why-2 h2,
+  #why .why-3 h2,
+  #why .why-4 h2 {
+    font-size: 2em;
+  }
 }

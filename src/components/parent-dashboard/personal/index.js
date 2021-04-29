@@ -138,7 +138,7 @@ export default class PersonalParent extends Component {
             alt=""
           />
           <Row align="middle">
-            <Col span={5}>
+            <Col span={4}>
               <label>Mudar Foto</label>
             </Col>
             <Col span={19}>

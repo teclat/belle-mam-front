@@ -3,13 +3,25 @@ import "./style.scss";
 import { Card, Row, Col, Form, Input, Modal, Button } from "antd";
 import axios from "axios";
 import { Constants } from "../../constants";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../../hooks/AuthContext";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAction } from "../../redux/actions/userActions";
 
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isAuth, signIn, isLoading, setIsLoading } = useContext(AuthContext);
+
+  const { user, loading, err } = useSelector((state) => ({
+    user: state.user.user,
+    loading: state.user.loading,
+    err: state.user.err,
+  }));
+
+  const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -19,19 +31,39 @@ function Login(props) {
     setPassword(e.target.value);
   };
 
+  const login = () => {
+    dispatch(loginAction(email, password));
+  };
+
+  React.useEffect(async () => {
+    if (user.keys().length !== 0) {
+      // const response = await JSON.parse(localStorage.getItem("user"));
+      // if (response.role === "parent") {
+      //   history.push("/parents/home");
+      // } else if (response.role === "admin") {
+      //   history.push("/admin/products");
+      // } else if (response.role === "guest") {
+      //   history.push("/guest/personal");
+      // } else {
+      //   alert("Erro ao efetuar login.");
+      // }
+      console.log(user);
+    }
+  }, [user]);
+
   const handleLogin = async () => {
     setIsLoading(true);
     await signIn(email, password);
     setIsLoading(false);
     const response = await JSON.parse(localStorage.getItem("user"));
     if (response.role === "parent") {
-      props.history.push("/parents/home");
+      history.push("/parents/home");
     } else if (response.role === "admin") {
-      props.history.push("/admin/products");
+      history.push("/admin/products");
     } else if (response.role === "guest") {
-      props.history.push("/guest/personal");
+      history.push("/guest/personal");
     } else {
-      alert("Erro de efetuar login.");
+      alert("Erro ao efetuar login.");
     }
   };
 
