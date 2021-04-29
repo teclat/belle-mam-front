@@ -75,7 +75,6 @@
     font-size: 1rem;
     width: 5rem;
     border: 0;
-    //background-color: rgba(0, 0, 0, 0.25);
     transition: all 0.1s;
     outline: none;
   }
@@ -91,7 +90,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    //justify-content: space-between;
+  }
+
+  .addToCartButtonContainer {
+    color: #fff;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .addToCartButtonContainer > button {
+    font-weight: bold;
+    padding: 0.5rem;
+    font-size: 1rem;
+    display: flex;
+    cursor: pointer;
+    background: #4cdbb1;
+    border: 0;
+    border-radius: 0.3rem;
+    transition: 200ms ease-in-out;
+  }
+
+  .addToCartButtonContainer > button:hover {
+    background: #a092f9;
   }
 
   .ant-switch-checked {
