@@ -1,11 +1,70 @@
+import { Modal } from "antd";
 import axios from "axios";
 import { Constants } from "../../constants";
 import * as actions from "../constants/eventConstants";
 
-export const getEventsRequest = (user) => async (dispatch) => {
+export const getEventRequest = (user) => async (dispatch) => {
   if (user) {
     dispatch({
-      type: actions.EVENTS_FETCH_REQUESTED,
+      type: actions.EVENT_FETCH_REQUESTED,
+    });
+
+    axios
+      .get(Constants.ApiUrl + "events/" + user.id, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      })
+      .then((response) => {
+        dispatch({
+          type: actions.EVENT_FETCHED_SUCCESSFULLY,
+          payload: response.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: actions.EVENT_FETCH_HAS_FAILED,
+          payload: err.message,
+        });
+      });
+  } else {
+    dispatch({
+      type: actions.EVENT_FETCH_HAS_FAILED,
+      payload: "User not logged in.",
+    });
+  }
+};
+
+export const deleteEventRequest = (user, event) => async (dispatch) => {
+  dispatch({
+    type: actions.EVENT_DELETE_REQUESTED,
+  });
+
+  axios
+    .delete(Constants.ApiUrl + "events/" + event.id, {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      dispatch({
+        type: actions.EVENT_DELETED_SUCCESSFULLY,
+        payload: response.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: actions.EVENT_DELETE_HAS_FAILED,
+        payload: err.message,
+      });
+    });
+};
+
+export const getSubscribedEventsRequest = (user) => async (dispatch) => {
+  if (user) {
+    dispatch({
+      type: actions.SUBSCRIBED_EVENTS_FETCH_REQUESTED,
     });
 
     axios
@@ -22,25 +81,25 @@ export const getEventsRequest = (user) => async (dispatch) => {
       )
       .then((response) => {
         dispatch({
-          type: actions.EVENTS_FETCHED_SUCCESSFULLY,
+          type: actions.SUBSCRIBED_EVENTS_FETCHED_SUCCESSFULLY,
           payload: response.data,
         });
       })
       .catch((err) => {
         dispatch({
-          type: actions.EVENTS_FETCH_HAS_FAILED,
+          type: actions.SUBSCRIBED_EVENTS_FETCH_HAS_FAILED,
           payload: err.message,
         });
       });
   } else {
     dispatch({
-      type: actions.EVENTS_FETCH_HAS_FAILED,
+      type: actions.SUBSCRIBED_EVENTS_FETCH_HAS_FAILED,
       payload: "User not logged in.",
     });
   }
 };
 
-export const selectEventAction = (eventId) => (dispatch) => {
+export const selectSubscribedEventAction = (eventId) => (dispatch) => {
   dispatch({
     type: actions.EVENT_SELECT_REQUESTED,
   });

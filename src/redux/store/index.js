@@ -5,12 +5,16 @@ import eventsReducer from "../reducers/eventReducers";
 import userLoginReducer from "../reducers/userReducers";
 import cartReducer from "../reducers/cartReducers";
 import checkoutReducer from "../reducers/checkoutReducers";
+import giftNoteReducer from "../reducers/giftNoteReducers";
+import orderReducers from "../reducers/orderReducers";
 
 const reducer = combineReducers({
   event: eventsReducer,
   user: userLoginReducer,
   cart: cartReducer,
   checkout: checkoutReducer,
+  giftNote: giftNoteReducer,
+  order: orderReducers,
 });
 
 const composeEnhancers = composeWithDevTools({
