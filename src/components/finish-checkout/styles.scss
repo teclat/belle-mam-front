@@ -5,6 +5,23 @@
   margin-top: 1rem;
 }
 
+.finish-checkout-content {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 60%;
+  gap: 0.5rem;
+}
+
+.finish-checkout-content > * {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid black;
+  padding: 0.5rem;
+}
 .finish-checkout-buttons {
   width: 100%;
   margin-top: 1rem;
@@ -13,8 +30,16 @@
   justify-content: space-between;
 }
 
-.finish-checkout-buttons > button {
-  border: none;
-  background: #fff;
+.finish-checkout-buttons > * {
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  background: #a092f9;
   cursor: pointer;
+  color: #fff;
+}
+
+.finish-checkout-buttons > *:hover {
+  background: #4cdbb1;
+  color: #fff;
 }

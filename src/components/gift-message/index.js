@@ -1,35 +1,53 @@
+import Axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { Constants } from "../../constants";
 import {
   nextStepAction,
   previousStepAction,
 } from "../../redux/actions/checkoutActions";
+import { saveNoteAction } from "../../redux/actions/giftNoteActions";
+
 import "./styles.scss";
 
 function GiftMessage(props) {
   const [message, setMessage] = useState("");
   const [charCount, setCharCount] = useState(500);
 
-  const { isLoading, err, step } = useSelector((state) => ({
+  const {
+    isLoading,
+    err,
+    step,
+    noteIsLoading,
+    noteErr,
+    noteSent,
+    selectedEventId,
+  } = useSelector((state) => ({
     isLoading: state.checkout.isLoading,
     err: state.checkout.err,
     step: state.checkout.step,
+    noteIsLoading: state.giftNote.isLoading,
+    noteErr: state.giftNote.err,
+    noteSent: state.giftNote.note,
+    selectedEventId: state.event.selectedEventId,
   }));
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleMessage = (e) => {
-    setMessage(e.target.value);
-  };
-
   React.useEffect(() => {
     setCharCount(500 - message.length);
   }, [message]);
 
-  const proceed = () => {
+  const handleMessage = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const proceed = async () => {
+    let user = await JSON.parse(localStorage.getItem("user"));
+    dispatch(saveNoteAction(user, selectedEventId, message));
     dispatch(nextStepAction(step));
   };
 
@@ -41,7 +59,7 @@ function GiftMessage(props) {
   return (
     <div>
       <div className="gift-message-main-container">
-        <h2>Deixe sua mensagem!</h2>
+        <h2>Deixe sua mensagem</h2>
         <form className="gift-message-main-form">
           <textarea
             maxLength="500"

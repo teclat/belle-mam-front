@@ -5,6 +5,52 @@
   margin-top: 1rem;
 }
 
+.payment-contents {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-content-block {
+  display: flex;
+  max-width: 25rem;
+  min-height: 3rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: 1px solid black;
+  //gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.payment-content-block > select {
+  display: flex;
+  flex: 0 1 50%;
+  overflow: hidden;
+  border-radius: 0.2rem;
+}
+
+.payment-content-block > label {
+  display: flex;
+  flex: 0 0 45%;
+}
+
+.payment-content-block > input {
+  max-width: 45%;
+  border: 1px solid black;
+}
+
+.card-expiration-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-expiration-container > select {
+  border-radius: 0.2rem;
+  height: 2rem;
+}
+
 .payment-buttons {
   width: 100%;
   margin-top: 1rem;
@@ -13,8 +59,41 @@
   justify-content: space-between;
 }
 
-.payment-buttons > button {
-  border: none;
-  background: #fff;
+.payment-buttons > * {
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  background: #a092f9;
   cursor: pointer;
+  color: #fff;
+}
+
+.payment-buttons > *:hover {
+  background: #4cdbb1;
+  color: #fff;
+}
+
+.content-validation,
+.content-validation-expiration-month,
+.content-validation-expiration-year {
+  display: flex;
+  position: absolute;
+  left: 105%;
+  width: 10rem;
+  //border: 1px solid #a092f9;
+  color: red;
+  border-radius: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 3rem;
+}
+
+.content-validation-expiration-month {
+  height: 2rem;
+}
+
+.content-validation-expiration-year {
+  height: 2rem;
+  top: 3rem;
 }
