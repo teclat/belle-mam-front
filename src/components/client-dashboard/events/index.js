@@ -19,6 +19,9 @@ function EventsGuest(props) {
     events: state.event.events,
     err: state.event.err,
   }));
+
+  const [currentEvent, setCurrentEvents] = useState([]);
+
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -38,6 +41,10 @@ function EventsGuest(props) {
     }
   }, [err]);
 
+  React.useEffect(() => {
+    setCurrentEvents(events);
+  }, [events]);
+
   const selectEvent = (event) => {
     dispatch(selectSubscribedEventAction(event.event_id));
   };
@@ -49,7 +56,7 @@ function EventsGuest(props) {
       </div>
       <div>
         {/* {isLoading !== false ? <LoadingComponent></LoadingComponent> : null} */}
-        {events.length === 0 ? (
+        {currentEvent.length === 0 ? (
           <h3>Não participa de eventos ainda.</h3>
         ) : (
           events.map((event) => {

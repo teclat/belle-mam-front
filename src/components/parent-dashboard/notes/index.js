@@ -3,23 +3,22 @@ import { Row, Col } from "antd";
 import "./style.scss";
 import { Constants } from "../../../constants";
 import axios from "axios";
+import { useState } from "react";
 
-export default class NotesParent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      notes: [],
-    };
-    this.get();
-  }
+function NotesParent(props) {
+  const [notes, setNotes] = useState([]);
 
-  get = async () => {
+  React.useEffect(() => {
+    getNotes();
+  }, []);
+
+  const getNotes = async () => {
     let user = await JSON.parse(localStorage.getItem("user"));
 
     axios
       .post(
         Constants.ApiUrl + "notes/event",
-        { event_id: this.props.event.id },
+        { event_id: props.event.id },
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -28,23 +27,22 @@ export default class NotesParent extends Component {
       )
       .then((response) => {
         console.log(response.data);
-        this.setState({
-          notes: response.data,
-        });
+        setNotes(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  return (
+    <div id="notes" className="d-flex flex-column align-items-center">
+      <div className="d-flex justify-content-center align-items-center title-box">
+        <h4 className="text-center">Todos Recados</h4>
+      </div>
 
-  render() {
-    return (
-      <div id="notes" className="d-flex flex-column align-items-center">
-        <div className="d-flex justify-content-center align-items-center title-box">
-          <h4 className="text-center">Todos Recados</h4>
-        </div>
-
-        {this.state.notes.map((note) => {
+      {notes
+        .slice(0)
+        .reverse()
+        .map((note) => {
           return (
             <div key={note.id} className="note d-flex align-items-center">
               <Col span={6} class="note-img mr-5">
@@ -57,7 +55,8 @@ export default class NotesParent extends Component {
             </div>
           );
         })}
-      </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default NotesParent;
