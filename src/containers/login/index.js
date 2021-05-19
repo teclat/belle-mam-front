@@ -11,7 +11,7 @@ import { loginAction } from "../../redux/actions/userActions";
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isAuth, signIn, isLoading, setIsLoading } = useContext(AuthContext);
+  //const { isAuth, signIn, isLoading, setIsLoading } = useContext(AuthContext);
 
   const { user, loading, err } = useSelector((state) => ({
     user: state.user.user,
@@ -23,6 +23,28 @@ function Login(props) {
 
   const history = useHistory();
 
+  React.useEffect(() => {
+    const redirect = async () => {
+      if (user !== null && user !== undefined) {
+        if (Object.keys(user).length !== 0) {
+          const localUser = await JSON.parse(localStorage.getItem("user"));
+          if (localUser !== undefined || localUser !== null) {
+            if (localUser.role === "parent") {
+              history.push("/parents/home");
+            } else if (localUser.role === "admin") {
+              history.push("/admin/products");
+            } else if (localUser.role === "guest") {
+              history.push("/guest/personal");
+            } else {
+              alert("Erro ao efetuar login.");
+            }
+          }
+        }
+      }
+    };
+    redirect();
+  }, [user]);
+
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -31,41 +53,25 @@ function Login(props) {
     setPassword(e.target.value);
   };
 
-  const login = () => {
+  const signIn = async () => {
     dispatch(loginAction(email, password));
   };
 
-  React.useEffect(async () => {
-    if (user.keys().length !== 0) {
-      // const response = await JSON.parse(localStorage.getItem("user"));
-      // if (response.role === "parent") {
-      //   history.push("/parents/home");
-      // } else if (response.role === "admin") {
-      //   history.push("/admin/products");
-      // } else if (response.role === "guest") {
-      //   history.push("/guest/personal");
-      // } else {
-      //   alert("Erro ao efetuar login.");
-      // }
-      console.log(user);
-    }
-  }, [user]);
-
-  const handleLogin = async () => {
-    setIsLoading(true);
-    await signIn(email, password);
-    setIsLoading(false);
-    const response = await JSON.parse(localStorage.getItem("user"));
-    if (response.role === "parent") {
-      history.push("/parents/home");
-    } else if (response.role === "admin") {
-      history.push("/admin/products");
-    } else if (response.role === "guest") {
-      history.push("/guest/personal");
-    } else {
-      alert("Erro ao efetuar login.");
-    }
-  };
+  // const handleLogin = async () => {
+  //   setIsLoading(true);
+  //   await signIn(email, password);
+  //   setIsLoading(false);
+  //   const response = await JSON.parse(localStorage.getItem("user"));
+  //   if (response.role === "parent") {
+  //     history.push("/parents/home");
+  //   } else if (response.role === "admin") {
+  //     history.push("/admin/products");
+  //   } else if (response.role === "guest") {
+  //     history.push("/guest/personal");
+  //   } else {
+  //     alert("Erro ao efetuar login.");
+  //   }
+  // };
 
   return (
     <div
@@ -115,8 +121,8 @@ function Login(props) {
               </Row>
 
               <Button
-                loading={isLoading}
-                onClick={handleLogin}
+                loading={loading}
+                onClick={signIn}
                 className="btn btn-secondary"
               >
                 ENTRAR

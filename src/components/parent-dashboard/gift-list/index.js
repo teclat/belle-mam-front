@@ -5,8 +5,6 @@ import { Constants } from "../../../constants";
 import axios from "axios";
 import { Modal } from "antd";
 
-import json from "../../../testProducts.json";
-
 function GiftListParent(props) {
   const [products, setProducts] = useState([]);
   const [productsArrayLenght, setProductsArrayLength] = useState(0);
@@ -16,33 +14,35 @@ function GiftListParent(props) {
     getGiftList();
   }, []);
 
-  // const getGiftList = async () => {
-  //   let user = await JSON.parse(localStorage.getItem("user"));
-  //   if (props.event.id === undefined) {
-  //     console.log("Event not set.");
-  //   } else {
-  //     axios
-  //       .get(Constants.ApiUrl + "events/gifts/" + props.event.id, {
-  //         headers: {
-  //           Authorization: `Bearer ${user.token}`,
-  //         },
-  //       })
-  //       .then((response) => {
-  //         let products = response.data.map((r) => {
-  //           r.selected = true;
-  //           return r;
-  //         });
-  //         setProducts(products);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // };
-
-  const getGiftList = () => {
-    setProducts(json);
-    setProductsArrayLength(json.length);
+  const getGiftList = async () => {
+    let user = await JSON.parse(localStorage.getItem("user"));
+    if (props.event.id === undefined) {
+      console.log("Event not set.");
+    } else {
+      axios
+        .get(Constants.ApiUrl + "events/gifts/" + props.event.id, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        })
+        .then((response) => {
+          console.log("test response", response.data);
+          if (
+            response.data[0].products === undefined ||
+            response.data[0].products === null
+          ) {
+            return;
+          }
+          let products = response.data[0].products.map((r) => {
+            r.selected = true;
+            return r;
+          });
+          setProducts(products);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   const save = async () => {
@@ -95,6 +95,7 @@ function GiftListParent(props) {
       <div className="gifts justify-content-center">
         <ul className="d-flex flex-row justify-content-around">
           {products.slice(0, perPage).map((product) => {
+            console.log("test-map", product);
             return (
               <Product
                 key={product.id}

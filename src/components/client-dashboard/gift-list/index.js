@@ -14,6 +14,8 @@ import Product from "../../product";
 
 import json from "../../../testProducts.json";
 import { useState } from "react";
+import axios from "axios";
+import { Constants } from "../../../constants";
 
 function GuestGiftList(props) {
   const { isLoading, events, err, selectedEventId } = useSelector((state) => ({
@@ -31,8 +33,38 @@ function GuestGiftList(props) {
     getGiftList();
   }, []);
 
-  const getGiftList = () => {
-    setProducts(json);
+  // const getGiftList = () => {
+  //   setProducts(json);
+  // };
+  const getGiftList = async () => {
+    let user = await JSON.parse(localStorage.getItem("user"));
+    if (selectedEventId === undefined) {
+      console.log("Event not set.");
+    } else {
+      axios
+        .get(Constants.ApiUrl + "events/gifts/" + selectedEventId, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        })
+        .then((response) => {
+          console.log("test response", response.data);
+          if (
+            response.data[0].products === undefined ||
+            response.data[0].products === null
+          ) {
+            return;
+          }
+          let products = response.data[0].products.map((r) => {
+            r.selected = true;
+            return r;
+          });
+          setProducts(products);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   const perPage = 8;

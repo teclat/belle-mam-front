@@ -8,14 +8,14 @@ import { useState } from "react";
 import FirstRender from "../../hooks/FirstRender";
 
 function SelectGifts(props) {
-  const [page, setPage] = useState(1);
+  const [nextPage, setNextPage] = useState(1);
   const [perPage, setPerPage] = useState(8);
   const [products, setProducts] = useState([]);
   const [lastAddedLength, setLastAddedLength] = useState(0);
   const [selecteds, setSelecteds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMorePages, setHasMorePages] = useState(true);
-  const [pageLimit, setPageLimit] = useState(page + 1);
+  const [pageLimit, setPageLimit] = useState(nextPage + 1);
 
   const isFirstRender = FirstRender();
 
@@ -26,7 +26,7 @@ function SelectGifts(props) {
   React.useEffect(() => {
     if (!isFirstRender) {
       console.log("PRODUCTS: ", products);
-      console.log("Page Limit: ", pageLimit, "Page", page);
+      console.log("Page Limit: ", pageLimit, "Page", nextPage);
     }
   }, [products]);
 
@@ -48,7 +48,9 @@ function SelectGifts(props) {
         price: "",
         regular_price: "",
         weight: "",
-        dimensions: { length: "", width: "", height: "" },
+        dimensions_length: "",
+        dimensions_width: "",
+        dimensions_height: "",
         categories: [],
         images: [],
       };
@@ -65,11 +67,15 @@ function SelectGifts(props) {
       forEachProduct.price = data[i].price;
       forEachProduct.regular_price = data[i].regular_price;
       forEachProduct.weight = data[i].weight;
-      forEachProduct.dimensions.length = data[i].dimensions.length;
-      forEachProduct.dimensions.width = data[i].dimensions.width;
-      forEachProduct.dimensions.height = data[i].dimensions.height;
-      forEachProduct.categories = data[i].categories;
-      forEachProduct.images = data[i].images;
+      forEachProduct.dimensions_length = data[i].dimensions.length;
+      forEachProduct.dimensions_width = data[i].dimensions.width;
+      forEachProduct.dimensions_height = data[i].dimensions.height;
+      for (let j = 0; j < data[i].categories.length; j++) {
+        forEachProduct.categories.push(data[i].categories[j].name);
+      }
+      for (let k = 0; k < data[i].images.length; k++) {
+        forEachProduct.images.push(data[i].images[k].src);
+      }
       parsedProducts.push(forEachProduct);
     }
     return parsedProducts;
@@ -88,7 +94,7 @@ function SelectGifts(props) {
         },
 
         params: {
-          page: page,
+          page: nextPage,
           per_page: perPage,
         },
       })
@@ -104,13 +110,12 @@ function SelectGifts(props) {
 
         setProducts([...products, ...parsedProducts]);
 
-        setLastAddedLength(parseProducts.length);
-
-        if (page >= pageLimit) {
+        setLastAddedLength(parsedProducts.length);
+        if (nextPage >= pageLimit) {
           setHasMorePages(false);
           console.log("End of products list.");
         } else {
-          setPage(page + 1);
+          setNextPage(nextPage + 1);
         }
 
         setIsLoading(false);
@@ -123,31 +128,29 @@ function SelectGifts(props) {
   };
 
   const removeProducts = () => {
+    console.log(lastAddedLength);
     setIsLoading(true);
-
-    let productsTemp = products;
-    productsTemp.splice(-1, lastAddedLength);
-    setProducts(productsTemp);
-
+    setProducts(products.slice(0, products.length - lastAddedLength));
+    setNextPage(nextPage - 1);
     setIsLoading(false);
   };
 
-  const changeSelecteds = (id, values) => {
-    console.log(values);
+  const changeSelecteds = (giftId, values) => {
+    console.log("present selecteds: ", selecteds);
     let selectedsTemp = selecteds;
     let exist = false;
     if (selectedsTemp.length > 0) {
-      let product = selectedsTemp.filter((p) => p.product_id === id)[0];
+      let product = selectedsTemp.filter((p) => p.id === giftId)[0];
       if (product) {
         exist = true;
         if (values.selected === true) {
-          product.quantity = values.qtd;
+          product.selected_quantity = values.qtd;
         } else {
           var index = selectedsTemp
             .map((p) => {
-              return p.product_id;
+              return p.id;
             })
-            .indexOf(id);
+            .indexOf(giftId);
           selectedsTemp.splice(index, 1);
         }
       }
@@ -155,18 +158,13 @@ function SelectGifts(props) {
 
     if (!exist) {
       if (values.selected === true) {
-        selecteds.push({
-          product_id: id,
-          quantity: values.qtd,
-        });
+        let product = products.filter((p) => p.id === giftId)[0];
+        product.selected_quantity = values.qtd;
+        selectedsTemp.push(...selectedsTemp, product);
       }
     }
-    console.log("pppp", selectedsTemp);
+    console.log("Change Selecteds: ", selectedsTemp);
     setSelecteds(selectedsTemp);
-  };
-
-  const sendSelecteds = async () => {
-    setIsLoading(true);
   };
 
   return (
@@ -179,13 +177,12 @@ function SelectGifts(props) {
         <h4>Vamos escolher os produtos do seu evento</h4>
       </div>
       <div className="gifts">
-        {/* <ul class="d-flex flex-row justify-content-around"> */}
         <ul>
           {products.map((product) => {
             return (
               <Product
                 key={product.id}
-                event_product={product.id}
+                giftId={product.id}
                 change={changeSelecteds}
                 gifted={false}
                 product={product}
@@ -194,7 +191,6 @@ function SelectGifts(props) {
           })}
         </ul>
       </div>
-      {/* <div className="d-flex btns justify-content-around"> */}
       <div className="btnsContainer">
         {hasMorePages === true ? (
           <Button
@@ -207,7 +203,7 @@ function SelectGifts(props) {
             MAIS PRODUTOS
           </Button>
         ) : null}
-        {page !== 1 ? (
+        {nextPage > 2 ? (
           <Button
             loading={isLoading}
             onClick={() => {

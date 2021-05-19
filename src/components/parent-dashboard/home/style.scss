@@ -1,4 +1,10 @@
 #home-parent {
+  .copy-invite-link {
+    display: inline-block;
+    color: #fff;
+    margin: 0.5rem;
+  }
+
   .title-box {
     h2 {
       color: #7c7fe9;
@@ -62,9 +68,6 @@
 }
 
 @media screen and (max-width: 800px) {
-  #home-parent {
-    //height: 100vh;
-  }
   #home-parent .home-welcome {
     margin: 1rem 0 !important;
   }

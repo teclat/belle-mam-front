@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 import {
-  getEventsRequest,
-  selectEventAction,
+  getSubscribedEventsRequest,
+  selectSubscribedEventAction,
 } from "../../../redux/actions/eventsActions";
 
 function EventsGuest(props) {
@@ -27,7 +27,7 @@ function EventsGuest(props) {
 
   const getEvents = async () => {
     let user = await JSON.parse(localStorage.getItem("user"));
-    dispatch(getEventsRequest(user));
+    dispatch(getSubscribedEventsRequest(user));
   };
 
   React.useEffect(() => {
@@ -39,7 +39,7 @@ function EventsGuest(props) {
   }, [err]);
 
   const selectEvent = (event) => {
-    dispatch(selectEventAction(event.event_id));
+    dispatch(selectSubscribedEventAction(event.event_id));
   };
 
   return (
@@ -49,37 +49,40 @@ function EventsGuest(props) {
       </div>
       <div>
         {/* {isLoading !== false ? <LoadingComponent></LoadingComponent> : null} */}
-        {events.length === 0 ? <h3>Não participa de eventos ainda.</h3> : null}
-        {events.map((event) => {
-          return (
-            <div key={event.id} className={"mb-3"}>
-              <Card>
-                <div className={"d-flex"}>
-                  {event.event.baby_image_url !== "" ? (
-                    <img src={event.event.baby_image_url} alt="" />
-                  ) : (
-                    <img
-                      src={require("../../../assets/images/woocommerce-placeholder.png")}
-                    />
-                  )}
-                  <div>
-                    <Link
-                      className="event-button"
-                      onClick={() => selectEvent(event)}
-                      to={`/guest/event/${event.event.url}`}
-                    >
-                      {event.event.baby_name}
-                    </Link>
-                    <p>{event.event.history_text}</p>
-                    <p>{event.event.address}</p>
-                    <p>{event.event.date}</p>
-                    <p>{event.event.hour}</p>
+        {events.length === 0 ? (
+          <h3>Não participa de eventos ainda.</h3>
+        ) : (
+          events.map((event) => {
+            return (
+              <div key={event.id} className={"mb-3"}>
+                <Card>
+                  <div className={"d-flex"}>
+                    {event.event.baby_image_url !== "" ? (
+                      <img src={event.event.baby_image_url} alt="" />
+                    ) : (
+                      <img
+                        src={require("../../../assets/images/woocommerce-placeholder.png")}
+                      />
+                    )}
+                    <div>
+                      <Link
+                        className="event-button"
+                        onClick={() => selectEvent(event)}
+                        to={`/guest/event/${event.event.url}`}
+                      >
+                        {event.event.baby_name || event.event.url}
+                      </Link>
+                      <p>{event.event.history_text}</p>
+                      <p>{event.event.address}</p>
+                      <p>{event.event.date}</p>
+                      <p>{event.event.hour}</p>
+                    </div>
                   </div>
-                </div>
-              </Card>
-            </div>
-          );
-        })}
+                </Card>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

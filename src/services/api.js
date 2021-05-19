@@ -1,7 +1,8 @@
 import axios from "axios";
+import { Constants } from "./../constants";
 
 const api = axios.create({
-  baseURL: "https://bellemam-dev-backend.herokuapp.com/api/",
+  baseURL: Constants.ApiUrl,
 });
 
 api.interceptors.request.use(async (config) => {

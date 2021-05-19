@@ -75,6 +75,7 @@
   border: none;
   background: #fff;
   cursor: pointer;
+  color: #1890ff;
 }
 
 .product-third-section {
@@ -122,9 +123,16 @@
   justify-content: space-between;
 }
 
-.cart-buttons > button {
-  //margin-top: 0.5rem;
-  border: none;
-  background: #fff;
+.cart-buttons > * {
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  background: #a092f9;
   cursor: pointer;
+  color: #fff;
+}
+
+.cart-buttons > *:hover {
+  background: #4cdbb1;
+  color: #fff;
 }

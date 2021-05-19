@@ -6,12 +6,14 @@ import { Link, Switch, Route, useHistory } from "react-router-dom";
 import PersonalClient from "../../../components/client-dashboard/personal";
 import EventsGuest from "../../../components/client-dashboard/events";
 import GuestGiftList from "../../../components/client-dashboard/gift-list";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../../redux/actions/userActions";
 
 function GuestDashboard(props) {
-  const history = useHistory();
+  const dispatch = useDispatch();
   const logout = async () => {
-    await localStorage.removeItem("user");
-    history.push("/");
+    dispatch(logoutAction());
+    props.history.push("/");
   };
 
   return (
