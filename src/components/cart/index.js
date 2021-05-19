@@ -20,7 +20,16 @@ function Cart(props) {
     step: state.checkout.step,
   }));
 
+  const { events, selectedEventId } = useSelector((state) => ({
+    events: state.event.events,
+    selectedEventId: state.event.selectedEventId,
+  }));
+
   const [total, setTotal] = useState(0);
+
+  const [event, setEvent] = useState({});
+
+  const [date, setDate] = useState(new Date());
 
   const dispatch = useDispatch();
 
@@ -33,6 +42,31 @@ function Cart(props) {
   React.useEffect(() => {
     dispatch(jumpToStepAction(0));
   }, []);
+
+  React.useEffect(() => {
+    if (events === undefined || events === null) {
+      return;
+    }
+    setEvent(events.filter((e) => e.event_id === selectedEventId));
+  }, [events]);
+
+  React.useEffect(() => {
+    if (event[0] === undefined || event[0] === null) {
+      return;
+    }
+    const newDate = new Date(event[0].event.date);
+    setDate(newDate);
+  }, [event]);
+
+  React.useEffect(() => {
+    calcTotal();
+  }, [giftsOnCart]);
+
+  React.useEffect(() => {
+    if (err !== "") {
+      alert(err);
+    }
+  }, [err]);
 
   const calcTotal = () => {
     giftsOnCart.forEach((giftOnCart) => {
@@ -50,21 +84,29 @@ function Cart(props) {
     dispatch(cartRemoveRequest(gift, giftsOnCart));
   };
 
-  React.useEffect(() => {
-    calcTotal();
-  }, [giftsOnCart]);
-
-  React.useEffect(() => {
-    if (err !== "") {
-      alert(err);
-    }
-  }, [err]);
-
   return (
     <div>
       <div className="cart-title">
-        <h3>TIPO DO EVENTO</h3>
-        <h3>00/00/0000</h3>
+        <h3>
+          {event[0] !== undefined && event[0] !== null
+            ? event[0].event.type === "baby"
+              ? "Chá de Bebê"
+              : event[0].event.type === "revelation"
+              ? "Chá Revelação"
+              : event[0].event.type === "diaper"
+              ? "Chá de Fralda"
+              : event[0].event.type === "baptize"
+              ? "Batizado"
+              : event[0].event.type === "birth_day"
+              ? "Aniversário"
+              : "TIPO DO EVENTO"
+            : "TIPO DO EVENTO"}
+        </h3>
+        <h3>
+          {event[0] !== undefined && event[0] !== null
+            ? date.toLocaleDateString("pt-BR")
+            : "00/00/0000"}
+        </h3>
       </div>
       <div className="cart-header">
         <p>Descrição do produto</p>

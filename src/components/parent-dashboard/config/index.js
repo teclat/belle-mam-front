@@ -7,6 +7,9 @@ import axios from "axios";
 
 import "./style.scss";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteEventRequest } from "../../../redux/actions/eventsActions";
+import { useHistory } from "react-router";
 
 function ConfigParent(props) {
   const [date, setDate] = useState(moment(props.event.date));
@@ -18,7 +21,7 @@ function ConfigParent(props) {
   );
   const [hourString, setHourString] = useState(props.event.hour);
   const [address, setAddress] = useState(props.event.address);
-  const [live, setLive] = useState(props.event.live);
+  const [live, setLive] = useState(props.event.url);
   const [babyName, setBabyName] = useState(props.event.baby_name);
   const [babyBirthday, setBabyBirthday] = useState(
     moment(props.event.baby_birthday)
@@ -28,11 +31,7 @@ function ConfigParent(props) {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const [canDeleteEvent, setCanDeleteEvent] = useState(false);
-
-  const updateDashboard = () => {
-    props.dashboardIsloading();
-  };
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     console.log("TEST PROPS", props);
@@ -41,44 +40,15 @@ function ConfigParent(props) {
     console.log("date", dateString);
   }, []);
 
-  const deleteEvent = async () => {
-    const event = props.event;
+  const handleDelete = async () => {
     let user = await JSON.parse(localStorage.getItem("user"));
-    setIsLoading(true);
-    axios
-      .delete(Constants.ApiUrl + "events/" + event.id, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        setIsLoading(false);
-        Modal.success({
-          content: "Evento Excluído!",
-          onOk() {
-            updateDashboard();
-          },
-        });
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        Modal.error({
-          content: "Erro ao excluir o evento.",
-        });
-        console.error(err.message);
-      });
-  };
-
-  const handleDelete = () => {
     Modal.confirm({
       title: "Atenção!",
       content:
         "Tem certeza de que quer excluir este evento? Esta ação não pode ser desfeita.",
       onOk() {
-        //setCanDeleteEvent(true);
-        deleteEvent();
-        //console.log("TESTE");
+        dispatch(deleteEventRequest(user, props.event));
+        window.location.href = `/parents/home`;
       },
       onCancel() {
         return;
@@ -212,7 +182,7 @@ function ConfigParent(props) {
             <Input
               onChange={(e) => setLive(e.target.value)}
               value={live}
-              placeholder={"Fortaleza"}
+              placeholder={"cha-bebe-belle-mam"}
             />
           </Col>
         </Row>
@@ -245,22 +215,23 @@ function ConfigParent(props) {
             />
           </Col>
         </Row>
+        <div className="config-buttons-container">
+          <Button
+            loading={isLoading}
+            onClick={() => save()}
+            className="btn btn-secondary"
+          >
+            SALVAR
+          </Button>
 
-        <Button
-          loading={isLoading}
-          onClick={() => save()}
-          className="btn btn-secondary"
-        >
-          SALVAR
-        </Button>
-
-        <Button
-          loading={isLoading}
-          onClick={() => handleDelete()}
-          className="btn btn-secondary"
-        >
-          DELETAR
-        </Button>
+          <Button
+            loading={isLoading}
+            onClick={() => handleDelete()}
+            className="btn btn-secondary"
+          >
+            DELETAR
+          </Button>
+        </div>
       </div>
     </div>
   );

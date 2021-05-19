@@ -45,7 +45,7 @@ export const cartItemChangeQtd = (gift, onCart, count) => (dispatch) => {
   const giftsOnCart = onCart
     .slice()
     .filter((giftOnCart) => giftOnCart.id === gift.id);
-  if (count >= 0 && count < parseFloat(gift.selected_quantity)) {
+  if (count >= 0 && count <= parseFloat(gift.selected_quantity)) {
     giftsOnCart.forEach((giftOnCart) => {
       giftOnCart.count = count;
     });

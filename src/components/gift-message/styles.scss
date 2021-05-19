@@ -29,8 +29,16 @@
   justify-content: space-between;
 }
 
-.gift-message-buttons > button {
-  border: none;
-  background: #fff;
+.gift-message-buttons > * {
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  background: #a092f9;
   cursor: pointer;
+  color: #fff;
+}
+
+.gift-message-buttons > *:hover {
+  background: #4cdbb1;
+  color: #fff;
 }

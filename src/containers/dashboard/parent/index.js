@@ -12,7 +12,7 @@ import {
 } from "@ant-design/icons";
 import { Constants } from "../../../constants";
 import axios from "axios";
-import { Link, Switch, Route } from "react-router-dom";
+import { Link, Switch, Route, useHistory, useLocation } from "react-router-dom";
 import ConfigParent from "../../../components/parent-dashboard/config";
 import CustomParent from "../../../components/parent-dashboard/custom";
 import GalleryParent from "../../../components/parent-dashboard/gallery";
@@ -24,49 +24,50 @@ import { useContext } from "react";
 import AuthContext from "../../../hooks/AuthContext";
 
 import testProducts from "../../../testProducts.json";
-
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../../redux/actions/userActions";
+import { getEventRequest } from "../../../redux/actions/eventsActions";
 function ParentDashboard(props) {
-  const [event, setEvent] = useState({});
-  const [isLoading, setIsloading] = useState(false);
+  //const [event, setEvent] = useState({});
 
   const [products, setProducts] = useState([]);
 
-  const { isAuth } = useContext(AuthContext);
+  const { user, loading, err } = useSelector((state) => ({
+    user: state.user.user,
+    loading: state.user.loading,
+    err: state.user.err,
+  }));
+
+  const { isLoading, event, eventErr } = useSelector((state) => ({
+    isLoading: state.event.isLoading,
+    event: state.event.events[0],
+    eventErr: state.event.err,
+  }));
+
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const location = useLocation();
 
   React.useEffect(() => {
     getEvents();
+    console.log(history);
+    console.log(props);
+    console.log(location);
   }, []);
 
   const logout = async () => {
-    await localStorage.removeItem("user");
+    dispatch(logoutAction());
     props.history.push("/");
   };
 
   const getEvents = async () => {
     let user = await JSON.parse(localStorage.getItem("user"));
-    console.log("user", user);
-
-    axios
-      .get(Constants.ApiUrl + "events/" + user.id, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
-      .then((response) => {
-        console.log("event", response.data);
-        let event = response.data.length > 0 ? response.data[0] : {};
-        setEvent(event);
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
+    dispatch(getEventRequest(user));
   };
 
-  //get();
-  //let url = "https://belle-mam.herokuapp.com/convite/" + event.url;
-  let url = "";
-  console.log("Props: ", props);
-  console.log("Event: ", event);
   return (
     <Row id="parent-dashboard">
       <input
@@ -74,7 +75,7 @@ function ParentDashboard(props) {
         className="parent-menu-toggle"
         id="parent-menu-toggle"
       />
-      <label for="parent-menu-toggle" className="parent-menu-toggle-label">
+      <label htmlFor="parent-menu-toggle" className="parent-menu-toggle-label">
         <span></span>
       </label>
       <Col
@@ -199,10 +200,14 @@ function ParentDashboard(props) {
           }
         >
           <p>PAINEL PRINCIPAL</p>
-          {Object.keys(event).length !== 0 && event.url ? (
-            <a target="_blank" rel="noopener noreferrer" href={url}>
+          {event !== null && event !== undefined ? (
+            <Link
+              to={`/convite/${event.url}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               IR PARA O CONVITE
-            </a>
+            </Link>
           ) : null}
           <div
             onClick={() => logout()}
@@ -212,7 +217,7 @@ function ParentDashboard(props) {
             {/* <img style={{ width: 20 }} src={require("../../../assets/images/enter-purple.png")} /> */}
           </div>
         </div>
-        {Object.keys(event).length !== 0 ? (
+        {event !== null && event !== undefined ? (
           <Switch>
             <div>
               <Route

@@ -9,11 +9,23 @@ const initialState = {
 
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.EVENTS_FETCH_REQUESTED:
+    case actions.EVENT_FETCH_REQUESTED:
       return { ...state, isLoading: true };
-    case actions.EVENTS_FETCHED_SUCCESSFULLY:
+    case actions.EVENT_FETCHED_SUCCESSFULLY:
       return { ...state, isLoading: false, events: action.payload };
-    case actions.EVENTS_FETCH_HAS_FAILED:
+    case actions.EVENT_FETCH_HAS_FAILED:
+      return { ...state, isLoading: false, err: action.payload };
+    case actions.EVENT_DELETE_REQUESTED:
+      return { ...state, isLoading: true };
+    case actions.EVENT_DELETED_SUCCESSFULLY:
+      return { ...state, isLoading: false, events: action.payload };
+    case actions.EVENT_DELETE_HAS_FAILED:
+      return { ...state, isLoading: false, err: action.payload };
+    case actions.SUBSCRIBED_EVENTS_FETCH_REQUESTED:
+      return { ...state, isLoading: true };
+    case actions.SUBSCRIBED_EVENTS_FETCHED_SUCCESSFULLY:
+      return { ...state, isLoading: false, events: action.payload };
+    case actions.SUBSCRIBED_EVENTS_FETCH_HAS_FAILED:
       return { ...state, isLoading: false, err: action.payload };
     case actions.EVENT_SELECT_REQUESTED:
       return { ...state, isLoading: true };

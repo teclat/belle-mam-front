@@ -62,9 +62,9 @@ function FirstStep(props) {
       invite_text: custom.inviteText,
       url: custom.url,
       products: selecteds,
+      product_list_name: custom.url + " - product_list",
     };
 
-    //this.setState({ isLoading: true });
     setIsLoading(true);
 
     axios
