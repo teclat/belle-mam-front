@@ -125,7 +125,7 @@ function HomeParent(props) {
                   <Col span={12}>
                     <img
                       className="product-img"
-                      src={dashboard.lastProduct.image_url}
+                      src={dashboard.lastProduct.images[0]}
                       alt=""
                     />
                   </Col>
@@ -136,7 +136,11 @@ function HomeParent(props) {
                   >
                     <h5>{dashboard.lastProduct.name}</h5>
                     <h5>
-                      R$ <span>{dashboard.lastProduct.price}</span>
+                      R${" "}
+                      <span>{`${parseFloat(dashboard.lastProduct.price)
+                        .toFixed(2)
+                        .split(".")
+                        .join(",")}`}</span>
                     </h5>
                     <Link to={"/parents/gifteds"}>
                       <button className="btn btn-primary">VER TODOS</button>
@@ -164,7 +168,7 @@ function HomeParent(props) {
                     <img src={dashboard.lastNote.user.image_url} alt="" />
                   </Col>
                   <Col span={18}>
-                    <p>{dashboard.lastNote.text}</p>
+                    <p>{`\"${dashboard.lastNote.text}\"`}</p>
                   </Col>
                 </>
               ) : null}
@@ -181,7 +185,10 @@ function HomeParent(props) {
                   R${" "}
                   <span>
                     {dashboard && dashboard.gifteds && dashboard.gifteds.total
-                      ? dashboard.gifteds.total
+                      ? `${parseFloat(dashboard.gifteds.total)
+                          .toFixed(2)
+                          .split(".")
+                          .join(",")}`
                       : 0}
                   </span>
                 </h5>

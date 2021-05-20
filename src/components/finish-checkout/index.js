@@ -57,10 +57,15 @@ function FinishCheckout(props) {
     const body = {
       user_id: user.id,
       product_list_id: productListId,
-      giftsOnCart,
+      products: giftsOnCart,
     };
-    const response = await api.post("events/give-gift", body);
-    console.log(response.data);
+    console.log(body);
+    try {
+      const response = await api.post("events/give-gift", body);
+      console.log(response.data);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   const calcTotal = () => {
