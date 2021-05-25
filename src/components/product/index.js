@@ -29,11 +29,21 @@ function Product(props) {
 
   React.useEffect(() => {
     if (firstRender) {
-      console.log("First Render");
+      // console.log("First Render");
+      return;
     } else {
       change();
     }
   }, [selected]);
+
+  React.useEffect(() => {
+    if (firstRender) {
+      // console.log("First Render");
+      return;
+    } else {
+      change();
+    }
+  }, [qtd]);
 
   const change = () => {
     props.change(props.giftId, {
@@ -44,18 +54,20 @@ function Product(props) {
   };
 
   const handleQtdChange = (e) => {
-    let min = 0;
-    let max = props.product.stock_quantity;
+    // let min = 0;
+    // let max = props.product.stock_quantity;
 
-    if (e.target.value <= max && e.target.value > min) {
-      setQtd(e.target.value);
-    } else if (e.target.value > max) {
-      setQtd(max);
-    } else {
-      setQtd(min);
-    }
+    // if (e.target.value <= max && e.target.value > min) {
+    //   setQtd(e.target.value);
+    // } else if (e.target.value > max) {
+    //   setQtd(max);
+    // } else {
+    //   setQtd(min);
+    // }
 
-    change();
+    setQtd(e.target.value);
+
+    // change();
   };
 
   const addToCart = () => {
@@ -91,7 +103,7 @@ function Product(props) {
                   id="qtdeInput"
                   type="number"
                   min="0"
-                  max={props.product.stock_quantity}
+                  //max={props.product.stock_quantity}
                   value={qtd}
                   onChange={(e) => {
                     handleQtdChange(e);

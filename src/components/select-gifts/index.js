@@ -35,9 +35,10 @@ function SelectGifts(props) {
 
     for (let i = 0; i < data.length; i++) {
       let forEachProduct = {
-        id: "",
+        product_id: "",
         name: "",
         stock_quantity: "",
+        selected_quantity: "",
         slug: "",
         permalink: "",
         purchased: "",
@@ -54,9 +55,10 @@ function SelectGifts(props) {
         categories: [],
         images: [],
       };
-      forEachProduct.id = data[i].id;
+      forEachProduct.product_id = data[i].id;
       forEachProduct.name = data[i].name;
       forEachProduct.stock_quantity = data[i].stock_quantity;
+      forEachProduct.selected_quantity = "";
       forEachProduct.slug = data[i].slug;
       forEachProduct.permalink = data[i].permalink;
       forEachProduct.purchased = data[i].purchased;
@@ -117,14 +119,12 @@ function SelectGifts(props) {
         } else {
           setNextPage(nextPage + 1);
         }
-
-        setIsLoading(false);
       })
 
       .catch((err) => {
         console.error(err.message);
-        setIsLoading(false);
       });
+    setIsLoading(false);
   };
 
   const removeProducts = () => {
@@ -136,33 +136,61 @@ function SelectGifts(props) {
   };
 
   const changeSelecteds = (giftId, values) => {
-    console.log("present selecteds: ", selecteds);
-    let selectedsTemp = selecteds;
-    let exist = false;
-    if (selectedsTemp.length > 0) {
-      let product = selectedsTemp.filter((p) => p.id === giftId)[0];
-      if (product) {
-        exist = true;
-        if (values.selected === true) {
-          product.selected_quantity = values.qtd;
-        } else {
-          var index = selectedsTemp
-            .map((p) => {
-              return p.id;
-            })
-            .indexOf(giftId);
-          selectedsTemp.splice(index, 1);
-        }
-      }
-    }
-
-    if (!exist) {
-      if (values.selected === true) {
-        let product = products.filter((p) => p.id === giftId)[0];
+    //console.log("present selecteds: ", selecteds);
+    let selectedsTemp = selecteds.slice();
+    let product = selectedsTemp.find((p) => p.product_id === giftId);
+    if (product !== undefined) {
+      //console.log("has one! Will check for changes in qtd.");
+      if (values.selected === true && values.qtd > 0) {
+        //console.log("is selected! changing qtd value.");
         product.selected_quantity = values.qtd;
-        selectedsTemp.push(...selectedsTemp, product);
+      } else if (values.qtd <= 0) {
+        //console.log("qtd is now 0! removing from array.");
+        let index = selectedsTemp.findIndex((p) => p.product_id === giftId);
+        selectedsTemp.splice(index, 1);
+      } else {
+        //console.log("is not selected! removing from array.");
+        let index = selectedsTemp.findIndex((p) => p.product_id === giftId);
+        selectedsTemp.splice(index, 1);
+      }
+    } else {
+      //console.log("does not have one! Will try to add.");
+      let newProduct = products.find((p) => p.product_id === giftId);
+      if (values.selected === true && values.qtd > 0) {
+        newProduct.selected_quantity = values.qtd;
+        selectedsTemp.push(newProduct);
+      } else {
+        console.log(
+          "could not add because the product is not selected or has no quatity set."
+        );
       }
     }
+    // let selectedsTemp = selecteds;
+    // let exist = false;
+    // if (selectedsTemp.length > 0) {
+    //   let product = selectedsTemp.filter((p) => p.product_id === giftId)[0];
+    //   if (product) {
+    //     exist = true;
+    //     if (values.selected === true) {
+    //       product.selected_quantity = values.qtd;
+    //     } else {
+    //       var index = selectedsTemp
+    //         .map((p) => {
+    //           return p.product_id;
+    //         })
+    //         .indexOf(giftId);
+    //       selectedsTemp.splice(index, 1);
+    //     }
+    //   }
+    // }
+
+    // if (!exist) {
+    //   if (values.selected === true) {
+    //     let product = products.filter((p) => p.product_id === giftId)[0];
+    //     product.selected_quantity = values.qtd;
+    //     selectedsTemp.push(...selectedsTemp, product);
+    //   }
+    // }
     console.log("Change Selecteds: ", selectedsTemp);
     setSelecteds(selectedsTemp);
   };
@@ -181,8 +209,8 @@ function SelectGifts(props) {
           {products.map((product) => {
             return (
               <Product
-                key={product.id}
-                giftId={product.id}
+                key={product.product_id}
+                giftId={product.product_id}
                 change={changeSelecteds}
                 gifted={false}
                 product={product}
