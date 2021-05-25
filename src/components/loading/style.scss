@@ -1,0 +1,13 @@
+.loaging-container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-svg {
+  color: #a092f9 !important;
+  font-size: 80px !important;
+}

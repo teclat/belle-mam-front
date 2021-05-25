@@ -13,12 +13,13 @@ import { Link, useHistory } from "react-router-dom";
 import { Constants } from "../../../constants";
 import axios from "axios";
 import { useState } from "react";
+import Loading from "../../loading";
 
 function HomeParent(props) {
   const [dashboard, setDashboard] = useState({});
   const [userName, setUserName] = useState("");
   const [showSocialModal, setShowSocialModal] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
 
   React.useEffect(() => {
@@ -26,9 +27,9 @@ function HomeParent(props) {
   }, []);
 
   const getEventDashboard = async () => {
+    setIsLoading(true);
     let user = await JSON.parse(localStorage.getItem("user"));
     setUserName(user.userName);
-
     axios
       .get(Constants.ApiUrl + "events/" + props.event.id + "/dashboard", {
         headers: {
@@ -42,6 +43,10 @@ function HomeParent(props) {
       .catch((err) => {
         console.log(err.message);
       });
+    setIsLoading(false);
+    // await setTimeout(() => {
+    //   console.log(isLoading);
+    // }, 100000);
   };
 
   const copyLinkToClipboard = (text) => {
@@ -51,199 +56,209 @@ function HomeParent(props) {
   //let url = "https://belle-mam.herokuapp.com/convite/" + this.props.event.url;
 
   return (
-    <Col id="home-parent">
-      <Modal
-        title="Compartilhar em..."
-        visible={showSocialModal}
-        onOk={() => setShowSocialModal(false)}
-        onCancel={() => setShowSocialModal(false)}
-      >
-        <Twitter
-          message={props.event.invite_text}
-          link={`${window.origin}/convite/${props.event.url}`}
-        />
-        <Whatsapp
-          message={props.event.invite_text}
-          link={`${window.origin}/convite/${props.event.url}`}
-        />
-        <Telegram
-          message={props.event.invite_text}
-          link={`${window.origin}/convite/${props.event.url}`}
-        />
-        <Facebook
-          message={props.event.invite_text}
-          link={`${window.origin}/convite/${props.event.url}`}
-        />
-        <Mail
-          subject="Convidando você!"
-          body={
-            props.event.invite_text +
-            " " +
-            window.origin +
-            "/convite/" +
-            props.event.url
-          }
-        />
-        <button
-          className="copy-invite-link"
-          onClick={() =>
-            copyLinkToClipboard(`${window.origin}/convite/${props.event.url}`)
-          }
-        >
-          Copiar Link
-        </button>
-      </Modal>
-      <Row className="p-3 mt-5 mb-5 d-flex home-welcome">
-        <div className="d-flex flex-column justify-content-center align-items-center title-box">
-          <div className="d-flex">
-            <h2>Olá, {userName}!</h2>
-            <img
-              src={require("../../../assets/images/purple-heart.png")}
-              alt=""
+    <>
+      {isLoading === true ? (
+        <Loading isLoading={isLoading} />
+      ) : (
+        <Col id="home-parent">
+          <Modal
+            title="Compartilhar em..."
+            visible={showSocialModal}
+            onOk={() => setShowSocialModal(false)}
+            onCancel={() => setShowSocialModal(false)}
+          >
+            <Twitter
+              message={props.event.invite_text}
+              link={`${window.origin}/convite/${props.event.url}`}
             />
-          </div>
-        </div>
-        {dashboard.difference ? (
-          dashboard.difference >= 0 ? (
-            <h3>
-              {" "}
-              FALTAM <span>{"0" + dashboard.difference}</span> DIAS{" "}
-            </h3>
-          ) : (
-            <h3> JÁ PASSOU </h3>
-          )
-        ) : null}
-        {}
-      </Row>
-      <Row align="stretch" className="home-main-container">
-        <Col className="d-flex" span={12}>
-          <div className="box ml-3 mr-3" style={{ width: "100%" }}>
-            <h5 className="mb-4">Último recebido</h5>
-            <Row align="stretch">
-              {dashboard && dashboard.lastProduct ? (
-                <>
-                  <Col span={12}>
-                    <img
-                      className="product-img"
-                      src={dashboard.lastProduct.images[0]}
-                      alt=""
-                    />
-                  </Col>
+            <Whatsapp
+              message={props.event.invite_text}
+              link={`${window.origin}/convite/${props.event.url}`}
+            />
+            <Telegram
+              message={props.event.invite_text}
+              link={`${window.origin}/convite/${props.event.url}`}
+            />
+            <Facebook
+              message={props.event.invite_text}
+              link={`${window.origin}/convite/${props.event.url}`}
+            />
+            <Mail
+              subject="Convidando você!"
+              body={
+                props.event.invite_text +
+                " " +
+                window.origin +
+                "/convite/" +
+                props.event.url
+              }
+            />
+            <button
+              className="copy-invite-link"
+              onClick={() =>
+                copyLinkToClipboard(
+                  `${window.origin}/convite/${props.event.url}`
+                )
+              }
+            >
+              Copiar Link
+            </button>
+          </Modal>
+          <Row className="p-3 mt-5 mb-5 d-flex home-welcome">
+            <div className="d-flex flex-column justify-content-center align-items-center title-box">
+              <div className="d-flex">
+                <h2>Olá, {userName}!</h2>
+                <img
+                  src={require("../../../assets/images/purple-heart.png")}
+                  alt=""
+                />
+              </div>
+            </div>
+            {dashboard.difference ? (
+              dashboard.difference >= 0 ? (
+                <h3>
+                  {" "}
+                  FALTAM <span>{"0" + dashboard.difference}</span> DIAS{" "}
+                </h3>
+              ) : (
+                <h3> JÁ PASSOU </h3>
+              )
+            ) : null}
+            {}
+          </Row>
+          <Row align="stretch" className="home-main-container">
+            <Col className="d-flex" span={12}>
+              <div className="box ml-3 mr-3" style={{ width: "100%" }}>
+                <h5 className="mb-4">Último recebido</h5>
+                <Row align="stretch">
+                  {dashboard && dashboard.lastProduct ? (
+                    <>
+                      <Col span={12}>
+                        <img
+                          className="product-img"
+                          src={dashboard.lastProduct.images[0]}
+                          alt=""
+                        />
+                      </Col>
 
-                  <Col
-                    className="d-flex flex-column justify-content-around"
-                    span={12}
+                      <Col
+                        className="d-flex flex-column justify-content-around"
+                        span={12}
+                      >
+                        <h5>{dashboard.lastProduct.name}</h5>
+                        <h5>
+                          R${" "}
+                          <span>{`${parseFloat(dashboard.lastProduct.price)
+                            .toFixed(2)
+                            .split(".")
+                            .join(",")}`}</span>
+                        </h5>
+                        <Link to={"/parents/gifteds"}>
+                          <button className="btn btn-primary">VER TODOS</button>
+                        </Link>
+                      </Col>
+                    </>
+                  ) : null}
+                </Row>
+              </div>
+            </Col>
+            <Col span={12}>
+              <Row className="box last-note mr-3 mb-3 d-flex flex-column">
+                <Row className="mb-3">
+                  <h5>Último recado</h5>
+                  <Link to={"/parents/notes"}>
+                    <button className="btn btn-primary small see-more-button">
+                      VER TODOS
+                    </button>
+                  </Link>
+                </Row>
+                <Row>
+                  {dashboard && dashboard.lastNote ? (
+                    <>
+                      <Col span={6} class="note-img mr-5">
+                        <img src={dashboard.lastNote.user.image_url} alt="" />
+                      </Col>
+                      <Col span={18}>
+                        <p>{`\"${dashboard.lastNote.text}\"`}</p>
+                      </Col>
+                    </>
+                  ) : null}
+                </Row>
+              </Row>
+              <Row align="stretch" className="home-secondary-container">
+                <Col className="d-flex" span={13}>
+                  <div
+                    style={{ width: "100%" }}
+                    className="box mr-3 text-center d-flex flex-column align-items-center justify-content-center"
                   >
-                    <h5>{dashboard.lastProduct.name}</h5>
-                    <h5>
+                    <h5>Total de Presentes</h5>
+                    <h5 className="money">
                       R${" "}
-                      <span>{`${parseFloat(dashboard.lastProduct.price)
-                        .toFixed(2)
-                        .split(".")
-                        .join(",")}`}</span>
+                      <span>
+                        {dashboard &&
+                        dashboard.gifteds &&
+                        dashboard.gifteds.total
+                          ? `${parseFloat(dashboard.gifteds.total)
+                              .toFixed(2)
+                              .split(".")
+                              .join(",")}`
+                          : 0}
+                      </span>
                     </h5>
                     <Link to={"/parents/gifteds"}>
-                      <button className="btn btn-primary">VER TODOS</button>
+                      <button className="btn btn-primary small see-more-button">
+                        VER TODOS
+                      </button>
                     </Link>
-                  </Col>
-                </>
-              ) : null}
-            </Row>
-          </div>
-        </Col>
-        <Col span={12}>
-          <Row className="box last-note mr-3 mb-3 d-flex flex-column">
-            <Row className="mb-3">
-              <h5>Último recado</h5>
-              <Link to={"/parents/notes"}>
-                <button className="btn btn-primary small see-more-button">
-                  VER TODOS
-                </button>
-              </Link>
-            </Row>
-            <Row>
-              {dashboard && dashboard.lastNote ? (
-                <>
-                  <Col span={6} class="note-img mr-5">
-                    <img src={dashboard.lastNote.user.image_url} alt="" />
-                  </Col>
-                  <Col span={18}>
-                    <p>{`\"${dashboard.lastNote.text}\"`}</p>
-                  </Col>
-                </>
-              ) : null}
-            </Row>
-          </Row>
-          <Row align="stretch" className="home-secondary-container">
-            <Col className="d-flex" span={13}>
-              <div
-                style={{ width: "100%" }}
-                className="box mr-3 text-center d-flex flex-column align-items-center justify-content-center"
-              >
-                <h5>Total de Presentes</h5>
-                <h5 className="money">
-                  R${" "}
-                  <span>
-                    {dashboard && dashboard.gifteds && dashboard.gifteds.total
-                      ? `${parseFloat(dashboard.gifteds.total)
-                          .toFixed(2)
-                          .split(".")
-                          .join(",")}`
-                      : 0}
-                  </span>
-                </h5>
-                <Link to={"/parents/gifteds"}>
-                  <button className="btn btn-primary small see-more-button">
-                    VER TODOS
-                  </button>
-                </Link>
-              </div>
-            </Col>
-            <Col className="d-flex" span={11}>
-              <div
-                style={{ width: "100%" }}
-                className="box text-center mr-3 d-flex flex-column align-items-center justify-content-center"
-              >
-                <h5>Qtd. presentes</h5>
-                <h5 className="money">
-                  <span>
-                    {dashboard && dashboard.gifteds && dashboard.gifteds.qtd
-                      ? dashboard.gifteds.qtd
-                      : 0}
-                  </span>
-                </h5>
-                <Link to={"/parents/gifteds"}>
-                  <button className="btn btn-primary small see-more-button">
-                    VER TODOS
-                  </button>
-                </Link>
-              </div>
+                  </div>
+                </Col>
+                <Col className="d-flex" span={11}>
+                  <div
+                    style={{ width: "100%" }}
+                    className="box text-center mr-3 d-flex flex-column align-items-center justify-content-center"
+                  >
+                    <h5>Qtd. presentes</h5>
+                    <h5 className="money">
+                      <span>
+                        {dashboard && dashboard.gifteds && dashboard.gifteds.qtd
+                          ? dashboard.gifteds.qtd
+                          : 0}
+                      </span>
+                    </h5>
+                    <Link to={"/parents/gifteds"}>
+                      <button className="btn btn-primary small see-more-button">
+                        VER TODOS
+                      </button>
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
+          <Row
+            justify="space-between"
+            className="p-3 mt-3 social-buttons-container"
+          >
+            <button
+              onClick={() => setShowSocialModal(true)}
+              className="btn btn-primary"
+            >
+              <ShareAltOutlined className="mr-3" />
+              COMPARTILHAR EVENTO
+            </button>
+            <a
+              target={"_blank"}
+              rel="noopener noreferrer"
+              href="https://api.whatsapp.com/send?phone='5585981768451'&text=%20Oi, tudo bem. Pode me ajudar?%20"
+              className="btn btn-secondary"
+            >
+              SAC
+              <WhatsAppOutlined className="ml-3" />
+            </a>
+          </Row>
         </Col>
-      </Row>
-      <Row
-        justify="space-between"
-        className="p-3 mt-3 social-buttons-container"
-      >
-        <button
-          onClick={() => setShowSocialModal(true)}
-          className="btn btn-primary"
-        >
-          <ShareAltOutlined className="mr-3" />
-          COMPARTILHAR EVENTO
-        </button>
-        <a
-          target={"_blank"}
-          rel="noopener noreferrer"
-          href="https://api.whatsapp.com/send?phone='5585981768451'&text=%20Oi, tudo bem. Pode me ajudar?%20"
-          className="btn btn-secondary"
-        >
-          SAC
-          <WhatsAppOutlined className="ml-3" />
-        </a>
-      </Row>
-    </Col>
+      )}
+    </>
   );
 }
 

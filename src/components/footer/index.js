@@ -6,24 +6,24 @@ export default class Footer extends Component {
     return (
       <footer
         id="footer"
-        class="container-fluid d-flex justify-content-around flex-row"
+        className="container-fluid d-flex justify-content-around flex-row"
       >
         <img
-          class="footer-logo align-self-center"
+          className="footer-logo align-self-center"
           src={require("../../assets/images/cha-bebe-logo.png")}
           alt=""
         />
         <div>
-          <p class="title">Sobre a gente</p>
-          <p class="text">
+          <p className="title">Sobre a gente</p>
+          <p className="text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad.” minim veniam, quis nostrud exercitation ullamco laboris nisi.
           </p>
         </div>
         <div>
-          <p class="title">Links</p>
-          <ul class="link-list text">
+          <p className="title">Links</p>
+          <ul className="link-list text">
             <li>Por que a Belle Mam</li>
             <li>Como funciona</li>
             <li>Crie sua lista agora</li>
@@ -32,22 +32,22 @@ export default class Footer extends Component {
           </ul>
         </div>
         <div>
-          <p class="title">Siga a Belle Mam</p>
+          <p className="title">Siga a Belle Mam</p>
           <div>
-            <ul class="social-list d-flex">
+            <ul className="social-list d-flex">
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://instagram.com/soubellemam?igshid=ignx341ykuzm"
               >
-                <li class="d-flex justify-content-center align-items-center mr-3">
+                <li className="d-flex justify-content-center align-items-center mr-3">
                   <img
                     src={require("../../assets/images/instagram.png")}
                     alt=""
                   />
                 </li>
               </a>
-              <li class="d-flex justify-content-center align-items-center">
+              <li className="d-flex justify-content-center align-items-center">
                 <img src={require("../../assets/images/facebook.png")} alt="" />
               </li>
             </ul>

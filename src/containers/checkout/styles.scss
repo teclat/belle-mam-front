@@ -16,7 +16,7 @@
   flex-direction: row;
   align-items: center;
   flex: 0 1 33%;
-  border: 1px solid black;
+  //border: 1px solid black;
 }
 
 .checkout-steps-container > * {
@@ -25,18 +25,26 @@
   flex: 1 1 25%;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid black;
+  border-radius: 0.5rem;
+  background: #a092f9;
+  margin-right: 1rem;
+  color: #fff;
+  //background: #4cdbb1;
+  //border-right: 1px solid black;
 }
 
 .checkout-steps-container > *:last-child {
-  border-right: none;
+  //border-right: none;
+  margin-right: 0;
 }
 
-.checkout-steps-container .checkout-step > span {
+.checkout-steps-container * > span {
+  cursor: default;
   opacity: 0.4;
-  &-active {
-    opacity: 1;
-  }
+}
+
+.checkout-step-active > span {
+  opacity: 1;
 }
 
 .cart-title {

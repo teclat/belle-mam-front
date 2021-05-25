@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import {
+  jumpToStepAction,
   nextStepAction,
   previousStepAction,
 } from "../../redux/actions/checkoutActions";
@@ -35,6 +36,10 @@ function Payment(props) {
       setTotal(giftOnCart.price * giftOnCart.count);
     });
   };
+
+  React.useEffect(() => {
+    dispatch(jumpToStepAction(2));
+  }, []);
 
   React.useEffect(() => {
     calcTotal();
@@ -84,8 +89,8 @@ function Payment(props) {
   const dispatch = useDispatch();
 
   const goBack = () => {
-    dispatch(previousStepAction(step));
-    history.goBack();
+    dispatch(jumpToStepAction(step - 1));
+    history.push(`/checkout/${step - 1}`);
   };
 
   const proceed = () => {
@@ -110,7 +115,7 @@ function Payment(props) {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               SELECIONE
             </option>
             <option>CPF</option>
@@ -170,7 +175,7 @@ function Payment(props) {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             >
-              <option value="" selected disabled hidden></option>
+              <option value="" disabled hidden></option>
               <option>01</option>
               <option>02</option>
             </select>
@@ -187,7 +192,7 @@ function Payment(props) {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             >
-              <option value="" selected disabled hidden></option>
+              <option value="" disabled hidden></option>
               <option>2022</option>
               <option>2023</option>
             </select>
@@ -219,7 +224,7 @@ function Payment(props) {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
-            <option value="" selected disabled hidden></option>
+            <option value="" disabled hidden></option>
             <option>{`1x de R$ ${parseFloat(total)
               .toFixed(2)
               .split(".")
@@ -240,9 +245,6 @@ function Payment(props) {
             </div>
           ) : null}
         </div>
-        {/* <div>
-          <button type="submit">Submit</button>
-        </div> */}
       </form>
       <div className="payment-buttons">
         <button onClick={goBack}>Retornar à informações</button>

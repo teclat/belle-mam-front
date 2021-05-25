@@ -65,6 +65,9 @@
 }
 
 @media screen and(max-width: 1100px) {
+  // #parent-dashboard {
+  //   height: 100%;
+  // }
   #parent-dashboard .main-section {
     display: flex;
     flex-direction: column;
@@ -83,7 +86,7 @@
     transform: scale(0, 1);
     transform-origin: left;
     transition: transform 400ms ease-in-out;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 3rem;
     align-self: flex-start;
@@ -107,7 +110,7 @@
   #parent-dashboard .parent-menu-toggle-label {
     background: #a092f9;
     z-index: 999;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     //margin-left: 1em;
@@ -117,7 +120,8 @@
   }
 
   #parent-dashboard .parent-menu-toggle-label span {
-    margin: 1.4em 0.5em 0 0.5em;
+    margin: 50vh 0.5em 0 0.5em;
+    vertical-align: middle;
   }
 
   #parent-dashboard .parent-menu-toggle-label span,
