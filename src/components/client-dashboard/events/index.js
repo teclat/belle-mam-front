@@ -13,7 +13,7 @@ import {
   selectSubscribedEventAction,
 } from "../../../redux/actions/eventsActions";
 import Loading from "../../loading";
-import CartFloatingButton from "../../cart-floating-button";
+//import CartFloatingButton from "../../cart-floating-button";
 
 function EventsGuest(props) {
   const { isLoading, events, err, giftsOnCart } = useSelector((state) => ({
@@ -75,9 +75,9 @@ function EventsGuest(props) {
 
   return (
     <div id="events-guest">
-      {giftQuantity > 0 ? (
+      {/* {giftQuantity > 0 ? (
         <CartFloatingButton link={"/checkout/0"} quantity={giftQuantity} />
-      ) : null}
+      ) : null} */}
       <div className="d-flex flex-column justify-content-center align-items-center title-box">
         <h4>Eventos</h4>
       </div>
