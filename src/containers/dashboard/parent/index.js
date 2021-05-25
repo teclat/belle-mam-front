@@ -28,6 +28,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../../../redux/actions/userActions";
 import { getEventRequest } from "../../../redux/actions/eventsActions";
+import Loading from "../../../components/loading";
 function ParentDashboard(props) {
   //const [event, setEvent] = useState({});
 
@@ -217,57 +218,63 @@ function ParentDashboard(props) {
             {/* <img style={{ width: 20 }} src={require("../../../assets/images/enter-purple.png")} /> */}
           </div>
         </div>
-        {event !== null && event !== undefined ? (
-          <Switch>
-            <div>
-              <Route
-                path={`${props.match.path}/home`}
-                component={() => <HomeParent event={event} />}
-              />
-              <Route
-                path={`${props.match.path}/config`}
-                component={() => <ConfigParent event={event} />}
-              />
-              <Route
-                path={`${props.match.path}/gallery`}
-                component={() => <GalleryParent event={event} />}
-              />
-              <Route
-                path={`${props.match.path}/gifts`}
-                component={() => <GiftListParent event={event} />}
-              />
-              <Route
-                path={`${props.match.path}/custom`}
-                component={() => <CustomParent event={event} />}
-              />
-              <Route
-                path={`${props.match.path}/personal`}
-                component={() => <PersonalParent event={event} />}
-              />
-              <Route
-                path={`${props.match.path}/notes`}
-                component={() => <NotesParent event={event} />}
-              />
-              <Route
-                path={`${props.match.path}/gifteds`}
-                component={() => <GiftedsParent event={event} />}
-              />
-            </div>
-          </Switch>
+        {isLoading === true ? (
+          <Loading isLoading={isLoading} />
         ) : (
-          <div
-            id="no-event"
-            className={"d-flex flex-column align-items-center"}
-          >
-            <h3 className="mb-5 mt-5">
-              Crie um evento para acessar tais funcionalidades.
-            </h3>
-            <Link to="/first-steps">
-              <Button className="btn btn-secondary d-flex align-items-center">
-                CRIAR EVENTO
-              </Button>
-            </Link>
-          </div>
+          <>
+            {event !== null && event !== undefined ? (
+              <Switch>
+                <div>
+                  <Route
+                    path={`${props.match.path}/home`}
+                    component={() => <HomeParent event={event} />}
+                  />
+                  <Route
+                    path={`${props.match.path}/config`}
+                    component={() => <ConfigParent event={event} />}
+                  />
+                  <Route
+                    path={`${props.match.path}/gallery`}
+                    component={() => <GalleryParent event={event} />}
+                  />
+                  <Route
+                    path={`${props.match.path}/gifts`}
+                    component={() => <GiftListParent event={event} />}
+                  />
+                  <Route
+                    path={`${props.match.path}/personal`}
+                    component={() => <PersonalParent event={event} />}
+                  />
+                  <Route
+                    path={`${props.match.path}/custom`}
+                    component={() => <CustomParent event={event} />}
+                  />
+                  <Route
+                    path={`${props.match.path}/notes`}
+                    component={() => <NotesParent event={event} />}
+                  />
+                  <Route
+                    path={`${props.match.path}/gifteds`}
+                    component={() => <GiftedsParent event={event} />}
+                  />
+                </div>
+              </Switch>
+            ) : (
+              <div
+                id="no-event"
+                className={"d-flex flex-column align-items-center"}
+              >
+                <h3 className="mb-5 mt-5">
+                  Crie um evento para acessar tais funcionalidades.
+                </h3>
+                <Link to="/first-steps">
+                  <Button className="btn btn-secondary d-flex align-items-center">
+                    CRIAR EVENTO
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </>
         )}
       </Col>
     </Row>

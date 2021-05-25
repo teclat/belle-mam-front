@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteEventRequest } from "../../../redux/actions/eventsActions";
 import { useHistory } from "react-router";
+import Loading from "../../loading";
 
 function ConfigParent(props) {
   const [date, setDate] = useState(moment(props.event.date));
@@ -30,6 +31,7 @@ function ConfigParent(props) {
     moment(props.event.baby_birthday).format("DD/MM/YYYY")
   );
   const [isLoading, setIsLoading] = useState(false);
+  //const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -40,6 +42,13 @@ function ConfigParent(props) {
     console.log("date", dateString);
   }, []);
 
+  const deleteEvent = async (user) => {
+    await dispatch(deleteEventRequest(user, props.event));
+    await setTimeout(() => {
+      window.location.href = `/parents/home`;
+    }, 2000);
+  };
+
   const handleDelete = async () => {
     let user = await JSON.parse(localStorage.getItem("user"));
     Modal.confirm({
@@ -47,8 +56,7 @@ function ConfigParent(props) {
       content:
         "Tem certeza de que quer excluir este evento? Esta ação não pode ser desfeita.",
       onOk() {
-        dispatch(deleteEventRequest(user, props.event));
-        window.location.href = `/parents/home`;
+        deleteEvent(user);
       },
       onCancel() {
         return;
@@ -124,116 +132,122 @@ function ConfigParent(props) {
   };
 
   return (
-    <div id="config-parent">
-      <div className="d-flex flex-column justify-content-center align-items-center title-box">
-        <h4>Configurações</h4>
-      </div>
-      <div className="form justify-content-center">
-        <Row align="middle">
-          <Col span={6}>
-            <label>Data do Evento</label>
-          </Col>
-          <Col span={18}>
-            <DatePicker
-              onChange={(date, dateString) => {
-                setDate(date);
-                setDateString(dateString);
-              }}
-              value={date}
-              format="DD/MM/YYYY"
-              locale={locale}
-              placeholder={"--/--/--"}
-            />
-          </Col>
-        </Row>
-        <Row align="middle">
-          <Col span={6}>
-            <label>Horário do Evento</label>
-          </Col>
-          <Col span={18}>
-            <TimePicker
-              onChange={(date, dateString) => {
-                setHour(date);
-                setHourString(dateString);
-              }}
-              value={hour}
-              locale={locale}
-              placeholder={"hh:mm"}
-            />
-          </Col>
-        </Row>
-        <Row align="middle">
-          <Col span={6}>
-            <label>Local do Evento</label>
-          </Col>
-          <Col span={18}>
-            <Input
-              onChange={(e) => setAddress(e.target.value)}
-              value={address}
-              placeholder={"Fortaleza"}
-            />
-          </Col>
-        </Row>
-        <Row align="middle">
-          <Col span={6}>
-            <label>URL da Live</label>
-          </Col>
-          <Col span={18}>
-            <Input
-              onChange={(e) => setLive(e.target.value)}
-              value={live}
-              placeholder={"cha-bebe-belle-mam"}
-            />
-          </Col>
-        </Row>
-        <Row align="middle">
-          <Col span={6}>
-            <label>Nome do Bebê</label>
-          </Col>
-          <Col span={18}>
-            <Input
-              onChange={(e) => setBabyName(e.target.value)}
-              value={babyName}
-              placeholder={""}
-            />
-          </Col>
-        </Row>
-        <Row align="middle">
-          <Col span={6}>
-            <label>Data de Nascimento do Bebê</label>
-          </Col>
-          <Col span={18}>
-            <DatePicker
-              onChange={(date, dateString) => {
-                setBabyBirthday(date);
-                setBabyBirthdayString(dateString);
-              }}
-              value={babyBirthday}
-              format="DD/MM/YYYY"
-              locale={locale}
-              placeholder={"--/--/--"}
-            />
-          </Col>
-        </Row>
-        <div className="config-buttons-container">
-          <Button
-            loading={isLoading}
-            onClick={() => save()}
-            className="btn btn-secondary"
-          >
-            SALVAR
-          </Button>
+    <>
+      {isLoading === true ? (
+        <Loading isLoading={isLoading} />
+      ) : (
+        <div id="config-parent">
+          <div className="d-flex flex-column justify-content-center align-items-center title-box">
+            <h4>Configurações</h4>
+          </div>
+          <div className="form justify-content-center">
+            <Row align="middle">
+              <Col span={6}>
+                <label>Data do Evento</label>
+              </Col>
+              <Col span={18}>
+                <DatePicker
+                  onChange={(date, dateString) => {
+                    setDate(date);
+                    setDateString(dateString);
+                  }}
+                  value={date}
+                  format="DD/MM/YYYY"
+                  locale={locale}
+                  placeholder={"--/--/--"}
+                />
+              </Col>
+            </Row>
+            <Row align="middle">
+              <Col span={6}>
+                <label>Horário do Evento</label>
+              </Col>
+              <Col span={18}>
+                <TimePicker
+                  onChange={(date, dateString) => {
+                    setHour(date);
+                    setHourString(dateString);
+                  }}
+                  value={hour}
+                  locale={locale}
+                  placeholder={"hh:mm"}
+                />
+              </Col>
+            </Row>
+            <Row align="middle">
+              <Col span={6}>
+                <label>Local do Evento</label>
+              </Col>
+              <Col span={18}>
+                <Input
+                  onChange={(e) => setAddress(e.target.value)}
+                  value={address}
+                  placeholder={"Fortaleza"}
+                />
+              </Col>
+            </Row>
+            <Row align="middle">
+              <Col span={6}>
+                <label>URL da Live</label>
+              </Col>
+              <Col span={18}>
+                <Input
+                  onChange={(e) => setLive(e.target.value)}
+                  value={live}
+                  placeholder={"cha-bebe-belle-mam"}
+                />
+              </Col>
+            </Row>
+            <Row align="middle">
+              <Col span={6}>
+                <label>Nome do Bebê</label>
+              </Col>
+              <Col span={18}>
+                <Input
+                  onChange={(e) => setBabyName(e.target.value)}
+                  value={babyName}
+                  placeholder={""}
+                />
+              </Col>
+            </Row>
+            <Row align="middle">
+              <Col span={6}>
+                <label>Data de Nascimento do Bebê</label>
+              </Col>
+              <Col span={18}>
+                <DatePicker
+                  onChange={(date, dateString) => {
+                    setBabyBirthday(date);
+                    setBabyBirthdayString(dateString);
+                  }}
+                  value={babyBirthday}
+                  format="DD/MM/YYYY"
+                  locale={locale}
+                  placeholder={"--/--/--"}
+                />
+              </Col>
+            </Row>
+            <div className="config-buttons-container">
+              <Button
+                loading={isLoading}
+                onClick={() => save()}
+                className="btn btn-secondary"
+              >
+                SALVAR
+              </Button>
 
-          <Button
-            loading={isLoading}
-            onClick={() => handleDelete()}
-            className="btn btn-secondary"
-          >
-            DELETAR
-          </Button>
+              <Button
+                loading={isLoading}
+                onClick={() => handleDelete()}
+                className="btn btn-secondary"
+              >
+                DELETAR
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

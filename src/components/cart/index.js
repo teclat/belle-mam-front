@@ -120,7 +120,7 @@ function Cart(props) {
               return (
                 <li>
                   <div className="product-first-section">
-                    <img src={gift.images[0].src} />
+                    <img src={gift.images[0]} />
                     <p>{gift.name}</p>
                   </div>
                   <div className="product-second-section">

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { Constants } from "../../constants";
 import {
+  jumpToStepAction,
   nextStepAction,
   previousStepAction,
 } from "../../redux/actions/checkoutActions";
@@ -38,6 +39,10 @@ function GiftMessage(props) {
   const history = useHistory();
 
   React.useEffect(() => {
+    dispatch(jumpToStepAction(1));
+  }, []);
+
+  React.useEffect(() => {
     setCharCount(500 - message.length);
   }, [message]);
 
@@ -52,8 +57,8 @@ function GiftMessage(props) {
   };
 
   const goBack = () => {
-    dispatch(previousStepAction(step));
-    history.goBack();
+    dispatch(jumpToStepAction(step - 1));
+    history.push(`/checkout/${step - 1}`);
   };
 
   return (

@@ -73,7 +73,7 @@
     transform: scale(0, 1);
     transform-origin: left;
     transition: transform 400ms ease-in-out;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 3rem;
     align-self: flex-start;
@@ -97,7 +97,7 @@
   #guest-dashboard .guest-menu-toggle-label {
     background: #a092f9;
     z-index: 999;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     //margin-left: 1em;
@@ -107,7 +107,8 @@
   }
 
   #guest-dashboard .guest-menu-toggle-label span {
-    margin: 1.4em 0.5em 0 0.5em;
+    margin: 50vh 0.5em 0 0.5em;
+    vertical-align: middle;
   }
 
   #guest-dashboard .guest-menu-toggle-label span,

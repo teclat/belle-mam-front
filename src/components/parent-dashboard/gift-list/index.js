@@ -4,17 +4,20 @@ import Product from "../../product";
 import { Constants } from "../../../constants";
 import axios from "axios";
 import { Modal } from "antd";
+import Loading from "../../loading";
 
 function GiftListParent(props) {
   const [products, setProducts] = useState([]);
   const [productsArrayLenght, setProductsArrayLength] = useState(0);
   const [perPage, setPerPage] = useState(8);
+  const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
     getGiftList();
   }, []);
 
   const getGiftList = async () => {
+    setIsLoading(true);
     let user = await JSON.parse(localStorage.getItem("user"));
     if (props.event.id === undefined) {
       console.log("Event not set.");
@@ -43,9 +46,11 @@ function GiftListParent(props) {
           console.log(error);
         });
     }
+    setIsLoading(false);
   };
 
   const save = async () => {
+    setIsLoading(true);
     let events_products = products.map((product) => {
       return {
         id: product.id,
@@ -75,9 +80,11 @@ function GiftListParent(props) {
         Modal.error({ content: "Erro ao salvar!" });
         console.log(error);
       });
+    setIsLoading(false);
   };
 
   const change = (id, values) => {
+    setIsLoading(true);
     let newProducts = products;
     let product = newProducts.filter((p) => p.id === id)[0];
     product.selected = values.selected;
@@ -85,6 +92,7 @@ function GiftListParent(props) {
     console.log(values);
     console.log("pppp", newProducts);
     setProducts(newProducts);
+    setIsLoading(false);
   };
 
   return (
@@ -92,25 +100,29 @@ function GiftListParent(props) {
       <div className="d-flex flex-column justify-content-center align-items-center title-box">
         <h4>Lista de Presentes</h4>
       </div>
-      <div className="gifts justify-content-center">
-        <ul className="d-flex flex-row justify-content-around">
-          {products.slice(0, perPage).map((product) => {
-            console.log("test-map", product);
-            return (
-              <Product
-                key={product.id}
-                product={product}
-                change={change}
-                //selected={product.selected}
-                selected={true}
-                qtd={product.quantity}
-                event_product={product.id}
-                gifted={false}
-              />
-            );
-          })}
-        </ul>
-      </div>
+      {isLoading === true ? (
+        <Loading isLoading={isLoading} />
+      ) : (
+        <div className="gifts justify-content-center">
+          <ul className="d-flex flex-row justify-content-around">
+            {products.slice(0, perPage).map((product) => {
+              console.log("test-map", product);
+              return (
+                <Product
+                  key={product.id}
+                  product={product}
+                  change={change}
+                  //selected={product.selected}
+                  selected={true}
+                  qtd={product.quantity}
+                  event_product={product.id}
+                  gifted={false}
+                />
+              );
+            })}
+          </ul>
+        </div>
+      )}
       <div className="d-flex btns justify-content-center">
         {productsArrayLenght >= perPage ? (
           <div
