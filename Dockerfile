@@ -3,14 +3,16 @@ FROM node:18.10.0-alpine AS builder
 
 # Configura o timezone
 ENV TZ="America/Sao_Paulo"
-ENV PYTHON=/usr/bin/python3
+ENV PYTHON=/usr/bin/python2
 
 # Atualiza os pacotes e instala as ferramentas necessárias
 RUN apk update && \
     apk add --no-cache tzdata \
+    python2 \
     python3 \
     make \
     g++ && \
+    ln -sf /usr/bin/python2 /usr/bin/python && \
     cp /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone
 
