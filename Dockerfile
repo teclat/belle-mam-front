@@ -8,7 +8,6 @@ ENV PYTHON=/usr/bin/python2
 # Atualiza os pacotes e instala as ferramentas necessárias
 RUN apk update && \
     apk add --no-cache tzdata \
-    python2 \
     python3 \
     make \
     g++ && \
