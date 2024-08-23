@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://bellemam-dev-backend.herokuapp.com/api/",
+  baseURL: "https://bellemam-backend.mg8.andreconjo.com/api/",
 });
 
 api.interceptors.request.use(async (config) => {

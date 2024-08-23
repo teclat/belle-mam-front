@@ -35,22 +35,6 @@ function Login(props) {
     dispatch(loginAction(email, password));
   };
 
-  React.useEffect(async () => {
-    if (user.keys().length !== 0) {
-      // const response = await JSON.parse(localStorage.getItem("user"));
-      // if (response.role === "parent") {
-      //   history.push("/parents/home");
-      // } else if (response.role === "admin") {
-      //   history.push("/admin/products");
-      // } else if (response.role === "guest") {
-      //   history.push("/guest/personal");
-      // } else {
-      //   alert("Erro ao efetuar login.");
-      // }
-      console.log(user);
-    }
-  }, [user]);
-
   const handleLogin = async () => {
     setIsLoading(true);
     await signIn(email, password);
