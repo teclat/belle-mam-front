@@ -3,6 +3,7 @@ FROM node:18.10.0-alpine AS builder
 
 # Configura o timezone
 ENV TZ="America/Sao_Paulo"
+ENV PYTHON=/usr/bin/python3
 
 # Atualiza os pacotes e instala as ferramentas necessárias
 RUN apk update && \
