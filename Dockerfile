@@ -6,14 +6,14 @@ ENV TZ="America/Sao_Paulo"
 ENV PYTHON=/usr/bin/python2
 
 # Atualiza os pacotes e instala as ferramentas necessárias
-RUN apk update && \
-    apk add --no-cache tzdata \
-    python3 \
-    make \
-    g++ && \
-    ln -sf /usr/bin/python2 /usr/bin/python && \
-    cp /usr/share/zoneinfo/$TZ /etc/localtime && \
-    echo $TZ > /etc/timezone
+# RUN apk update && \
+#     apk add --no-cache tzdata \
+#     python3 \
+#     make \
+#     g++ && \
+#     ln -sf /usr/bin/python2 /usr/bin/python && \
+#     cp /usr/share/zoneinfo/$TZ /etc/localtime && \
+#     echo $TZ > /etc/timezone
 
 # Define o diretório de trabalho dentro do container
 WORKDIR /usr/src/app
