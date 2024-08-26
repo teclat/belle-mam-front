@@ -1,5 +1,5 @@
 # Use a imagem oficial do Node.js com Alpine como base
-FROM node:18.10.0-alpine AS builder
+FROM node:16.20.0-alpine AS builder
 
 # Configura o timezone
 ENV TZ="America/Sao_Paulo"
