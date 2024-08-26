@@ -28,7 +28,7 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 # Expõe a porta que será usada pela aplicação
-EXPOSE 3000
+EXPOSE 8080
 
 # Define o comando padrão para iniciar a aplicação
 CMD ["yarn", "start"]
