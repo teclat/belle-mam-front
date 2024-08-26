@@ -24,8 +24,11 @@ COPY package.json yarn.lock ./
 # Instala as dependências do projeto
 RUN yarn install --frozen-lockfile
 
+
 # Copia o restante do código do projeto para o diretório de trabalho
 COPY . .
+
+RUN yarn build
 
 # Expõe a porta que será usada pela aplicação
 EXPOSE 8080
