@@ -31,4 +31,4 @@ COPY . .
 EXPOSE 3000
 
 # Define o comando padrão para iniciar a aplicação
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]
